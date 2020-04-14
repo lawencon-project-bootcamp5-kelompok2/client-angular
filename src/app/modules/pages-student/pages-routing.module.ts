@@ -6,6 +6,8 @@ import { EnrollComponent } from './enroll/enroll.component';
 import { PembelajaranComponent } from './list-pembelajaran/pembelajaran.component';
 import { DetailMateriComponent } from './detail-materi/detail-materi.component';
 import { TestPageComponent } from './test-page/test-page.component';
+import { ForumComponent } from './forum/forum.component';
+import { NilaiComponent } from './nilai/nilai.component';
 
 
 const routes: Routes = [
@@ -15,7 +17,9 @@ const routes: Routes = [
       {path: 'enroll', component: EnrollComponent},
       {path: 'list-materi', component: PembelajaranComponent},
       {path: 'detail-materi', component: DetailMateriComponent},
-      {path: 'test-page', component: TestPageComponent}
+      {path: 'test-page', component: TestPageComponent},
+      {path: 'forum', component: ForumComponent},
+      {path: 'nilai', component: NilaiComponent}
     ]
   }
 ];
