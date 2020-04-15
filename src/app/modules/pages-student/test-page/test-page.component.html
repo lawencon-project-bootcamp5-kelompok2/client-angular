@@ -1,8 +1,8 @@
 <section class="content-header">
-  <h5>
-    Jam : 11.04
-    <!-- <small>it all starts here</small> -->
-  </h5>
+  <p id="timer">
+    <!-- Jam : 11.04 -->
+    <!-- {{countDown}} -->
+  </p>
 </section>
 
 <!-- Main content -->
@@ -20,7 +20,7 @@
       <p><b>Download Soal Dibawah Ini :</b></p>
       <button style="width: 150px;" type="button" class="btn btn-block btn-primary">Download Soal</button>
       <br>
-      <p><b>Upload jawaban dibawah ini sebelum waktu habis</b></p>
+      <p id="infoTest"></p>
       <label for="exampleInputFile"></label>
         <div class="input-group">
           <div class="custom-file">
@@ -28,7 +28,12 @@
             <label class="custom-file-label" for="exampleInputFile"></label>
           </div>
         </div>
-      <button style="width: 80px;" type="submit" class="btn btn-block btn-primary">Submit</button>
+      <div *ngIf="buttonOn; else off">
+        <button style="width: 80px;" type="submit" class="btn btn-block btn-primary">Submit</button>  
+      </div>
+      <ng-template #off>
+        <button style="width: 80px;" type="submit" class="btn btn-block btn-primary disabled">Submit</button>
+      </ng-template>
     </div>
     <!-- /.box-body -->
     <!-- /.box-footer-->
