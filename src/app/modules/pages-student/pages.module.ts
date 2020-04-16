@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {TableModule} from 'primeng/table';
 
 import {PagesRoutingModule} from './pages-routing.module';
 import {PagesComponent} from './student/pages.component';
@@ -17,7 +18,8 @@ import { TestPageComponent } from './test-page/test-page.component';
   imports: [
     CommonModule,
     PagesRoutingModule,
-    LayoutModule
+    LayoutModule,
+    TableModule
   ]
 })
 export class PagesModule {

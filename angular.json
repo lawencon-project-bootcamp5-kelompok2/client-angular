@@ -39,7 +39,10 @@
               "src/assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",
               "src/assets/bower_components/bootstrap-daterangepicker/daterangepicker.css",
               "src/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css",
-              "src/assets/plugins/iCheck/square/blue.css"
+              "src/assets/plugins/iCheck/square/blue.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [
               "src/assets/bower_components/jquery/dist/jquery.min.js",

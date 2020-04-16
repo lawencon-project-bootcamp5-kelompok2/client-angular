@@ -8,20 +8,14 @@
 <!-- Main content -->
 <section class="content">
 
-  <!-- Default box -->
   <div class="box">
     <div class="box-header with-border">
-      <h3 class="box-title">Pilih Enroll</h3>
-
-      <div class="box-tools pull-right">
-        <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="collapse" title="Collapse"
-                type="button">
-          <i class="fa fa-minus"></i></button>
-        <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="remove" title="Remove" type="button">
-          <i class="fa fa-times"></i></button>
-      </div>
+      <h3 class="box-title">Course Anda</h3>
     </div>
-    <div class="box-body">
+    <div class="box-body" *ngIf="tableIsEmpty; else notEmpty">
+      <p align="center">Anda belum menambahkan course ke dalam akun anda, silahkan pilih salah satu course dibawah.</p>
+    </div>
+    <ng-template #notEmpty>
       <table class="table table-bordered">
         <thead>                  
           <tr>
@@ -38,7 +32,11 @@
             <td>Imam Farisi</td>
             <td>20-4-2020</td>
             <td>20-5-2020</td>
-            <td><button type="button" class="btn btn-block btn-primary">Lihat</button></td>
+            <td>
+              <button type="button" class="btn btn-block btn-primary" routerLink="./enroll">
+                Lihat
+              </button>
+            </td>
           </tr>
           <tr>
             <td>PHP</td>
@@ -49,11 +47,73 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </ng-template>
     <!-- /.box-body -->
     <div class="box-footer">
-      Footer
+      <!-- Footer -->
     </div>
+    <!-- /.box-footer-->
+  </div>
+  <!-- /.box -->
+
+  <!-- PILIH COURSE -->
+
+  <!-- Default box -->
+  <div class="box">
+    <div class="box-header with-border">
+      <h3 class="box-title">Pilih Course</h3>
+
+      <div class="box-tools pull-right">
+        <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="collapse" title="Collapse"
+                type="button">
+          <i class="fa fa-minus"></i></button>
+        <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="remove" title="Remove" type="button">
+          <i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <!-- <table class="table table-bordered"> -->
+      <p-table [value]="dash" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+        <!-- <thead>                   -->
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 100px">Enroll</th>
+            <th>Instruktur</th>
+            <th>Mulai</th>
+            <th>Selesai</th>
+            <th style="width: 80px">Pilih</th>
+          </tr>
+        </ng-template>
+        <!-- </thead> -->
+        <!-- <tbody> -->
+        <ng-template pTemplate="body" let-rowData let-dash>
+          <tr [pSelectableRow]="rowData">
+            <td>{{dash.enroll}}</td>
+            <td>{{dash.instruktur}}</td>
+            <td>{{dash.mulai}}</td>
+            <td>{{dash.selesai}}</td>
+            <td>
+              <button type="button" class="btn btn-block btn-primary" routerLink="./enroll">
+                Lihat
+              </button>
+            </td>
+          </tr>
+          <!-- <tr>
+            <td>PHP</td>
+            <td>Albert Einstein</td>
+            <td>17-4-2020</td>
+            <td>20-5-2020</td>
+            <td><button type="button" class="btn btn-block btn-primary">Lihat</button></td>
+          </tr> -->
+        </ng-template>
+        <!-- </tbody> -->        
+      </p-table>
+      <!-- </table> -->
+    </div>
+    <!-- /.box-body -->
+    <!-- <div class="box-footer">
+      Footer
+    </div> -->
     <!-- /.box-footer-->
   </div>
   <!-- /.box -->

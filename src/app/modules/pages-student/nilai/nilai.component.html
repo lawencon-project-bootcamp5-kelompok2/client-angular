@@ -22,24 +22,24 @@
       </div>
     </div>
     <div class="box-body">
-      <table class="table table-bordered">
-        <thead>                  
+      <p-table [value]="aaa" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+        <ng-template pTemplate="header">                  
           <tr>
             <th style="width: 100px">Enroll</th>
             <th>Instruktur</th>
             <th>Nilai</th>
             <th>Grade</th>
           </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Java</td>
-            <td>Imam Farisi</td>
-            <td>88</td>
-            <td>A</td>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-aaa>
+          <tr [pSelectableRow]="rowData">
+            <td>{{aaa.enroll}}</td>
+            <td>{{aaa.instruktur}}</td>
+            <td>{{aaa.nilai}}</td>
+            <td>{{aaa.grade}}</td>
           </tr>
-        </tbody>
-      </table>
+        </ng-template>
+      </p-table>
       <br>
       <br>
 <!-- Detail nilai -->
