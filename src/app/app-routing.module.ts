@@ -5,7 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)},
-  {path: 'members', loadChildren: () => import('./modules/pages-student/pages.module').then(m => m.PagesModule)}
+  {path: 'student', loadChildren: () => import('./modules/pages-student/pages.module').then(m => m.PagesModule)},
+  {path: 'trainer', loadChildren: () => import('./modules/pages-trainer/pages-trainer.module').then(m => m.PagesTrainerModule)}
 ];
 
 @NgModule({

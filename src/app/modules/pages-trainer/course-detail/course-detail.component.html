@@ -1,0 +1,92 @@
+<section class="content-header">
+    <h1>
+      Current Course Detail
+      <!-- <small>it all starts here</small> -->
+    </h1>
+  </section>
+  
+  <!-- Main content -->
+  <section class="content">
+  
+    <!-- Default box -->
+    <div class="box">
+      <div class="box-header with-border">
+        <h2 class="box-title">Java</h2>
+        <div class="box-tools pull-right">
+            <button class="btn btn-sm btn-block btn-primary" type="button"> <i class="glyphicon glyphicon-pencil"></i>&nbsp; Edit Deskripsi</button>
+        </div>
+      </div>
+      <div class="box-body">
+        <h4>Pengenalan</h4>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      </div>
+      
+      <div class="box-footer">
+      </div>
+      <!-- /.box-footer-->
+    </div>
+    <!-- /.box -->
+
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+          <h2 class="box-title">Materi</h2>
+          <div class="box-tools pull-right">
+            <button class="btn btn-sm btn-block btn-primary" type="button"> <i class="glyphicon glyphicon-plus"></i>&nbsp; Tambah Materi</button>
+        </div>
+        </div>
+        
+        <!-- /.box-body -->
+        <div class="box-body">
+          <div *ngIf = "!dataNotNull">
+              <table>
+                  <tr>
+                      <td colspan="3">
+                          <p>Materi belum diisi silahkan buat materi baru</p>            
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>&nbsp;</td>
+                      <td>
+                          <button type="button" class="btn btn-block btn-primary"><i class="glyphicon glyphicon-plus"></i> Tambah Materi</button>
+                      </td>
+                      <td></td>
+                  </tr>
+              </table>
+          </div>
+          <div class="col-md-6" *ngIf="dataNotNull">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Materi</th>
+                          <th>Estimasi Waktu</th>
+                          <th colspan="3">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>Java Basic</td>
+                          <td>7 Hari</td>
+                          <td>
+                              <a href="" class="btn btn-block btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+                          </td>
+                          <td>
+                              <a href="" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          Footer
+        </div>
+        <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
+  
+  </section>
+  <!-- /.content -->
+  

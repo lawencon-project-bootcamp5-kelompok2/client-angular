@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TableModule} from 'primeng/table';
 
+import { FormsModule } from '@angular/forms';
+import { CalendarModule } from 'primeng/calendar';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +17,7 @@ import {TableModule} from 'primeng/table';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    TableModule
+    TableModule, FormsModule, CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
