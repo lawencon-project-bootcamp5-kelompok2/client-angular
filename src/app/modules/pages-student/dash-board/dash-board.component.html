@@ -19,7 +19,8 @@
       <table class="table table-bordered">
         <thead>                  
           <tr>
-            <th style="width: 100px">Enroll</th>
+            <th style="width: 60px;">Kode</th>
+            <th style="width: 100px">Kelas</th>
             <th>Instruktur</th>
             <th>Mulai</th>
             <th>Selesai</th>
@@ -73,50 +74,31 @@
     </div>
     <div class="box-body">
       <!-- <table class="table table-bordered"> -->
-      <p-table [value]="dash" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+      <p-table [value]="courses" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
         <!-- <thead>                   -->
         <ng-template pTemplate="header">
           <tr>
-            <th style="width: 100px">Enroll</th>
-            <th>Instruktur</th>
-            <th>Mulai</th>
-            <th>Selesai</th>
+            <th *ngFor="let col of cols">
+              {{col.header}}
+            </th>
             <th style="width: 80px">Pilih</th>
           </tr>
         </ng-template>
-        <!-- </thead> -->
-        <!-- <tbody> -->
-        <ng-template pTemplate="body" let-rowData let-dash>
+        <ng-template pTemplate="body" let-rowData let-course>
           <tr [pSelectableRow]="rowData">
-            <td>{{dash.enroll}}</td>
-            <td>{{dash.instruktur}}</td>
-            <td>{{dash.mulai}}</td>
-            <td>{{dash.selesai}}</td>
+            <td>{{course.kode}}</td>
+            <td>{{course.namaCourse}}</td>
+            <td>{{course.trainer.namaTrainer}}</td>
+            <td>{{course.mulai}}</td>
+            <td>{{course.selesai}}</td>
             <td>
               <button type="button" class="btn btn-block btn-primary" routerLink="./enroll">
                 Lihat
               </button>
             </td>
           </tr>
-          <!-- <tr>
-            <td>PHP</td>
-            <td>Albert Einstein</td>
-            <td>17-4-2020</td>
-            <td>20-5-2020</td>
-            <td><button type="button" class="btn btn-block btn-primary">Lihat</button></td>
-          </tr> -->
         </ng-template>
-        <!-- </tbody> -->        
       </p-table>
-      <!-- </table> -->
     </div>
-    <!-- /.box-body -->
-    <!-- <div class="box-footer">
-      Footer
-    </div> -->
-    <!-- /.box-footer-->
   </div>
-  <!-- /.box -->
-
 </section>
-<!-- /.content -->

@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import { Dashboard } from '../dash';
+import { CourseService } from 'src/app/service/course.service';
+import { Course } from 'src/app/model/course';
+import { TrainerService } from 'src/app/service/trainer.service';
+import { Trainer } from 'src/app/model/trainer';
 
 @Component({
   selector: 'app-dash-board',
@@ -13,43 +17,44 @@ export class DashBoardComponent implements OnInit {
   dash1: Dashboard;
   cols : any[];
   selectedRow: Dashboard;
+  courses : Course[];
+  course : Course;
+  trainers : Trainer[];
 
-  constructor() {
+  constructor(private courseService: CourseService, private trainerService: TrainerService) {
+    courseService.getCourse().subscribe(
+      result => this.courses = result,
+      err => console.log("Error found!," + JSON.stringify(err)),
+      () => console.log("done!")      
+    );
+
+    trainerService.getTrainer().subscribe(
+      result => this.trainers = result,
+      err => console.log("Error found!" + JSON.stringify(err)),
+      () => console.log("done!")    
+    );
   }
 
   ngOnInit() {
-    this.dash = [
-      {
-        enroll:"Java",
-        instruktur:"Imam Farisi",
-        mulai:"20-4-2020",
-        selesai:"20-5-2020"
-      },
-      {
-        enroll:"PHP",
-        instruktur:"Albert Einstein",
-        mulai:"17-04-2020",
-        selesai:"20-5-2020"
-      }
-    ]
     this.cols = [
-      {field:"enroll", header:"Enroll"},
-      {field:"instruktur", header:"Instuktur"},
+      {field:"kode", header:"Kode"},
+      {field:"namaCourse", header:"Course"},
+      {field:"trainer", header:"Instruktur"},
       {field:"mulai", header:"Mulai"},
-      {field:"selesai", header:"Selesai"},
+      {field:"selesai", header:"Selesai"}
     ]
   }
 
   onRowSelect(event) {
-    this.dash1 = this.cloneSelection(event.data);
+    this.course = this.cloneSelection(event.data);
   }
 
-  cloneSelection(d : Dashboard){
-    let dash = {};
-    for(let prop in d){
-      dash[prop] = d[prop];
+  cloneSelection(c : Course){
+    let course = {};
+    for(let prop in c){
+      course[prop] = c[prop];
     }
-    return d;
+    return c;
   }
 
 }
