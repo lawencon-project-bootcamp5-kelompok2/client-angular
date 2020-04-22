@@ -1,3 +1,18 @@
+<style>
+  .example-modal .modal {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    display: block;
+    z-index: 1;
+  }
+
+  .example-modal .modal {
+    background: transparent !important;
+  }
+</style>
 <section class="content-header">
     <h1>
       Current Course Detail
@@ -13,12 +28,31 @@
       <div class="box-header with-border">
         <h2 class="box-title">Java</h2>
         <div class="box-tools pull-right">
-            <button class="btn btn-sm btn-block btn-primary" type="button"> <i class="glyphicon glyphicon-pencil"></i>&nbsp; Edit Deskripsi</button>
+            <button class="btn btn-sm btn-block btn-primary" type="button" (click)="editDeskripsi()"> <i class="glyphicon glyphicon-pencil" *ngIf="!editClick"></i>&nbsp; {{buttonEdit}}</button>
         </div>
+        
       </div>
       <div class="box-body">
         <h4>Pengenalan</h4>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <div *ngIf="!editClick">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div *ngIf="editClick">
+          <div class="box-body">
+            <div class="form-group">
+              <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+            </div>
+          </div>
+          <div class="box-footer">
+            <div class="box-tools pull-right">
+              
+              
+            </div>
+            <div class="box-tools pull-right">
+              <button class="btn btn-sm btn-block btn-primary" type="button"> <i class="glyphicon glyphicon-pencil"></i>&nbsp; Edit</button>
+            </div>
+          </div>
+        </div>
       </div>
       
       <div class="box-footer">
@@ -48,30 +82,37 @@
                   <tr>
                       <td>&nbsp;</td>
                       <td>
-                          <button type="button" class="btn btn-block btn-primary"><i class="glyphicon glyphicon-plus"></i> Tambah Materi</button>
+                          <button type="button" class="btn btn-block btn-primary" ><i class="glyphicon glyphicon-plus"></i> Tambah Materi</button>
                       </td>
                       <td></td>
                   </tr>
               </table>
           </div>
-          <div class="col-md-6" *ngIf="dataNotNull">
+          <div class="col-md-10" *ngIf="dataNotNull">
               <table class="table">
                   <thead>
                       <tr>
+                          <th style="width: 10%">Pertemuan</th>
                           <th>Materi</th>
-                          <th>Estimasi Waktu</th>
-                          <th colspan="3">Action</th>
+                          <th>Tanggal</th>
+                          <th style="width: 30%">Nama File</th>
+                          <th style="width: 7%">Nilai Test</th>
+                          <th style="width: 7%">Forum</th>
+                          <th style="width: 7%">Absen</th>
+                          <th style="width: 5%">Action</th>
                       </tr>
                   </thead>
                   <tbody>
                       <tr>
+                          <td>1</td>
                           <td>Java Basic</td>
-                          <td>7 Hari</td>
+                          <td>20-4-2020</td>
+                          <td>Java Basic for Dummy.mp4</td>
+                          <td><a href="" class="btn btn-block btn-primary">Nilai</a></td>
+                          <td><a href="" class="btn btn-block btn-primary">Forum</a></td>
+                          <td><a href="" class="btn btn-block btn-primary">Absen</a></td>
                           <td>
                               <a href="" class="btn btn-block btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-                          </td>
-                          <td>
-                              <a href="" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
                           </td>
                       </tr>
                   </tbody>
@@ -81,12 +122,28 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          Footer
+         
         </div>
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-  
+      <div class="modal modal-danger fade" id="modal-danger">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Apa anda ingin menghapus data ini</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
+              <button type="button" class="btn btn-outline">Ya</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
   </section>
   <!-- /.content -->
   

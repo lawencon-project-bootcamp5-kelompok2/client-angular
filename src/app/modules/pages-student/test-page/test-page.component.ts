@@ -18,7 +18,7 @@ export class TestPageComponent implements OnInit {
 
   fungsi() {
 
-    let countDeadline = new Date("Apr 15, 2020 15:00:00").getTime();
+    let countDeadline = new Date("Apr 18, 2020 20:50:00").getTime();
 
     let now = new Date().getTime();
   
