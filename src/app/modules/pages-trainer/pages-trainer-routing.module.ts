@@ -8,6 +8,7 @@ import { ListAbsenComponent } from './list-absen/list-absen.component';
 import { ListNilaiComponent } from './list-nilai/list-nilai.component';
 import { ListReportNilaiSubcourseComponent } from './list-report-nilai-subcourse/list-report-nilai-subcourse.component';
 import { ListReportNilaiSubcourseStudentComponent } from './list-report-nilai-subcourse-student/list-report-nilai-subcourse-student.component';
+import { SubcourseEditComponent } from './subcourse-edit/subcourse-edit.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
       {path: 'listabsen', component: ListAbsenComponent},
       {path: 'form-nilai', component: ListNilaiComponent},
       {path: 'nilai', component: ListReportNilaiSubcourseComponent},
-      {path: 'nilaimateri', component: ListReportNilaiSubcourseStudentComponent}
+      {path: 'nilaimateri', component: ListReportNilaiSubcourseStudentComponent},
+      {path: 'editsubcourse', component: SubcourseEditComponent}
     ]
   }
 ]
