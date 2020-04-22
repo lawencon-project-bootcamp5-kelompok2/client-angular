@@ -10,7 +10,7 @@ export class MateriListComponent implements OnInit {
 
   materi : MateriData[]
   materi1 : MateriData
-  seletedRow : MateriData 
+  selectedRow : MateriData 
 
   constructor() { }
 

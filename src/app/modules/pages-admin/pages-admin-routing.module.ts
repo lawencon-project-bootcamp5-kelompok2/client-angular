@@ -9,6 +9,7 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { MateriListComponent } from './materi-list/materi-list.component';
 import { AddMateriComponent } from './add-materi/add-materi.component';
+import { ClassListComponent } from './class-list/class-list.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
       {path: 'list-course', component: CourseListComponent},
       {path: 'add-course', component: AddCourseComponent},
       {path: 'list-materi', component: MateriListComponent},
-      {path: 'add-materi', component: AddMateriComponent}
+      {path: 'add-materi', component: AddMateriComponent},
+      {path: 'list-class', component: ClassListComponent}
     ]
   }
 ]
