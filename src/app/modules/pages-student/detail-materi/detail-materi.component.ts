@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import { MateriService } from 'src/app/service/materi.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-detail-materi',
@@ -7,10 +9,16 @@ import {Component, OnInit} from '@angular/core';
 })
 export class DetailMateriComponent implements OnInit {
 
-  constructor() {
+  constructor(private materiService: MateriService) {
   }
 
   ngOnInit() {
+  }
+
+  onClick(){
+    this.materiService.downloadFile("20f3b84f-1906-4568-8cb8-5c8d469a46f7").subscribe(blob => {
+      saveAs(blob);
+    })
   }
 
 }

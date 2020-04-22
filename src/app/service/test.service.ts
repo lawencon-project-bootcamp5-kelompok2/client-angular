@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
-import { Forum } from '../model/forum';
+import { Test } from '../model/test';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ForumService {
+export class TestService {
 
   url = "http://c374350a.ngrok.io/course";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
@@ -21,23 +21,23 @@ export class ForumService {
     return throwError(error);    
   }
 
-  getForum(): Observable<Forum>{
+  getTest(): Observable<Test[]>{
     return this.http.get<any>(`${this.url}/list`);
   }
 
-  searchForum(forum): Observable<Forum>{
-    return this.http.post<any>(`${this.url}/search`, forum);
+  getTestById(id): Observable<Test>{
+    return this.http.post<any>(`${this.url}/search`, id);
   }
 
-  postForum(forum): Observable<Forum>{
-    return this.http.post<any>(`${this.url}/create`, forum);
+  insertTest(test): Observable<Test>{
+    return this.http.post<any>(`${this.url}/insert`, test);
   }
 
-  updateForum(forum): Observable<Forum>{
-    return this.http.post<any>(`${this.url}/update`, forum);
+  updateTest(test): Observable<Test>{
+    return this.http.post<any>(`${this.url}/update`, test);
   }
 
-  deleteForum(forum): Observable<Forum>{
-    return this.http.post<any>(`${this.url}/delete`, forum);
+  deleteTest(test): Observable<Test>{
+    return this.http.post<any>(`${this.url}/delete`, test);
   }
 }

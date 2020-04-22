@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TableModule} from 'primeng/table';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
@@ -19,7 +19,8 @@ import { CalendarModule } from 'primeng/calendar';
     AppRoutingModule,
     BrowserAnimationsModule,
     TableModule, FormsModule, CalendarModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

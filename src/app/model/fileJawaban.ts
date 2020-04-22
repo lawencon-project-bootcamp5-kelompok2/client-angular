@@ -1,5 +1,6 @@
 export interface FileJawaban{
-    id;
+    idFileJawaban;
     fileName;
     fileType;
+    data;
 }
