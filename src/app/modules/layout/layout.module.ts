@@ -5,6 +5,7 @@ import {FooterComponent} from './footer/footer.component';
 import {StudentNavComponent} from './side-nav-student/student-nav.component';
 import {SettingsComponent} from './settings/settings.component';
 import { SideNavTrainerComponent } from './side-nav-trainer/side-nav-trainer.component';
+import { SideNavAdminComponent } from './side-nav-admin/side-nav-admin.component';
 
 
 @NgModule({
@@ -12,7 +13,7 @@ import { SideNavTrainerComponent } from './side-nav-trainer/side-nav-trainer.com
     HeaderComponent,
     FooterComponent,
     StudentNavComponent,
-    SettingsComponent,SideNavTrainerComponent],
+    SettingsComponent,SideNavTrainerComponent, SideNavAdminComponent],
   imports: [
     CommonModule
   ],
@@ -20,7 +21,7 @@ import { SideNavTrainerComponent } from './side-nav-trainer/side-nav-trainer.com
     HeaderComponent,
     FooterComponent,
     StudentNavComponent,
-    SettingsComponent,SideNavTrainerComponent
+    SettingsComponent,SideNavTrainerComponent,SideNavAdminComponent
   ]
 })
 export class LayoutModule {

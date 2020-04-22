@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubcourseAddComponent implements OnInit {
 
-  date7: Date
-  testng : string
+  dateTestMulai : Date
+  dateTestSelesai: Date
+  dateTglMulai : Date
+  dateTglSelesai : Date
 
   constructor() { }
 

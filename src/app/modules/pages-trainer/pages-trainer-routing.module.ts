@@ -4,13 +4,21 @@ import { TrainerComponent } from './trainer/trainer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { SubcourseAddComponent } from './subcourse-add/subcourse-add.component';
+import { ListAbsenComponent } from './list-absen/list-absen.component';
+import { ListNilaiComponent } from './list-nilai/list-nilai.component';
+import { ListReportNilaiSubcourseComponent } from './list-report-nilai-subcourse/list-report-nilai-subcourse.component';
+import { ListReportNilaiSubcourseStudentComponent } from './list-report-nilai-subcourse-student/list-report-nilai-subcourse-student.component';
 
 const routes: Routes = [
   {
     path: '', component: TrainerComponent, children: [
       {path: '', component: DashboardComponent},
       {path: 'coursedetail', component: CourseDetailComponent},
-      {path: 'addsubcourse', component: SubcourseAddComponent}
+      {path: 'addsubcourse', component: SubcourseAddComponent},
+      {path: 'listabsen', component: ListAbsenComponent},
+      {path: 'form-nilai', component: ListNilaiComponent},
+      {path: 'nilai', component: ListReportNilaiSubcourseComponent},
+      {path: 'nilaimateri', component: ListReportNilaiSubcourseStudentComponent}
     ]
   }
 ]

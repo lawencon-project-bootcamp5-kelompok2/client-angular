@@ -9,14 +9,19 @@ import { SubcourseEditComponent } from './subcourse-edit/subcourse-edit.componen
 import { SubcourseAddComponent } from './subcourse-add/subcourse-add.component';
 import {CalendarModule} from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
+import { ListAbsenComponent } from './list-absen/list-absen.component';
+import { TableModule } from 'primeng/table/';
+import { ListNilaiComponent } from './list-nilai/list-nilai.component';
+import { ListReportNilaiSubcourseComponent } from './list-report-nilai-subcourse/list-report-nilai-subcourse.component';
+import { ListReportNilaiSubcourseStudentComponent } from './list-report-nilai-subcourse-student/list-report-nilai-subcourse-student.component';
 
 
 @NgModule({
-  declarations: [TrainerComponent, DashboardComponent, CourseDetailComponent, SubcourseEditComponent, SubcourseAddComponent],
+  declarations: [TrainerComponent, DashboardComponent, CourseDetailComponent, SubcourseEditComponent, SubcourseAddComponent, ListAbsenComponent, ListNilaiComponent, ListReportNilaiSubcourseComponent, ListReportNilaiSubcourseStudentComponent],
   imports: [
     CommonModule,
     PagesTrainerRoutingModule,
-    LayoutModule,CalendarModule,FormsModule
+    LayoutModule,CalendarModule,FormsModule,TableModule
   ]
 })
 export class PagesTrainerModule { }

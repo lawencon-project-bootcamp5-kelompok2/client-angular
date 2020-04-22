@@ -9,6 +9,12 @@ export class SubcourseEditComponent implements OnInit {
 
   constructor() { }
 
+  dateTestMulai : Date
+  dateTestSelesai: Date
+  dateTglMulai : Date
+  dateTglSelesai : Date
+
+
   ngOnInit(): void {
   }
 
