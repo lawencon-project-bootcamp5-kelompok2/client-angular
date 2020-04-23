@@ -10,6 +10,10 @@ import { AddCourseComponent } from './add-course/add-course.component';
 import { MateriListComponent } from './materi-list/materi-list.component';
 import { AddMateriComponent } from './add-materi/add-materi.component';
 import { ClassListComponent } from './class-list/class-list.component';
+import { AddClassComponent } from './add-class/add-class.component';
+import { EditCourseComponent } from './edit-course/edit-course.component';
+import { EditMateriComponent } from './edit-materi/edit-materi.component';
+import { EditClassComponent } from './edit-class/edit-class.component';
 
 const routes: Routes = [
   {
@@ -22,7 +26,11 @@ const routes: Routes = [
       {path: 'add-course', component: AddCourseComponent},
       {path: 'list-materi', component: MateriListComponent},
       {path: 'add-materi', component: AddMateriComponent},
-      {path: 'list-class', component: ClassListComponent}
+      {path: 'list-class', component: ClassListComponent},
+      {path: 'add-class', component: AddClassComponent},
+      {path: 'edit-course', component: EditCourseComponent},
+      {path: 'edit-materi', component: EditMateriComponent},
+      {path: 'edit-class', component: EditClassComponent}
     ]
   }
 ]

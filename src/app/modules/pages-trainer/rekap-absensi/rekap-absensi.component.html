@@ -1,0 +1,44 @@
+<section class="content">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="box">
+                <div class="box-header bg-light-blue-active color-palette">
+                    <h4 class="box-title">Rekap Absen per Materi</h4>
+                   
+                </div>
+                <div class="box-body">
+                    
+                    <p-table [value]="rekapAbsen" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                        <!-- <thead>                   -->
+                        <ng-template pTemplate="header">
+                          <tr>
+                            <th style="width: 5%">No</th>
+                            <th>Namn Murid</th>
+                            <th>24/4/2020</th>
+                            <th>27/4/2020</th>
+                          </tr>
+                        </ng-template>
+                        <!-- </thead> -->
+                        <!-- <tbody> -->
+                        <ng-template pTemplate="body" let-rowData let-rekapAbsen>
+                          <tr [pSelectableRow]="rowData">
+                            <td>{{rekapAbsen.noUrut}}</td>
+                            <td>{{rekapAbsen.namaStudent}}</td>
+                            <td>{{rekapAbsen.tgl1}}</td>
+                            <td>{{rekapAbsen.tgl2}}</td>
+                            
+                          </tr>
+                          
+                        </ng-template>
+                        <!-- </tbody> -->        
+                      </p-table>
+                </div>
+                <div class="box-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>

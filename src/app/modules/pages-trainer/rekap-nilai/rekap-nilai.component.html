@@ -1,0 +1,44 @@
+<section class="content">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="box">
+                <div class="box-header bg-light-blue-active color-palette">
+                    <h4 class="box-title">Rekap Nilai per Materi</h4>
+                   
+                </div>
+                <div class="box-body">
+                    
+                    <p-table [value]="rekapNilai" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                        <!-- <thead>                   -->
+                        <ng-template pTemplate="header">
+                          <tr>
+                            <th>NPM</th>
+                            <th>Namn Murid</th>
+                            <th>Nilai</th>
+                            <th>Grade</th>
+                          </tr>
+                        </ng-template>
+                        <!-- </thead> -->
+                        <!-- <tbody> -->
+                        <ng-template pTemplate="body" let-rowData let-rekapNilai>
+                          <tr [pSelectableRow]="rowData">
+                            <td>{{rekapNilai.npm}}</td>
+                            <td>{{rekapNilai.namaStudent}}</td>
+                            <td>{{rekapNilai.nilai}}</td>
+                            <td>{{rekapNilai.grade}}</td>
+                            
+                          </tr>
+                          
+                        </ng-template>
+                        <!-- </tbody> -->        
+                      </p-table>
+                </div>
+                <div class="box-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>

@@ -14,10 +14,14 @@ import { TableModule } from 'primeng/table/';
 import { ListNilaiComponent } from './list-nilai/list-nilai.component';
 import { ListReportNilaiSubcourseComponent } from './list-report-nilai-subcourse/list-report-nilai-subcourse.component';
 import { ListReportNilaiSubcourseStudentComponent } from './list-report-nilai-subcourse-student/list-report-nilai-subcourse-student.component';
+import { RekapAbsensiListComponent } from './rekap-absensi-list/rekap-absensi-list.component';
+import { RekapAbsensiComponent } from './rekap-absensi/rekap-absensi.component';
+import { RekapNilaiListComponent } from './rekap-nilai-list/rekap-nilai-list.component';
+import { RekapNilaiComponent } from './rekap-nilai/rekap-nilai.component';
 
 
 @NgModule({
-  declarations: [TrainerComponent, DashboardComponent, CourseDetailComponent, SubcourseEditComponent, SubcourseAddComponent, ListAbsenComponent, ListNilaiComponent, ListReportNilaiSubcourseComponent, ListReportNilaiSubcourseStudentComponent],
+  declarations: [TrainerComponent, DashboardComponent, CourseDetailComponent, SubcourseEditComponent, SubcourseAddComponent, ListAbsenComponent, ListNilaiComponent, ListReportNilaiSubcourseComponent, ListReportNilaiSubcourseStudentComponent, RekapAbsensiListComponent, RekapAbsensiComponent, RekapNilaiListComponent, RekapNilaiComponent],
   imports: [
     CommonModule,
     PagesTrainerRoutingModule,

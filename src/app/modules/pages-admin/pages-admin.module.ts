@@ -15,11 +15,15 @@ import { AddCourseComponent } from './add-course/add-course.component';
 import { MateriListComponent } from './materi-list/materi-list.component';
 import { AddMateriComponent } from './add-materi/add-materi.component';
 import { ClassListComponent } from './class-list/class-list.component';
+import { AddClassComponent } from './add-class/add-class.component';
+import { EditClassComponent } from './edit-class/edit-class.component';
+import { EditCourseComponent } from './edit-course/edit-course.component';
+import { EditMateriComponent } from './edit-materi/edit-materi.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, DashboardComponent, TrainerListComponent, AddTrainerComponent, EditTrainerComponent, CourseListComponent, AddCourseComponent, MateriListComponent, AddMateriComponent, ClassListComponent],
+  declarations: [AdminComponent, DashboardComponent, TrainerListComponent, AddTrainerComponent, EditTrainerComponent, CourseListComponent, AddCourseComponent, MateriListComponent, AddMateriComponent, ClassListComponent, AddClassComponent, EditClassComponent, EditCourseComponent, EditMateriComponent],
   imports: [
     CommonModule, PagesAdminRoutingModule, LayoutModule,FormsModule, TableModule, PagesAdminRoutingModule, CalendarModule
   ]

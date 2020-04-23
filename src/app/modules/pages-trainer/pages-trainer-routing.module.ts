@@ -9,6 +9,10 @@ import { ListNilaiComponent } from './list-nilai/list-nilai.component';
 import { ListReportNilaiSubcourseComponent } from './list-report-nilai-subcourse/list-report-nilai-subcourse.component';
 import { ListReportNilaiSubcourseStudentComponent } from './list-report-nilai-subcourse-student/list-report-nilai-subcourse-student.component';
 import { SubcourseEditComponent } from './subcourse-edit/subcourse-edit.component';
+import { RekapAbsensiListComponent } from './rekap-absensi-list/rekap-absensi-list.component';
+import { RekapAbsensiComponent } from './rekap-absensi/rekap-absensi.component';
+import { RekapNilaiListComponent } from './rekap-nilai-list/rekap-nilai-list.component';
+import { RekapNilaiComponent } from './rekap-nilai/rekap-nilai.component';
 
 const routes: Routes = [
   {
@@ -20,7 +24,11 @@ const routes: Routes = [
       {path: 'form-nilai', component: ListNilaiComponent},
       {path: 'nilai', component: ListReportNilaiSubcourseComponent},
       {path: 'nilaimateri', component: ListReportNilaiSubcourseStudentComponent},
-      {path: 'editsubcourse', component: SubcourseEditComponent}
+      {path: 'editsubcourse', component: SubcourseEditComponent},
+      {path: 'list-rekap-absen', component: RekapAbsensiListComponent},
+      {path: 'rekap-absen', component: RekapAbsensiComponent},
+      {path: 'list-rekap-nilai', component: RekapNilaiListComponent},
+      {path: 'rekap-nilai', component: RekapNilaiComponent}
     ]
   }
 ]
