@@ -8,7 +8,7 @@ import { Kelas } from '../model/kelas';
 })
 export class KelasService {
 
-  url = "http://c374350a.ngrok.io/course";
+  url = "http://localhost:8080/kelas";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
   httpOptions = {
     headers : this.headers

@@ -4,10 +4,10 @@ import { Forum } from './forum';
 
 export class Subcourse{
     idSubcourse;
-    idCourse : Course;
+    idCourse : Course = new Course();
     namaSubcourse;
     tanggalMulai;
     tanggalSelesai;
-    materi: Materi = new Materi();
+    idMateri: Materi = new Materi();
     idForum: Forum;
 }

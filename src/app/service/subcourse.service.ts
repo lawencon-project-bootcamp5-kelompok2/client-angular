@@ -8,7 +8,7 @@ import { Subcourse } from '../model/subcourse';
 })
 export class SubcourseService {
 
-  url = "http://c374350a.ngrok.io/subcourse";
+  url = "http://localhost:8080/subcourse";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
   httpOptions = {
     headers : this.headers
@@ -26,11 +26,11 @@ export class SubcourseService {
   }
 
   getSubcourseById(id): Observable<Subcourse>{
-    return this.http.post<any>(`${this.url}/search`, id);
+    return this.http.get<any>(`${this.url}/search/${id}`);
   }
 
-  getSubcourseByCourse(subcourse): Observable<Subcourse>{
-    return this.http.post<any>(`${this.url}/search/course`, subcourse);
+  getSubcourseByCourse(courseId): Observable<Subcourse[]>{
+    return this.http.get<any>(`${this.url}/search/course/${courseId}`);
   }
 
   insertSubcourse(subcourse): Observable<Subcourse>{
@@ -38,10 +38,10 @@ export class SubcourseService {
   }
 
   updateSubcourse(subcourse): Observable<Subcourse>{
-    return this.http.post<any>(`${this.url}/update`, subcourse);
+    return this.http.put<any>(`${this.url}/update`, subcourse);
   }
 
-  deleteSubcourse(subcourse): Observable<Subcourse>{
-    return this.http.post<any>(`${this.url}/delete`, subcourse);
+  deleteSubcourse(idSubcourse): Observable<Subcourse>{
+    return this.http.delete<any>(`${this.url}/delete/${idSubcourse}`);
   }
 }

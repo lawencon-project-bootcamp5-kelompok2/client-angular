@@ -7,7 +7,7 @@ import { throwError, Observable } from 'rxjs';
 })
 export class SoalService {
 
-  url = "http://c374350a.ngrok.io/course";
+  url = "http://localhost:8080/soal";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
   httpOptions = {
     headers : this.headers

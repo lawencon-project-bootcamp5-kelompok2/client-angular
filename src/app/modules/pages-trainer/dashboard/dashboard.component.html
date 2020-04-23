@@ -44,4 +44,42 @@
   
   </section>
   <!-- /.content -->
+
+  <!-- Main content -->
+<section class="content">
+
+  <!-- Default box -->
+  <div class="box">
+    <div class="box-header with-border">
+      <h1 class="box-title">Kelas anda</h1>
+    </div>
+    <div class="box-body">
+      <p-table [value]="kelas">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Kode Kelas</th>
+            <th>Course</th>
+            <th>Jadwal</th>
+            <th>Options</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-kelas>
+          <tr>
+            <td>{{kelas.kodeKelas}}</td>
+            <td>{{kelas.course.namaCourse}}</td>
+            <td>{{kelas.openKelas}}</td>
+            <td>
+              <button class="btn btn-sm btn-block btn-primary" type="button" [routerLink]="['./coursedetail', kelas.course.idCourse]">
+                <i class="fa fa-search"></i>
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <!-- /.box -->
+
+</section>
+<!-- /.content -->
   

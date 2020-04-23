@@ -1,6 +1,6 @@
 import { Course } from './course';
 
-export interface Kelas {
+export class Kelas {
     idKelas;
     kodeKelas;
     openKelas;

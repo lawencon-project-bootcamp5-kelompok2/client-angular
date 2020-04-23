@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import { Dashboard } from '../dash';
 import { CourseService } from 'src/app/service/course.service';
 import { Course } from 'src/app/model/course';
 import { TrainerService } from 'src/app/service/trainer.service';
@@ -17,7 +16,7 @@ export class DashBoardComponent implements OnInit {
 
   tableIsEmpty = true;
   cols : any[];
-  selectedRow: Dashboard;
+  selectedRow: Course;
   courses : Course[];
   course : Course;
   trainers : Trainer[];

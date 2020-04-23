@@ -14,8 +14,8 @@ const routes: Routes = [
   {
     path: '', component: TrainerComponent, children: [
       {path: '', component: DashboardComponent},
-      {path: 'coursedetail', component: CourseDetailComponent},
-      {path: 'addsubcourse', component: SubcourseAddComponent},
+      {path: "coursedetail/:idCourse", component: CourseDetailComponent},
+      {path: "addsubcourse/:idCourse", component: SubcourseAddComponent},
       {path: 'listabsen', component: ListAbsenComponent},
       {path: 'form-nilai', component: ListNilaiComponent},
       {path: 'nilai', component: ListReportNilaiSubcourseComponent},

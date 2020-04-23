@@ -3,13 +3,14 @@ import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { tap, catchError, map} from 'rxjs/operators';
 import { error } from 'protractor';
+import { Materi } from '../model/materi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MateriService {
 
-  url = "http://c374350a.ngrok.io/materi";
+  url = "http://localhost:8080/materi";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
   httpOptions = {
     headers : this.headers
@@ -22,11 +23,11 @@ export class MateriService {
     return throwError(error);    
   }
 
-  uploadFile(uploadMateri: File): Observable<boolean>{
+  uploadFile(uploadMateri: File): Observable<Materi>{
     const formData: FormData = new FormData();
     formData.append('file', uploadMateri, uploadMateri.name);
-    return this.http.post(`${this.url}/uploadFile`, formData).pipe(
-     map(() => { return true})
+    return this.http.post<Materi>(`${this.url}/uploadFile`, formData).pipe(
+    //  map(() => { return true})
     );
   }
 
