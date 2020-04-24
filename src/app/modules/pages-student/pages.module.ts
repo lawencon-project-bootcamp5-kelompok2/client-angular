@@ -8,12 +8,12 @@ import {DashBoardComponent} from './dash-board/dash-board.component';
 import {LayoutModule} from '../layout/layout.module';
 import { EnrollComponent } from './enroll/enroll.component';
 import { DetailMateriComponent } from './detail-materi/detail-materi.component';
-import { PembelajaranComponent } from './list-pembelajaran/pembelajaran.component';
+import { AbsensiComponent } from './absensi/absensi.component';
 import { NilaiComponent } from './nilai/nilai.component';
 import { TestPageComponent } from './test-page/test-page.component';
 
 @NgModule({
-  declarations: [PagesComponent, DashBoardComponent, EnrollComponent, DetailMateriComponent, PembelajaranComponent,
+  declarations: [PagesComponent, DashBoardComponent, EnrollComponent, DetailMateriComponent, AbsensiComponent,
   NilaiComponent, TestPageComponent],
   imports: [
     CommonModule,

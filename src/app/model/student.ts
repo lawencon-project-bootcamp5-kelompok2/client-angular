@@ -1,9 +1,9 @@
 import { Kelas } from './kelas';
 
-export interface Student{
+export class Student{
     idStudent;
     npm;
     namaStudent;
-    kelas: Kelas[];
+    kelas: Kelas[] = [new Kelas()];
     role;
 }

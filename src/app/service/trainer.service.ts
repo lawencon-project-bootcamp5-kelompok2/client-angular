@@ -9,7 +9,7 @@ import { Trainer } from '../model/trainer';
 })
 export class TrainerService {
 
-  url = "http://c374350a.ngrok.io/trainer";
+  url = "http://localhost:8080/trainer";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
   httpOptions = {
     headers : this.headers

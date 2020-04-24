@@ -6,6 +6,8 @@ import { Trainer } from 'src/app/model/trainer';
 import { Student } from 'src/app/model/student';
 import {FilterUtils} from 'primeng/utils';
 import { StudentService } from 'src/app/service/student.service';
+import { KelasService } from 'src/app/service/kelas.service';
+import { Kelas } from 'src/app/model/kelas';
 
 @Component({
   selector: 'app-dash-board',
@@ -21,13 +23,22 @@ export class DashBoardComponent implements OnInit {
   course : Course;
   trainers : Trainer[];
   colCourse: any[];
-  takenCourse: Student;
+  student: Student = new Student();
+  takenCourse: Kelas[] = [];
+  kelas: Kelas[];
+  idCourse: any;
 
-  constructor(private courseService: CourseService, private trainerService: TrainerService, private studentService: StudentService) {
+  constructor(private courseService: CourseService, private trainerService: TrainerService, private studentService: StudentService,
+    private kelasService: KelasService) {
     courseService.getCourse().subscribe(
       result => this.courses = result,
       err => console.log("Error found!," + JSON.stringify(err)),
       () => console.log("done!")      
+    );
+
+    kelasService.getKelas().subscribe(
+      result => this.kelas = result,
+      err => console.log(("error found," + JSON.stringify(err)))
     );
 
     trainerService.getTrainer().subscribe(
@@ -37,30 +48,20 @@ export class DashBoardComponent implements OnInit {
     );
 
     studentService.getStudentById(1).subscribe(
-      result => this.takenCourse = result,
+      result => this.student = result,
       err => console.log("Error! " + JSON.stringify(err)),
       () => console.log("done!")
-      
-      
-    )
+    );
   }
 
   ngOnInit() {
-    this.cols = [
-      {field:"kode", header:"Kode"},
-      {field:"namaCourse", header:"Kelas"},
-      {field:"trainer", header:"Instruktur"},
-      {field:"mulai", header:"Mulai"},
-      {field:"selesai", header:"Selesai"}
-    ];
-
-    this.colCourse = [
-      {field:"kelas", header:"Kode"},
-      {field:"kelas", header:"Kelas"},
-      {field:"kelas", header:"Instruktur"},
-      {field:"kelas", header:"Mulai"},
-      {field:"kelas", header:"Selesai"}
-    ];
+    this.studentService.getStudentById(1).subscribe(
+      result => this.takenCourse = result.kelas
+    )
+    
+    if(this.takenCourse.length >= 0){
+      this.tableIsEmpty = false;
+    }
 
     FilterUtils['custom'] = (value, filter): boolean => {
       if (filter === undefined || filter === null || filter.trim() === '') {

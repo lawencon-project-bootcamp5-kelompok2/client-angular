@@ -25,8 +25,8 @@ export class KelasService {
     return this.http.get<any>(`${this.url}/list`);
   }
 
-  getKelasById(kelas): Observable<Kelas>{
-    return this.http.post<any>(`${this.url}/search`, kelas);
+  getKelasById(idKelas): Observable<Kelas>{
+    return this.http.get<any>(`${this.url}/search/${idKelas}`);
   }
 
   insertKelas(kelas): Observable<Kelas>{

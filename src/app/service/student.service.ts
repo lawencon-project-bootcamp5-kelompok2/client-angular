@@ -8,7 +8,7 @@ import { Student } from '../model/student';
 })
 export class StudentService {
 
-  url = "http://c374350a.ngrok.io/student";
+  url = "http://localhost:8080/student";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
   httpOptions = {
     headers : this.headers
@@ -26,7 +26,7 @@ export class StudentService {
   }
 
   getStudentById(id): Observable<Student>{
-    return this.http.post<any>(`${this.url}/search`,id);
+    return this.http.get<any>(`${this.url}/search/${id}`);
   }
 
   insertStudent(student): Observable<Student>{
@@ -34,7 +34,7 @@ export class StudentService {
   }
 
   updateStudent(student): Observable<Student>{
-    return this.http.post<any>(`${this.url}/update`, student);
+    return this.http.put<any>(`${this.url}/update`, student);
   }
 
   deleteStudent(student): Observable<Student>{

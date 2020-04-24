@@ -3,7 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {PagesComponent} from './student/pages.component';
 import {DashBoardComponent} from './dash-board/dash-board.component';
 import { EnrollComponent } from './enroll/enroll.component';
-import { PembelajaranComponent } from './list-pembelajaran/pembelajaran.component';
+import { AbsensiComponent } from './absensi/absensi.component';
 import { DetailMateriComponent } from './detail-materi/detail-materi.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { ForumComponent } from './forum/forum.component';
@@ -14,8 +14,8 @@ const routes: Routes = [
   {
     path: '', component: PagesComponent, children: [
       {path: '', component: DashBoardComponent},
-      {path: 'enroll', component: EnrollComponent},
-      {path: 'list-materi', component: PembelajaranComponent},
+      {path: 'enroll/:idCourse', component: EnrollComponent},
+      {path: 'absen/:idSubcourse', component: AbsensiComponent},
       {path: 'detail-materi', component: DetailMateriComponent},
       {path: 'test-page', component: TestPageComponent},
       {path: 'forum', component: ForumComponent},

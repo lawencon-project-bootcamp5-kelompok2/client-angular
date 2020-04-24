@@ -4,6 +4,6 @@ export class Kelas {
     idKelas;
     kodeKelas;
     openKelas;
-    course: Course;
+    course: Course = new Course();
     deskripsi;
 }

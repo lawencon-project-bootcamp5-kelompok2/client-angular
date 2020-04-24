@@ -1,4 +1,4 @@
-export interface Trainer {
+export class Trainer {
     idTrainer;
     emailTrainer;
     pwdTrainer;

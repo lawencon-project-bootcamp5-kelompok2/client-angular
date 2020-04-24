@@ -79,8 +79,9 @@
                 <th>Materi</th>
                 <th>Mulai</th>
                 <th>Selesai</th>
-                <!-- <td>File Materi</td> -->
-                <!-- <td>Forum</td> -->
+                <th>File Materi</th>
+                <th>Forum</th>
+                <th>Edit</th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-subcourse>
@@ -88,6 +89,15 @@
                 <td>{{subcourse.namaSubcourse}}</td>
                 <td>{{subcourse.tanggalMulai}}</td>
                 <td>{{subcourse.tanggalSelesai}}</td>
+                <td>
+                  <button type="button" class="btn btn-block btn-primary" (click)="onClickMateri(subcourse.idMateri.idMateri)"><i class="glyphicon glyphicon-download-alt"></i></button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-block btn-primary"><i class="glyphicon glyphicon-comment"></i></button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-block btn-primary"><i class="glyphicon glyphicon-pencil"></i></button>
+                </td>
               </tr>
             </ng-template>
           </p-table>
