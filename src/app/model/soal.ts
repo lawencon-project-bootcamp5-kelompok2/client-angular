@@ -1,5 +1,5 @@
-export interface Soal{
-    id;
+export class Soal{
+    idSoal;
     fileName;
     fileType;
     data;

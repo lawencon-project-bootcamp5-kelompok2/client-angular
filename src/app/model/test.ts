@@ -1,10 +1,10 @@
 import { Subcourse } from './subcourse';
 import { Soal } from './soal';
 
-export interface Test {
+export class Test {
     idTest;
     idSubcourse: Subcourse;
-    fileSoal: Soal;
+    fileSoal: Soal = new Soal();
     waktuMulai;
     waktuSelesai;
 }

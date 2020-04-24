@@ -36,6 +36,7 @@
         <h4>Pengenalan</h4>
         <div *ngIf="!editClick">
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <!-- <p></p> -->
         </div>
         <div *ngIf="editClick">
           <div class="box-body">
@@ -66,13 +67,31 @@
         <div class="box-header with-border">
           <h2 class="box-title">Materi</h2>
           <div class="box-tools pull-right">
-            <button class="btn btn-sm btn-block btn-primary" type="button"> <i class="glyphicon glyphicon-plus"></i>&nbsp; Tambah Materi</button>
+            <button class="btn btn-sm btn-block btn-primary" type="button" [routerLink]="['../../addsubcourse', idCourse]"> <i class="glyphicon glyphicon-plus"></i>&nbsp; Tambah Materi</button>
         </div>
         </div>
         
         <!-- /.box-body -->
         <div class="box-body">
-          <div *ngIf = "!dataNotNull">
+          <p-table [value]="subcourse">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Materi</th>
+                <th>Mulai</th>
+                <th>Selesai</th>
+                <!-- <td>File Materi</td> -->
+                <!-- <td>Forum</td> -->
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-subcourse>
+              <tr>
+                <td>{{subcourse.namaSubcourse}}</td>
+                <td>{{subcourse.tanggalMulai}}</td>
+                <td>{{subcourse.tanggalSelesai}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+          <!-- <div *ngIf = "!dataNotNull">
               <table>
                   <tr>
                       <td colspan="3">
@@ -82,14 +101,14 @@
                   <tr>
                       <td>&nbsp;</td>
                       <td>
-                          <button type="button" class="btn btn-block btn-primary" ><i class="glyphicon glyphicon-plus"></i> Tambah Materi</button>
+                          <button type="button" class="btn btn-block btn-primary" routerLink="../addsubcourse/" queryParams="prop: 'xxx'"><i class="glyphicon glyphicon-plus"></i> Tambah Materi</button>
                       </td>
                       <td></td>
                   </tr>
               </table>
-          </div>
+          </div> -->
           <div class="col-md-10" *ngIf="dataNotNull">
-              <table class="table">
+              <!-- <table class="table">
                   <thead>
                       <tr>
                           <th style="width: 10%">Pertemuan</th>
@@ -116,7 +135,8 @@
                           </td>
                       </tr>
                   </tbody>
-              </table>
+              </table> -->
+              
           </div>
           
         </div>

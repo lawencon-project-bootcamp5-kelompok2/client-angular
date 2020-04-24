@@ -9,7 +9,7 @@ import { Course } from '../model/course';
 })
 export class CourseService {
 
-  url = "http://9f1eb94c.ngrok.io/course";
+  url = "http://localhost:8080/course";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
   httpOptions = {
     headers : this.headers
@@ -31,6 +31,10 @@ export class CourseService {
 
   getCourse() : Observable<Course[]>{
     return this.http.get<Course[]>(`${this.url}/list`);
+  }
+
+  getCourseById(id): Observable<Course>{
+    return this.http.get<Course>(`${this.url}/search/${id}`);
   }
 
 }

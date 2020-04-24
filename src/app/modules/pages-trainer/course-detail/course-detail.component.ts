@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CourseService } from 'src/app/service/course.service';
+import { Course } from 'src/app/model/course';
+import { Subcourse } from 'src/app/model/subcourse';
+import { SubcourseService } from 'src/app/service/subcourse.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -7,14 +12,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseDetailComponent implements OnInit {
 
-  constructor() { }
+  course: Course = new Course();
+  subcourse: Subcourse[];
+  courses: Course[];
+  idCourse: any;
 
-  editClick : boolean = false
-  dataNotNull : boolean = true
-  buttonEdit : string = 'Edit Deskripsi'
+  constructor(private route: ActivatedRoute, private courseService: CourseService,
+    private subcourseService: SubcourseService) { }
+
+  editClick : boolean = false;
+  dataNotNull : boolean = true;
+  buttonEdit : string = 'Edit Deskripsi';
 
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.idCourse = +params['idCourse'];
+    })
+
+    this.courseService.getCourseById(this.idCourse).subscribe(
+      result => {
+        this.course = result;
+    });
+
+    this.subcourseService.getSubcourseByCourse(this.idCourse).subscribe(
+      result => {
+        this.subcourse = result;
+    });
   }
 
   editDeskripsi(){
@@ -25,6 +49,10 @@ export class CourseDetailComponent implements OnInit {
       this.editClick = true
       this.buttonEdit = 'Kembali'
     }
+  }
+
+  onTambahMateri(){
+    // this.route.navigate(['../addsubcourse']);
   }
 
 }

@@ -1,6 +1,6 @@
 import { Trainer } from './trainer';
 
-export interface Course {
+export class Course {
     idCourse;
     trainer : Trainer;
     namaCourse;

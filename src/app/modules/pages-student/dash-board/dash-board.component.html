@@ -16,38 +16,28 @@
       <p align="center">Anda belum menambahkan course ke dalam akun anda, silahkan pilih salah satu course dibawah.</p>
     </div>
     <ng-template #notEmpty>
-      <table class="table table-bordered">
-        <thead>                  
+      <p-table [value]="takenCourse">
+        <ng-template pTemplate="header">                  
           <tr>
             <th style="width: 60px;">Kode</th>
             <th style="width: 100px">Kelas</th>
-            <th>Instruktur</th>
-            <th>Mulai</th>
-            <th>Selesai</th>
-            <th style="width: 40px">Pilih</th>
+            <th>Open Kelas</th>
+            <th style="width: 80px">Pilih</th>
           </tr>
-        </thead>
-        <tbody>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-takenCourse>
           <tr>
-            <td>Java</td>
-            <td>Imam Farisi</td>
-            <td>20-4-2020</td>
-            <td>20-5-2020</td>
+            <td>{{takenCourse.kelas.kodeKelas}}</td>
+            <td>{{takenCourse.kelas.course.namaCourse}}</td>
+            <td>{{takenCourse.kelas.openKelas}}</td>
             <td>
               <button type="button" class="btn btn-block btn-primary" routerLink="./enroll">
                 Lihat
               </button>
             </td>
           </tr>
-          <tr>
-            <td>PHP</td>
-            <td>Albert Einstein</td>
-            <td>17-4-2020</td>
-            <td>20-5-2020</td>
-            <td><button type="button" class="btn btn-block btn-primary">Lihat</button></td>
-          </tr>
-        </tbody>
-      </table>
+        </ng-template>
+      </p-table>
     </ng-template>
     <!-- /.box-body -->
     <div class="box-footer">
@@ -62,7 +52,7 @@
   <!-- Default box -->
   <div class="box">
     <div class="box-header with-border">
-      <h3 class="box-title">Pilih Course</h3>
+      <h3 class="box-title">Pilih Kelas</h3>
 
       <div class="box-tools pull-right">
         <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="collapse" title="Collapse"
@@ -73,14 +63,20 @@
       </div>
     </div>
     <div class="box-body">
-      <!-- <table class="table table-bordered"> -->
-      <p-table [value]="courses" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
-        <!-- <thead>                   -->
+      <p-table #dt [value]="courses" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+        <ng-template pTemplate="caption">
+          <div style="text-align: right">        
+              <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+              <input type="text" pInputText size="50" placeholder="Pencarian . . ." (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+          </div>
+        </ng-template>
         <ng-template pTemplate="header">
-          <tr>
-            <th *ngFor="let col of cols">
-              {{col.header}}
-            </th>
+          <tr>  
+            <th style="width: 60px;">Kode</th>
+            <th>Kelas</th>
+            <th>Instruktur</th>
+            <th>Mulai</th>
+            <th>Selesai</th>
             <th style="width: 80px">Pilih</th>
           </tr>
         </ng-template>

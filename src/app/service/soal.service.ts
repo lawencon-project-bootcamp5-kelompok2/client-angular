@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
-import { tap, catchError, map} from 'rxjs/operators';
-import { error } from 'protractor';
-import { Materi } from '../model/materi';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MateriService {
+export class SoalService {
 
-  url = "http://localhost:8080/materi";
+  url = "http://localhost:8080/soal";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
   httpOptions = {
     headers : this.headers
@@ -23,12 +20,11 @@ export class MateriService {
     return throwError(error);    
   }
 
-  uploadFile(uploadMateri: File): Observable<Materi>{
-    const formData: FormData = new FormData();
-    formData.append('file', uploadMateri, uploadMateri.name);
-    return this.http.post<Materi>(`${this.url}/uploadFile`, formData).pipe(
-    //  map(() => { return true})
-    );
+  uploadFile(formData){
+    return this.http.post<any>(`${this.url}/uploadFile`, formData, {
+      reportProgress: true,
+      observe: 'events'
+    });
   }
 
   downloadFile(id): Observable<Blob>{

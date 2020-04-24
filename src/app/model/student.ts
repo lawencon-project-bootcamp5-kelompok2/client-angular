@@ -1,7 +1,9 @@
+import { Kelas } from './kelas';
+
 export interface Student{
     idStudent;
     npm;
     namaStudent;
-    course;
+    kelas: Kelas[];
     role;
 }
