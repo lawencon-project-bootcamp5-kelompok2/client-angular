@@ -4,32 +4,32 @@
         <div class="col-md-10">
             <div class="box">
                 <div class="box-header bg-light-blue-active color-palette">
-                    <h4 class="box-title">Rekap Absen per Materi</h4>
-                   
+                    <h4 class="box-title">Rekap Absen Trainer - Imam Farisi</h4>
                 </div>
                 <div class="box-body">
-                  <div class="box-tools">
-                    <button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>&nbsp; Print</button>
-                  </div>
-                    <p-table [value]="rekapAbsen" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    
+                    <p-table [value]="kelas" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
                             <th style="width: 5%">No</th>
-                            <th>Namn Murid</th>
-                            <th>24/4/2020</th>
-                            <th>27/4/2020</th>
+                            <th>Kode Kelas</th>
+                            <th>Course</th>
+                            <th style="width: 15%">Pilih</th>
                           </tr>
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-rekapAbsen>
+                        <ng-template pTemplate="body" let-rowData let-kelas>
                           <tr [pSelectableRow]="rowData">
-                            <td>{{rekapAbsen.noUrut}}</td>
-                            <td>{{rekapAbsen.namaStudent}}</td>
-                            <td>{{rekapAbsen.tgl1}}</td>
-                            <td>{{rekapAbsen.tgl2}}</td>
-                            
+                            <td>{{kelas.noUrut}}</td>
+                            <td>{{kelas.kelasKode}}</td>
+                            <td>{{kelas.namaCourse}}</td>
+                            <td>
+                              <button type="button" class="btn btn-block btn-primary" routerLink="./#">
+                                <i class="glyphicon glyphicon-search"></i>
+                              </button>
+                            </td>
                           </tr>
                           
                         </ng-template>
@@ -42,5 +42,4 @@
             </div>
         </div>
     </div>
-    
 </section>

@@ -19,11 +19,22 @@ import { AddClassComponent } from './add-class/add-class.component';
 import { EditClassComponent } from './edit-class/edit-class.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
 import { EditMateriComponent } from './edit-materi/edit-materi.component';
+import { ListRekapClassComponent } from './list-rekap-class/list-rekap-class.component';
+import { ListRekapJadwalComponent } from './list-rekap-jadwal/list-rekap-jadwal.component';
+import { RekapJadwalComponent } from './rekap-jadwal/rekap-jadwal.component';
+import { RekapNilaiListComponent } from './rekap-nilai-list/rekap-nilai-list.component';
+import { RekapNilaiComponent } from './rekap-nilai/rekap-nilai.component';
+import { RekapAbsenTrainerListComponent } from './rekap-absen-trainer-list/rekap-absen-trainer-list.component';
+import { RekapAbsenTrainerComponent } from './rekap-absen-trainer/rekap-absen-trainer.component';
+import { RekapAbsenTrainerClassComponent } from './rekap-absen-trainer-class/rekap-absen-trainer-class.component';
+import { RekapAbsenStudentListComponent } from './rekap-absen-student-list/rekap-absen-student-list.component';
+import { RekapAbsenStudentClassComponent } from './rekap-absen-student-class/rekap-absen-student-class.component';
+import { RekapAbsenStudentComponent } from './rekap-absen-student/rekap-absen-student.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, DashboardComponent, TrainerListComponent, AddTrainerComponent, EditTrainerComponent, CourseListComponent, AddCourseComponent, MateriListComponent, AddMateriComponent, ClassListComponent, AddClassComponent, EditClassComponent, EditCourseComponent, EditMateriComponent],
+  declarations: [AdminComponent, DashboardComponent, TrainerListComponent, AddTrainerComponent, EditTrainerComponent, CourseListComponent, AddCourseComponent, MateriListComponent, AddMateriComponent, ClassListComponent, AddClassComponent, EditClassComponent, EditCourseComponent, EditMateriComponent, ListRekapClassComponent, ListRekapJadwalComponent, RekapJadwalComponent, RekapNilaiListComponent, RekapNilaiComponent, RekapAbsenTrainerListComponent, RekapAbsenTrainerComponent, RekapAbsenTrainerClassComponent, RekapAbsenStudentListComponent, RekapAbsenStudentClassComponent, RekapAbsenStudentComponent],
   imports: [
     CommonModule, PagesAdminRoutingModule, LayoutModule,FormsModule, TableModule, PagesAdminRoutingModule, CalendarModule
   ]

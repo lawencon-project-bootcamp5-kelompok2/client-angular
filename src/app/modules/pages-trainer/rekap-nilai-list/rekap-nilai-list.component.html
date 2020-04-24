@@ -2,47 +2,101 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
-            <div class="box">
-                <div class="box-header bg-light-blue-active color-palette">
-                    <h4 class="box-title">Rekap Nilai per Materi</h4>
-                   
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#tab_1" data-toggle="tab">List Nilai Keseluruhan</a></li>
+                  <li><a href="#tab_2" data-toggle="tab">List Nilai Per Materi</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tab_1">
+                    <div class="box">
+                        <div class="box-header bg-light-blue-active color-palette">
+                            <h4 class="box-title">Rekap Nilai Keseluruhan</h4>
+                           
+                        </div>
+                        <div class="box-body">
+                          <div class="box-tools">
+                            <button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>&nbsp; Print</button>
+                          </div>
+                          <br>
+                            <p-table [value]="rekapNilai" selectionMode="single" [(selection)]="selectedRow1" (onRowSelect)="onRowSelect1($event)">
+                                <!-- <thead>                   -->
+                                <ng-template pTemplate="header">
+                                  <tr>
+                                    <th>NPM</th>
+                                    <th>Namn Murid</th>
+                                    <th>Nilai</th>
+                                    <th>Grade</th>
+                                  </tr>
+                                </ng-template>
+                                <!-- </thead> -->
+                                <!-- <tbody> -->
+                                <ng-template pTemplate="body" let-rowData let-rekapNilai>
+                                  <tr [pSelectableRow]="rowData">
+                                    <td>{{rekapNilai.npm}}</td>
+                                    <td>{{rekapNilai.namaStudent}}</td>
+                                    <td>{{rekapNilai.nilai}}</td>
+                                    <td>{{rekapNilai.grade}}</td>
+                                    
+                                  </tr>
+                                  
+                                </ng-template>
+                                <!-- </tbody> -->        
+                              </p-table>
+                        </div>
+                        <div class="box-footer">
+        
+                        </div>
+                    </div>
+                  </div>
+                  <!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab_2">
+                    <div class="box">
+                        <div class="box-header bg-light-blue-active color-palette">
+                            <h4 class="box-title">Rekap Nilai per Materi</h4>
+                           
+                        </div>
+                        <div class="box-body">
+                            
+                            <p-table [value]="listMateri" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                                <!-- <thead>                   -->
+                                <ng-template pTemplate="header">
+                                  <tr>
+                                    <th style="width: 5%">No</th>
+                                    <th>Materi</th>
+                                    <th>Tgl Mulai</th>
+                                    <th>Tgl Selesai</th>
+                                    <th style="width: 8%">Pilih</th>
+                                  </tr>
+                                </ng-template>
+                                <!-- </thead> -->
+                                <!-- <tbody> -->
+                                <ng-template pTemplate="body" let-rowData let-listMateri>
+                                  <tr [pSelectableRow]="rowData">
+                                    <td>{{listMateri.noUrut}}</td>
+                                    <td>{{listMateri.namaMateri}}</td>
+                                    <td>{{listMateri.tglMulai}}</td>
+                                    <td>{{listMateri.tglSelesai}}</td>
+                                    <td>
+                                      <button type="button" class="btn btn-block btn-primary" routerLink="./#">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  
+                                </ng-template>
+                                <!-- </tbody> -->        
+                              </p-table>
+                        </div>
+                        <div class="box-footer">
+        
+                        </div>
+                    </div>
+                  </div>
+                  <!-- /.tab-pane -->
                 </div>
-                <div class="box-body">
-                    
-                    <p-table [value]="listMateri" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
-                        <!-- <thead>                   -->
-                        <ng-template pTemplate="header">
-                          <tr>
-                            <th style="width: 5%">No</th>
-                            <th>Materi</th>
-                            <th>Tgl Mulai</th>
-                            <th>Tgl Selesai</th>
-                            <th style="width: 7%">Pilih</th>
-                          </tr>
-                        </ng-template>
-                        <!-- </thead> -->
-                        <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-listMateri>
-                          <tr [pSelectableRow]="rowData">
-                            <td>{{listMateri.noUrut}}</td>
-                            <td>{{listMateri.namaMateri}}</td>
-                            <td>{{listMateri.tglMulai}}</td>
-                            <td>{{listMateri.tglSelesai}}</td>
-                            <td>
-                              <button type="button" class="btn btn-block btn-primary" routerLink="./#">
-                                <i class="glyphicon glyphicon-search"></i>
-                              </button>
-                            </td>
-                          </tr>
-                          
-                        </ng-template>
-                        <!-- </tbody> -->        
-                      </p-table>
-                </div>
-                <div class="box-footer">
-
-                </div>
-            </div>
+                <!-- /.tab-content -->
+              </div>          
         </div>
     </div>
     
