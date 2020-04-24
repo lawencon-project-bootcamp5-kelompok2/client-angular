@@ -1,0 +1,53 @@
+<section class="content">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="box">
+                <div class="box-header bg-light-blue-active color-palette">
+                    <h4 class="box-title">Rekap Absen Student - List Student</h4>
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                          <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+        
+                          <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="box-body">
+                    <p-table [value]="student" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                        <!-- <thead>                   -->
+                        <ng-template pTemplate="header">
+                          <tr>
+                            <th style="width: 5%">No</th>
+                            <th>NPM</th>
+                            <th>Nama Student</th>
+                            <th style="width: 8%">Pilih</th>
+                          </tr>
+                        </ng-template>
+                        <!-- </thead> -->
+                        <!-- <tbody> -->
+                        <ng-template pTemplate="body" let-rowData let-student>
+                          <tr [pSelectableRow]="rowData">
+                            <td>{{student.noUrut}}</td>
+                            <td>{{student.npm}}</td>
+                            <td>{{student.nama}}</td>
+                            <td>
+                              <button type="button" class="btn btn-block btn-primary" routerLink="./#">
+                                <i class="glyphicon glyphicon-search"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          
+                        </ng-template>
+                        <!-- </tbody> -->        
+                      </p-table>
+                </div>
+                <div class="box-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

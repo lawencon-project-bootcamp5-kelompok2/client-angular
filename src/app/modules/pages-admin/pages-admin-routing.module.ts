@@ -14,6 +14,17 @@ import { AddClassComponent } from './add-class/add-class.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
 import { EditMateriComponent } from './edit-materi/edit-materi.component';
 import { EditClassComponent } from './edit-class/edit-class.component';
+import { ListRekapClassComponent } from './list-rekap-class/list-rekap-class.component';
+import { ListRekapJadwalComponent } from './list-rekap-jadwal/list-rekap-jadwal.component';
+import { RekapJadwalComponent } from './rekap-jadwal/rekap-jadwal.component';
+import { RekapNilaiListComponent } from './rekap-nilai-list/rekap-nilai-list.component';
+import { RekapNilaiComponent } from './rekap-nilai/rekap-nilai.component';
+import { RekapAbsenTrainerListComponent } from './rekap-absen-trainer-list/rekap-absen-trainer-list.component';
+import { RekapAbsenTrainerClassComponent } from './rekap-absen-trainer-class/rekap-absen-trainer-class.component';
+import { RekapAbsenTrainerComponent } from './rekap-absen-trainer/rekap-absen-trainer.component';
+import { RekapAbsenStudentListComponent } from './rekap-absen-student-list/rekap-absen-student-list.component';
+import { RekapAbsenStudentClassComponent } from './rekap-absen-student-class/rekap-absen-student-class.component';
+import { RekapAbsenStudentComponent } from './rekap-absen-student/rekap-absen-student.component';
 
 const routes: Routes = [
   {
@@ -30,7 +41,18 @@ const routes: Routes = [
       {path: 'add-class', component: AddClassComponent},
       {path: 'edit-course', component: EditCourseComponent},
       {path: 'edit-materi', component: EditMateriComponent},
-      {path: 'edit-class', component: EditClassComponent}
+      {path: 'edit-class', component: EditClassComponent},
+      {path: 'rekap-kelas', component: ListRekapClassComponent},
+      {path: 'rekap-jadwal', component: ListRekapJadwalComponent},
+      {path: 'rekap-jadwal-course', component: RekapJadwalComponent},
+      {path: 'rekap-nilai-list', component: RekapNilaiListComponent},
+      {path: 'rekap-nilai', component: RekapNilaiComponent},
+      {path: 'rekap-absen-trainer-list', component: RekapAbsenTrainerListComponent},
+      {path: 'rekap-absen-trainer-class', component: RekapAbsenTrainerClassComponent},
+      {path: 'rekap-absen-trainer', component: RekapAbsenTrainerComponent},
+      {path: 'rekap-absen-student-list', component : RekapAbsenStudentListComponent},
+      {path: 'rekap-absen-student-class', component: RekapAbsenStudentClassComponent},
+      {path: 'rekap-absen-student', component: RekapAbsenStudentComponent}
     ]
   }
 ]
