@@ -7,38 +7,44 @@
     <p class="login-box-msg">Sign in to start your session</p>
 
 
-      <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Email" type="email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required #email="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && email.invalid">
+          Email is required!
+        </div>
       </div>
-      <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Password" type="password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
+          #password="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
           </div>
         </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button [routerLink]="'/student'" class="btn btn-primary btn-block btn-flat">Sign In</button>
-        </div>
-        <!-- /.col -->
       </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block"> Login </button>
+      </div>
+      <div class="form-group">
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+          Login failed: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
 
-
-    <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a class="btn btn-block btn-social btn-facebook btn-flat" href="#"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a class="btn btn-block btn-social btn-google btn-flat" href="#"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
+    <div class="row">
+      <div class="col-xs-8">
+        <div class="checkbox icheck">
+          <label>
+            <input type="checkbox"> Remember Me
+          </label>
+        </div>
+      </div>
     </div>
-    <!-- /.social-auth-links -->
 
     <a href="#">I forgot my password</a><br>
     <a [routerLink]="'/login/register'" class="text-center">Register a new membership</a>

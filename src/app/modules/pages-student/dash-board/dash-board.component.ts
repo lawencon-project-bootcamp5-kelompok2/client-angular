@@ -8,6 +8,9 @@ import {FilterUtils} from 'primeng/utils';
 import { StudentService } from 'src/app/service/student.service';
 import { KelasService } from 'src/app/service/kelas.service';
 import { Kelas } from 'src/app/model/kelas';
+import { LoginService} from '../../../service/login.service'
+import {TokenStorageService} from '../../../service/token-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dash-board',
@@ -27,9 +30,10 @@ export class DashBoardComponent implements OnInit {
   takenCourse: Kelas[] = [];
   kelas: Kelas[];
   idCourse: any;
+  content: any;
 
   constructor(private courseService: CourseService, private trainerService: TrainerService, private studentService: StudentService,
-    private kelasService: KelasService) {
+    private kelasService: KelasService, private userService: LoginService, private tokenStorage: TokenStorageService, public router: Router) {
     courseService.getCourse().subscribe(
       result => this.courses = result,
       err => console.log("Error found!," + JSON.stringify(err)),
@@ -55,25 +59,40 @@ export class DashBoardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.studentService.getStudentById(1).subscribe(
-      result => this.takenCourse = result.kelas
-    )
+
+    if (!this.tokenStorage.getToken()) {
+      this.router.navigate(['/login']);
+    }
+
+    this.userService.getStudentBoard().subscribe(
+      data => {
+        this.content = data;
+        this.studentService.getStudentById(1).subscribe(
+          result => this.takenCourse = result.kelas
+        )
+        
+        if(this.takenCourse.length >= 0){
+          this.tableIsEmpty = false;
+        }
     
-    if(this.takenCourse.length >= 0){
-      this.tableIsEmpty = false;
-    }
-
-    FilterUtils['custom'] = (value, filter): boolean => {
-      if (filter === undefined || filter === null || filter.trim() === '') {
-          return true;
+        FilterUtils['custom'] = (value, filter): boolean => {
+          if (filter === undefined || filter === null || filter.trim() === '') {
+              return true;
+          }
+    
+          if (value === undefined || value === null) {
+              return false;
+          }
+          
+          return parseInt(filter) > value;
+        }
+      },
+      err => {
+        this.content = JSON.parse(err.error).message;
       }
+    );
 
-      if (value === undefined || value === null) {
-          return false;
-      }
-      
-      return parseInt(filter) > value;
-    }
+    
   }
 
   onRowSelect(event) {

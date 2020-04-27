@@ -1,4 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {LoginService} from '../../../service/login.service';
+import {TokenStorageService} from '../../../service/token-storage.service';
+import {Router} from '@angular/router';
 
 declare var $;
 
@@ -9,7 +12,13 @@ declare var $;
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  constructor() {
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+
+  constructor(private authService: LoginService, private tokenStorage: TokenStorageService, public router: Router) {
   }
 
   ngOnInit() {
@@ -21,10 +30,49 @@ export class LoginComponent implements OnInit, OnDestroy {
         increaseArea: '20%' /* optional */
       });
     });
+
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+      if (this.roles.includes('ROLE_STUDENT')) {
+        this.router.navigate(['/student']);
+      } else if (this.roles.includes('ROLE_TRAINER')) {
+        this.router.navigate(['/trainer']);
+      } else if (this.roles.includes('ROLE_ADMIN')) {
+        this.router.navigate(['/admin']);
+      }
+    }
   }
 
   ngOnDestroy(): void {
     $('body').removeClass('hold-transition login-page');
+  }
+
+  onSubmit() {
+    this.authService.login(this.form).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        
+        if (this.roles.includes('ROLE_TRAINER')) {
+          this.router.navigateByUrl('/trainer');
+        } else if (this.roles.includes('ROLE_STUDENT')) {
+          this.router.navigateByUrl('/student');
+        }
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    );
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 
 }
