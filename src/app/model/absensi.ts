@@ -1,10 +1,13 @@
 import { Student } from './student';
 import { Course } from './course';
+import { Pertemuan } from './pertemuan';
+import { Subcourse } from './subcourse';
 
-export interface Absensi{
+export class Absensi{
     idAbsensi;
-    idStudent: Student;
-    idCourse: Course;
+    idStudent: Student = new Student();
+    idSubcourse: Subcourse = new Subcourse();
     tanggal;
     status;
+    pertemuan: Pertemuan = new Pertemuan();
 }

@@ -9,7 +9,7 @@ import { URL } from 'url';
   providedIn: 'root'
 })
 export class AbsensiService {
-  url = "http://localhost:8080/course";
+  url = "http://localhost:8080/absensi";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
   httpOptions = {
     headers : this.headers
@@ -27,13 +27,22 @@ export class AbsensiService {
     return this.http.get<Absensi[]>(`${this.url}/list`);
   }
 
+  searchAbsen(idAbsen) : Observable<Absensi>{
+    return this.http.get<Absensi>(`${this.url}/search/${idAbsen}`);
+  }
+
   addAbsen(absen : Absensi) : Observable<Absensi>{
     return this.http.post<Absensi>(`${this.url}/insert`, absen, this.httpOptions).pipe(
       map(() => absen), catchError(this.handleError)
     );
   }
 
-  searchAbsen(absen : Absensi) : Observable<Absensi>{
-    return this.http.post<Absensi>(`${this.url}/search`, absen);
+  updateAbsen(absen) : Observable<Absensi>{
+    return this.http.put<any>(`${this.url}/update`, absen);
   }
+
+  getAbsenBySubcourse(idSubcourse, idTrainer): Observable<string> {
+    return this.http.get<any>(`${this.url}/${idSubcourse}/${idTrainer}`);
+  }
+  
 }
