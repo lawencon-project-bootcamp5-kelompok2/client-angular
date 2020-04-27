@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TrainerData } from '../trainer-data';
+import { Trainer } from 'src/app/model/trainer';
+import { TrainerService } from 'src/app/service/trainer.service';
 
 @Component({
   selector: 'app-trainer-list',
@@ -8,39 +10,52 @@ import { TrainerData } from '../trainer-data';
 })
 export class TrainerListComponent implements OnInit {
 
-  trainer : TrainerData[]
-  trainer1 : TrainerData
-  selectedRow : TrainerData
+  trainer : Trainer[]
+  trainer1 : Trainer
+  selectedRow : Trainer
+  idTemp 
 
-  constructor() { }
+  constructor(private trainerService : TrainerService) { }
 
   ngOnInit(): void {
-    this.trainer = [
-      {
-        noUrut:1,
-        nik:"234234234",
-        namaTrainer : "Imam Farisi",
-        email : "imamfarisi@lawencon.com"
-      },
-      {
-        noUrut:2,
-        nik:"124567656",
-        namaTrainer : "Albert Einstein",
-        email : "einstein@gmail.com"
-      }
-    ]
+    this.getAllDataTrainer()
+  }
+
+  getAllDataTrainer(){
+    let resp = this.trainerService.getTrainer()
+    resp.subscribe(
+        (data)=>this.trainer = data,
+        (err)=>console.log("Ada error : "+err),
+        ()=>console.log("Complete")
+      )
   }
 
   onRowSelect(event){
     this.trainer1 = this.cloneSelection(event.data);
   }
 
-  cloneSelection(d : TrainerData){
+  cloneSelection(d : Trainer){
     let trainer = {};
     for(let prop in d){
       trainer[prop] = d[prop];
     }
     return d;
+  }
+
+  setDelete(idTrainer){
+    this.idTemp = idTrainer
+    console.log(this.idTemp)
+    
+  }
+
+  delete(){
+    console.log(this.idTemp)
+    let resp = this.trainerService.deleteTrainer(this.idTemp)
+    resp.subscribe(
+      (err)=>console.log("ada error : "+err),
+      ()=>console.log("Complete")
+    )
+    window.location.reload();
   }
 
 }
