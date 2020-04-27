@@ -47,7 +47,7 @@
         <li class="dropdown user user-menu">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <img alt="User Image" class="user-image" src="assets/dist/img/user2-160x160.jpg">
-            <span class="hidden-xs">Murid1</span>
+            <span class="hidden-xs">{{nama}}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -55,7 +55,7 @@
               <img alt="User Image" class="img-circle" src="assets/dist/img/user2-160x160.jpg">
 
               <p>
-                Murid1
+                {{nama}}
                 <small>Member since Nov. 2020</small>
               </p>
             </li>
@@ -80,7 +80,7 @@
                 <a class="btn btn-default btn-flat" href="#">Profile</a>
               </div>
               <div class="pull-right">
-                <a class="btn btn-default btn-flat" href="#">Sign out</a>
+                <a class="btn btn-default btn-flat" (click)="logout()">Sign out</a>
               </div>
             </li>
           </ul>
