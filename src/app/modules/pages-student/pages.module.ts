@@ -11,10 +11,11 @@ import { DetailMateriComponent } from './detail-materi/detail-materi.component';
 import { AbsensiComponent } from './absensi/absensi.component';
 import { NilaiComponent } from './nilai/nilai.component';
 import { TestPageComponent } from './test-page/test-page.component';
+import { SilabusComponent } from './silabus/silabus.component';
 
 @NgModule({
   declarations: [PagesComponent, DashBoardComponent, EnrollComponent, DetailMateriComponent, AbsensiComponent,
-  NilaiComponent, TestPageComponent],
+  NilaiComponent, TestPageComponent, SilabusComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

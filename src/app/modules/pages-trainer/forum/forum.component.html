@@ -1,0 +1,48 @@
+<section class="content-header">
+
+</section>
+<!-- Main content -->
+<section class="content">
+  <!-- Default box -->
+  <div class="box">
+    <div class="box-header with-border">
+      <h3 class="box-title">Diskusi : {{subcourse.namaSubcourse}}</h3>
+      <div class="box-tools pull-right">
+        <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="collapse" title="Collapse"
+                type="button">
+          <i class="fa fa-minus"></i></button>
+        <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="remove" title="Remove" type="button">
+          <i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+        <div class="form-group">
+          <label>Diskusikan sesuatu</label>
+          <textarea [(ngModel)]="postForum.deskripsi" class="form-control" rows="3" placeholder="Ikut Berdiskusi . . . "></textarea>
+          <button style="width: fit-content;" type="submit" class="btn btn-block btn-primary pull-right" (click)="onSend()">
+            <i class="fa fa-angle-double-right"></i>
+            <span> Send</span>
+          </button>
+        </div>
+        <p-table class="table table-bordered">
+          <ng-template pTemplate="body" let-forum>
+            <tr>
+              <td style="width: 160px; height: 100px;" align="center">
+                <!-- <img alt="User Image" class="user-image" src="assets/dist/img/user2-160x160.jpg" style="height: 128px; width: 128px;"><br> -->
+                {{forum.emailSender}}
+              </td>
+              <td>{{forum.deskripsi}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer">
+      Footer
+    </div>
+    <!-- /.box-footer-->
+  </div>
+  <!-- /.box -->
+
+</section>
+

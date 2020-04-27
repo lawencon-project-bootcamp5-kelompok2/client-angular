@@ -33,35 +33,24 @@ export class SubcourseAddComponent implements OnInit {
     private soalService: SoalService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.idCourse = +params['idCourse'];
+    this.route.queryParams.subscribe(params => {
+      this.idCourse = params.idCourse;
     });
   }
 
   onSubmit(){
     this.subcourse.idCourse.idCourse = this.idCourse;
-
-    // this.soalService.uploadFile(this.fileTest).subscribe( result => {
-    //   err => console.log(err);
-      
-    // });
-
-    // this.subcourse.idMateri = this.materiService.uploadFile(this.fileMateri).subscribe( result => {
-    //   }, error => { console.log(error);
-    // });
-
-    // this.subcourse.idMateri = this.testMateri;
-
-    this.subcourseService.insertSubcourse(this.subcourse).subscribe( result => {
-      err => console.log(err);
-    });
-
     this.materiService.uploadFile(this.fileMateri).subscribe( result => {
       this.subcourse.idMateri = result;
     },     
       error => console.log(error),
       () => console.log("done!")
     );
+    this.subcourseService.insertSubcourse(this.subcourse).subscribe( result => {
+      err => console.log(err);
+    });
+
+    
   }
 
   fileChange(event){

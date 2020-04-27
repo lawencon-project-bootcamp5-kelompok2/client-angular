@@ -67,7 +67,8 @@
         <div class="box-header with-border">
           <h2 class="box-title">Materi</h2>
           <div class="box-tools pull-right">
-            <button class="btn btn-sm btn-block btn-primary" type="button" [routerLink]="['../../addsubcourse', idCourse]"> <i class="glyphicon glyphicon-plus"></i>&nbsp; Tambah Materi</button>
+            <button class="btn btn-sm btn-block btn-primary" type="button" [routerLink]="['../addsubcourse']" [queryParams]="{idCourse: idCourse}"> 
+              <i class="glyphicon glyphicon-plus"></i>&nbsp; Tambah Materi</button>
         </div>
         </div>
         
@@ -90,13 +91,19 @@
                 <td>{{subcourse.tanggalMulai}}</td>
                 <td>{{subcourse.tanggalSelesai}}</td>
                 <td>
-                  <button type="button" class="btn btn-block btn-primary" (click)="onClickMateri(subcourse.idMateri.idMateri)"><i class="glyphicon glyphicon-download-alt"></i></button>
+                  <button type="button" class="btn btn-block btn-primary" (click)="onClickMateri(subcourse.idMateri.idMateri)">
+                    <i class="glyphicon glyphicon-download-alt"></i>
+                  </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-block btn-primary"><i class="glyphicon glyphicon-comment"></i></button>
+                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['../forum']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
+                    <i class="glyphicon glyphicon-comment"></i>
+                  </button>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-block btn-primary"><i class="glyphicon glyphicon-pencil"></i></button>
+                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['../editsubcourse']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </button>
                 </td>
               </tr>
             </ng-template>

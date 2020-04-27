@@ -2,27 +2,27 @@ import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SubcourseService } from 'src/app/service/subcourse.service';
 import { Subcourse } from 'src/app/model/subcourse';
-import { stringify } from 'querystring';
-import { KelasService } from 'src/app/service/kelas.service';
+import { Course } from 'src/app/model/course';
 
 @Component({
-  selector: 'app-absensi',
-  templateUrl: './absensi.component.html',
-  styleUrls: ['./absensi.component.scss']
+  selector: 'app-silabus',
+  templateUrl: './silabus.component.html',
+  styleUrls: ['./silabus.component.scss']
 })
-export class AbsensiComponent implements OnInit {
-  idSubcourse: any;
-  subcourse: Subcourse = new Subcourse();
+export class SilabusComponent implements OnInit {
 
+  idCourse: any;
+  subcourse: Subcourse[];
+  course: Course = new Course();
   constructor(private route: ActivatedRoute, private subcourseService: SubcourseService) {
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => 
-      this.idSubcourse = params.idSubcourse
+      this.idCourse = params.idCourse
     );
-
-    this.subcourseService.getSubcourseById(this.idSubcourse).subscribe(
+    
+    this.subcourseService.getSubcourseByCourse(this.idCourse).subscribe(
       result => this.subcourse = result,
       err => console.log(err),
       () => console.log("done!")      

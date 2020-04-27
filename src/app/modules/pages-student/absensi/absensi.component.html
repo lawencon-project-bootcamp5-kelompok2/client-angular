@@ -22,10 +22,12 @@
       </div>
     </div>
     <div class="box-body">
-      <h1>Kelas Java</h1>
-      <h4>Instruktur: Imam Farisi</h4>
+      <h1>Kelas {{subcourse.idCourse.namaCourse}}</h1>
+      <h4>Instruktur: {{subcourse.idCourse.trainer.namaTrainer}}</h4>
+      <br>
       <p align="center">Silahkan klik tombol absen untuk memulai kelas hari ini.</p><br>
-      <button class="btn btn-block btn-primary pull-middle" style="width: fit-content; display: block; margin-left: auto; margin-right: auto;" type="button" align="center">Absen</button>
+      <button class="btn btn-block btn-primary pull-middle" style="width: fit-content; display: block; margin-left: auto; margin-right: auto;" 
+        type="button" align="center" [routerLink]="['../detail-materi']" [queryParams]="{idSubcourse: subcourse.idSubcourse}">Absen</button>
       <br>
     </div>
     <!-- /.box-body -->

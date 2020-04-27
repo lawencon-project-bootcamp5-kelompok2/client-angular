@@ -1,0 +1,69 @@
+<section class="content-header">
+  <h1>
+    Hello Murid1!
+    <!-- <small>it all starts here</small> -->
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+  <!-- Default box -->
+  <div class="box">
+    <div class="box-header with-border">
+      <h1 class="box-title">Silabus Kelas {{subcourse[0].idCourse.namaCourse}}</h1>
+
+      <div class="box-tools pull-right">
+        <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="collapse" title="Collapse"
+                type="button">
+          <i class="fa fa-minus"></i></button>
+        <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="remove" title="Remove" type="button">
+          <i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <h3>Trainer : {{subcourse[0].idCourse.trainer.namaTrainer}}</h3>
+      <p>Silahkan klik tombol mulai untuk memulai kelas anda dan melakukan absen.</p>
+      <br>
+      <p-table [value]="subcourse">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Materi</th>
+            <th>Waktu Mulai</th>
+            <th>Waktu Selesai</th>
+            <th>Mulai Kelas</th>
+            <th>Test</th>
+            <th>Forum</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-subcourse>
+          <tr>
+            <td>{{subcourse.namaSubcourse}}</td>
+            <td>{{subcourse.tanggalMulai}}</td>
+            <td>{{subcourse.tanggalSelesai}}</td>
+            <td>
+              <button type="button" class="btn btn-block btn-primary" [routerLink]="['../absen']" [queryParams]="{idSubcourse: subcourse.idSubcourse}">
+                <i class="fa fa-play"></i>
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-block btn-primary" [routerLink]="['../test-page']" [queryParams]="{idSubcourse: subcourse.idSubcourse}">
+                Test
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-block btn-primary" [routerLink]="['../forum']" [queryParams]="{idSubcourse: subcourse.idSubcourse}">
+                <i class="fa fa-comment"></i>
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="box-footer">
+      <p>*Detail kelas akan berubah mengikuti trainer, silahkan berkoordinasi dengan trainer.</p>
+    </div>
+  </div>
+
+</section>
+<!-- /.content -->

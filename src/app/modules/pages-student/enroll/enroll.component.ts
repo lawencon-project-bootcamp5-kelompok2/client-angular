@@ -6,8 +6,7 @@ import { Student } from 'src/app/model/student';
 import { Kelas } from 'src/app/model/kelas';
 import { KelasService } from 'src/app/service/kelas.service';
 import { StudentService } from 'src/app/service/student.service';
-import { HttpResponse, HttpEvent } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-enroll',
@@ -25,9 +24,9 @@ export class EnrollComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.idKelas = +params['idCourse'];
-    });
+    this.route.queryParams.subscribe(params =>
+      this.idKelas = params.idCourse
+    );
 
     // this.courseService.getCourseById(this.idCourse).subscribe(
     //   result => this.course = result,

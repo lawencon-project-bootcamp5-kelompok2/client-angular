@@ -69,7 +69,7 @@
             <td>{{kelas.course.namaCourse}}</td>
             <td>{{kelas.openKelas}}</td>
             <td>
-              <button class="btn btn-sm btn-block btn-primary" type="button" [routerLink]="['./coursedetail', kelas.course.idCourse]">
+              <button class="btn btn-sm btn-block btn-primary" type="button" [routerLink]="['./coursedetail']" [queryParams]="{idCourse:kelas.course.idCourse}">
                 <i class="fa fa-search"></i>
               </button>
             </td>

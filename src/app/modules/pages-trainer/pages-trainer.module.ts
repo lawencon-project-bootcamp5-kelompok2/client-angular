@@ -18,10 +18,13 @@ import { RekapAbsensiListComponent } from './rekap-absensi-list/rekap-absensi-li
 import { RekapAbsensiComponent } from './rekap-absensi/rekap-absensi.component';
 import { RekapNilaiListComponent } from './rekap-nilai-list/rekap-nilai-list.component';
 import { RekapNilaiComponent } from './rekap-nilai/rekap-nilai.component';
+import { ForumComponent } from './forum/forum.component';
 
 
 @NgModule({
-  declarations: [TrainerComponent, DashboardComponent, CourseDetailComponent, SubcourseEditComponent, SubcourseAddComponent, ListAbsenComponent, ListNilaiComponent, ListReportNilaiSubcourseComponent, ListReportNilaiSubcourseStudentComponent, RekapAbsensiListComponent, RekapAbsensiComponent, RekapNilaiListComponent, RekapNilaiComponent],
+  declarations: [TrainerComponent, DashboardComponent, CourseDetailComponent, SubcourseEditComponent, SubcourseAddComponent, ListAbsenComponent, 
+    ListNilaiComponent, ListReportNilaiSubcourseComponent, ListReportNilaiSubcourseStudentComponent, RekapAbsensiListComponent, RekapAbsensiComponent, 
+    RekapNilaiListComponent, RekapNilaiComponent, ForumComponent],
   imports: [
     CommonModule,
     PagesTrainerRoutingModule,

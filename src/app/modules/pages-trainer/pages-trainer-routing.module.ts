@@ -13,13 +13,15 @@ import { RekapAbsensiListComponent } from './rekap-absensi-list/rekap-absensi-li
 import { RekapAbsensiComponent } from './rekap-absensi/rekap-absensi.component';
 import { RekapNilaiListComponent } from './rekap-nilai-list/rekap-nilai-list.component';
 import { RekapNilaiComponent } from './rekap-nilai/rekap-nilai.component';
+import { ForumComponent } from './forum/forum.component';
 
 const routes: Routes = [
   {
     path: '', component: TrainerComponent, children: [
       {path: '', component: DashboardComponent},
-      {path: "coursedetail/:idCourse", component: CourseDetailComponent},
-      {path: "addsubcourse/:idCourse", component: SubcourseAddComponent},
+      {path: 'forum', component: ForumComponent},
+      {path: "coursedetail", component: CourseDetailComponent},
+      {path: "addsubcourse", component: SubcourseAddComponent},
       {path: 'listabsen', component: ListAbsenComponent},
       {path: 'form-nilai', component: ListNilaiComponent},
       {path: 'nilai', component: ListReportNilaiSubcourseComponent},

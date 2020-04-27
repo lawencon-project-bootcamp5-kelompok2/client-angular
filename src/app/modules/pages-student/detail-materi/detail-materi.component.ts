@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import { MateriService } from 'src/app/service/materi.service';
 import { saveAs } from 'file-saver';
+import { ActivatedRoute } from '@angular/router';
+import { SubcourseService } from 'src/app/service/subcourse.service';
+import { Subcourse } from 'src/app/model/subcourse';
 
 @Component({
   selector: 'app-detail-materi',
@@ -9,14 +12,25 @@ import { saveAs } from 'file-saver';
 })
 export class DetailMateriComponent implements OnInit {
 
-  constructor(private materiService: MateriService) {
+  idSubcourse: any;
+  subcourse: Subcourse;
+
+  constructor(private route: ActivatedRoute, private materiService: MateriService, private subcourseService: SubcourseService) {
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params =>
+      this.idSubcourse = params.idSubcourse
+    );
+
+    this.subcourseService.getSubcourseById(this.idSubcourse).subscribe(
+      result => this.subcourse = result,
+      err => console.log(err)            
+    );
   }
 
   onClick(){
-    this.materiService.downloadFile("20f3b84f-1906-4568-8cb8-5c8d469a46f7").subscribe(blob => {
+    this.materiService.downloadFile(this.subcourse.idMateri.idMateri).subscribe(blob => {
       saveAs(blob);
     })
   }

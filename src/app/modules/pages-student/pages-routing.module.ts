@@ -8,14 +8,16 @@ import { DetailMateriComponent } from './detail-materi/detail-materi.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { ForumComponent } from './forum/forum.component';
 import { NilaiComponent } from './nilai/nilai.component';
+import { SilabusComponent } from './silabus/silabus.component';
 
 
 const routes: Routes = [
   {
     path: '', component: PagesComponent, children: [
       {path: '', component: DashBoardComponent},
-      {path: 'enroll/:idCourse', component: EnrollComponent},
-      {path: 'absen/:idSubcourse', component: AbsensiComponent},
+      {path: 'enroll', component: EnrollComponent},
+      {path: 'silabus', component: SilabusComponent},
+      {path: 'absen', component: AbsensiComponent},
       {path: 'detail-materi', component: DetailMateriComponent},
       {path: 'test-page', component: TestPageComponent},
       {path: 'forum', component: ForumComponent},

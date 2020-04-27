@@ -3,18 +3,20 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { Absensi } from '../model/absensi';
 import { catchError, map } from 'rxjs/operators';
+import { URL } from 'url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AbsensiService {
-  url = "http://c374350a.ngrok.io/course";
+  url = "http://localhost:8080/course";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
   httpOptions = {
     headers : this.headers
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   private handleError(error: any){
     console.log(error);

@@ -30,9 +30,9 @@ export class CourseDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.idCourse = +params['idCourse'];
-    })
+    this.route.queryParams.subscribe(params =>
+      this.idCourse = params.idCourse
+    );
 
     this.courseService.getCourseById(this.idCourse).subscribe(
       result => {
