@@ -10,7 +10,7 @@ import { Trainer } from '../model/trainer';
 export class TrainerService {
 
   url = "http://localhost:8080/trainer";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
   };
@@ -23,7 +23,7 @@ export class TrainerService {
   }
 
   getTrainer() : Observable<Trainer[]>{
-    return this.http.get<Trainer[]>(`${this.url}/list`);
+    return this.http.get<Trainer[]>(`${this.url}/list`, this.httpOptions);
   }
 
   getTrainerById(id): Observable<Trainer>{
@@ -36,6 +36,10 @@ export class TrainerService {
 
   updateTrainer(trainer): Observable<Trainer>{
     return this.http.post<any>(`${this.url}/update`, trainer);
+  }
+
+  deleteTrainer(id) {
+    return this.http.delete(this.url+'/delete/'+id,this.httpOptions)
   }
 
   reportTrainer(idTrainer, idSubcourse): Observable<Trainer>{

@@ -62,8 +62,10 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.router.navigateByUrl('/trainer');
         } else if (this.roles.includes('ROLE_STUDENT')) {
           this.router.navigateByUrl('/student');
-        }
-      },
+        } else if (this.roles.includes('ROLE_ADMIN')) {
+          this.router.navigate(['/admin']);
+      }
+    },
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;

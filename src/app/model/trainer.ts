@@ -1,7 +1,7 @@
 export class Trainer {
     idTrainer;
-    emailTrainer;
-    pwdTrainer;
+    email;
+    password;
     role;
     namaTrainer;
     hp;
