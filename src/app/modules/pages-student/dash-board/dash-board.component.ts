@@ -31,6 +31,7 @@ export class DashBoardComponent implements OnInit {
   kelas: Kelas[];
   idCourse: any;
   content: any;
+  nama : string;
 
   constructor(private courseService: CourseService, private trainerService: TrainerService, private studentService: StudentService,
     private kelasService: KelasService, private userService: LoginService, private tokenStorage: TokenStorageService, public router: Router) {
@@ -59,6 +60,8 @@ export class DashBoardComponent implements OnInit {
   }
 
   ngOnInit() {
+    const user = this.tokenStorage.getUser();
+    this.nama = user.nama;
 
     if (!this.tokenStorage.getToken()) {
       this.router.navigate(['/login']);
