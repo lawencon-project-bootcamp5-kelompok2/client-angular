@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseData } from '../course-data';
+import { Course } from 'src/app/model/course';
+import { CourseService } from 'src/app/service/course.service';
 
 @Component({
   selector: 'app-course-list',
@@ -8,35 +10,35 @@ import { CourseData } from '../course-data';
 })
 export class CourseListComponent implements OnInit {
 
-  course : CourseData[]
-  course1 : CourseData
-  selectedRow : CourseData
+  course : Course[]
+  course1 : Course
+  selectedRow : Course
 
-  constructor() { }
+  constructor(private courseService : CourseService) { }
 
   ngOnInit(): void {
-    this.course = [
-      {
-        noUrut:1,
-        namaCourse : "Java"
-      },
-      {
-        noUrut:2,
-        namaCourse : "Phyton"
-      }
-    ]
+    this.getDataCourse()
   }
 
   onRowSelect(event){
     this.course1 = this.cloneSelection(event.data);
   }
 
-  cloneSelection(d : CourseData){
+  cloneSelection(d : Course){
     let course = {};
     for(let prop in d){
       course[prop] = d[prop];
     }
     return d;
+  }
+
+  getDataCourse(){
+    let resp = this.courseService.getCourse()
+    resp.subscribe(
+      (data)=>this.course = data,
+      (err)=>console.log("Ada error : "+err),
+      ()=>console.log("Complete")
+    )
   }
 
 }

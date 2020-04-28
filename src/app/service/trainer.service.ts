@@ -16,7 +16,7 @@ export class TrainerService {
   };
 
   constructor(private http: HttpClient) { }
-
+  
   private handleError(error: any){
     console.log(error);
     return throwError(error);    
@@ -27,7 +27,7 @@ export class TrainerService {
   }
 
   getTrainerById(id): Observable<Trainer>{
-    return this.http.post<any>(`${this.url}/search`, id);
+    return this.http.get<any>(`${this.url}/search/`+id, this.httpOptions);
   }
 
   insertTrainer(trainer): Observable<Trainer>{
@@ -35,7 +35,7 @@ export class TrainerService {
   }
 
   updateTrainer(trainer): Observable<Trainer>{
-    return this.http.post<any>(`${this.url}/update`, trainer);
+    return this.http.put<any>(`${this.url}/update`, trainer, this.httpOptions);
   }
 
   deleteTrainer(id) {
@@ -44,5 +44,9 @@ export class TrainerService {
 
   reportTrainer(idTrainer, idSubcourse): Observable<Trainer>{
     return this.http.get<any>(`${this.url}/${idTrainer}/${idSubcourse}`);
+  }
+
+  searchData(search) : Observable<Trainer[]>{
+    return this.http.get<Trainer[]>(`${this.url}/search-keyword/`+search, this.httpOptions)
   }
 }
