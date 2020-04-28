@@ -9,8 +9,9 @@ import { Forum } from '../model/forum';
 })
 export class ForumAnswerService {
 
-  url = "http://c374350a.ngrok.io/course";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  url = "http://3fd71fe6.ngrok.io/course";
+  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
+  .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
   };
@@ -23,18 +24,18 @@ export class ForumAnswerService {
   }
 
   getAnswer(): Observable<ForumAnswer[]>{
-    return this.http.get<any>(`${this.url}/list`);
+    return this.http.get<any>(`${this.url}/list`, this.httpOptions);
   }
 
   answerSearch(forumAnswer): Observable<ForumAnswer>{
-    return this.http.post<any>(`${this.url}/search`, forumAnswer);
+    return this.http.post<any>(`${this.url}/search`, forumAnswer, this.httpOptions);
   }
 
   getUpdate(forumAnswer): Observable<ForumAnswer>{
-    return this.http.post<any>(`${this.url}/update`, forumAnswer);
+    return this.http.post<any>(`${this.url}/update`, forumAnswer, this.httpOptions);
   }
 
   getDelete(forumAnswer): Observable<ForumAnswer>{
-    return this.http.post<any>(`${this.url}/delete`, forumAnswer);
+    return this.http.post<any>(`${this.url}/delete`, forumAnswer, this.httpOptions);
   }
 }

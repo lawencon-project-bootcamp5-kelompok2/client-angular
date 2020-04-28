@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TableModule} from 'primeng/table';
+import { CheckboxModule } from 'primeng/checkbox';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
@@ -20,7 +21,8 @@ import { CalendarModule } from 'primeng/calendar';
     BrowserAnimationsModule,
     TableModule, FormsModule, CalendarModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

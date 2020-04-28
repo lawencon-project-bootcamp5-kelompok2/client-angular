@@ -14,35 +14,61 @@
                 <div class="form-horizontal">
                   <div class="box-body">
                     <div class="form-group">
+                      <div class="col-sm-8">
+                        <p-checkbox label="Buat course baru?" class="text-muted" [(ngModel)]="checkbox" [binary]="true"></p-checkbox>
+                      </div>
+                    </div>
+                    <div class="form-group">
                       <label for="inputMateri" class="col-sm-4 control-label">Kode Kelas</label>
+                      <div class="col-sm-8">
+                        <input [(ngModel)]="kelasInput.kodeKelas" type="text" class="form-control" placeholder="Kode Kelas">
+                      </div>
+                    </div>
 
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" placeholder="Kode Kelas">
+                    <div *ngIf="checkbox; else notBlock">
+                      <div class="form-group">
+                        <label for="inputMateri" class="col-sm-4 control-label">Nama Course</label>
+  
+                        <div class="col-sm-8">
+                          <input [(ngModel)]="kelasInput.course.namaCourse" type="text" class="form-control" placeholder="Nama Course">
+                        </div>
                       </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-4 control-label">Course</label>
-                      <div class="col-sm-8">
-                        <select class="form-control">
-                            <option>Java</option>
-                            <option>PHP</option>
-                            <option>Phyton</option>
-                            <option>Angular</option>
-                            <option>Kotlin</option>
-                        </select>
+                      <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Deskripsi</label>
+                        <div class="col-sm-8">
+                          <textarea [(ngModel)]="kelasInput.course.deskripsi" class="form-control" rows="3" placeholder="Deskripsi ..."></textarea>
+                        </div>
                       </div>
-                    </div>
-                    <div class="form-group">
+                      <div class="form-group">
                         <label for="inputEmail3" class="col-sm-4 control-label">Trainer</label>
                         <div class="col-sm-8">
-                          <select class="form-control">
-                              <option>Imam Farisi</option>
-                              <option>Albus Dumbledore</option>
-                              <option>Albert Einstein</option>
-                              <option>Severus Snape</option>
+                          <select class="form-control" [(ngModel)]="kelasInput.course.trainer.idTrainer">
+                              <option *ngFor="let trainer of trainer" [value]="trainer.idTrainer">
+                                {{trainer.namaTrainer}}
+                              </option>
                           </select>
                         </div>
                       </div>
+                    </div>
+                    <ng-template #notBlock>
+                      <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-4 control-label">Course</label>
+                        <div class="col-sm-8">
+                          <select [(ngModel)]="kelasInput.course.idCourse" class="form-control">
+                            <option *ngFor="let course of course" [value]="course.idCourse">
+                              {{course.namaCourse}}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </ng-template>
+
+                    <div class="form-group">
+                      <label for="jadwalKelas" class="col-sm-4 control-label">Jadwal Kelas</label>
+                      <div class="col-sm-8">
+                        <p-calendar [(ngModel)]="kelasInput.openKelas" timeOnly="true" hourFormat="24" showSeconds="true" [showIcon]="true" dataType="string"></p-calendar>
+                      </div>
+                    </div>
                   </div>
                 </div>
             </div>
@@ -51,7 +77,7 @@
           
           
           <div class="box-footer">
-            <button type="submit" class="btn btn-info pull-right">Tambah</button>
+            <button type="submit" class="btn btn-info pull-right" (click)="onSubmit()">Tambah</button>
           </div>
           <!-- /.box-footer-->
         </div>

@@ -8,8 +8,9 @@ import { Jawaban } from '../model/jawaban';
 })
 export class JawabanService {
 
-  url = "http://c374350a.ngrok.io/course";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  url = "http://3fd71fe6.ngrok.io/course";
+  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
+  .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
   };
@@ -22,22 +23,22 @@ export class JawabanService {
   }
 
   getJawaban(): Observable<Jawaban[]>{
-    return this.http.get<any>(`${this.url}/list`);
+    return this.http.get<any>(`${this.url}/list`, this.httpOptions);
   }
 
   getJawabanById(jawaban): Observable<Jawaban>{
-    return this.http.post<any>(`${this.url}/search`, jawaban);
+    return this.http.post<any>(`${this.url}/search`, jawaban, this.httpOptions);
   }
 
   insertJawaban(jawaban): Observable<Jawaban>{
-    return this.http.post<any>(`${this.url}/insert`, jawaban);
+    return this.http.post<any>(`${this.url}/insert`, jawaban, this.httpOptions);
   }
 
   updateJawaban(jawaban): Observable<Jawaban>{
-    return this.http.post<any>(`${this.url}/update`, jawaban);
+    return this.http.post<any>(`${this.url}/update`, jawaban, this.httpOptions);
   }
 
   deleteJawaban(jawaban): Observable<Jawaban>{
-    return this.http.post<any>(`${this.url}/delete`, jawaban);
+    return this.http.post<any>(`${this.url}/delete`, jawaban, this.httpOptions);
   }
 }

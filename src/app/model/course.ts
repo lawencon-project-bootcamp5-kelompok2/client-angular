@@ -6,4 +6,5 @@ export class Course {
     namaCourse;
     waktuMulai;
     waktuSelesai;
+    deskripsi;
 }

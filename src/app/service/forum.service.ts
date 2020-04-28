@@ -8,8 +8,9 @@ import { Forum } from '../model/forum';
 })
 export class ForumService {
 
-  url = "http://localhost:8080/forum";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  url = "http://3fd71fe6.ngrok.io/forum";
+  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
+  .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
   };
@@ -22,26 +23,26 @@ export class ForumService {
   }
 
   getForum(): Observable<Forum>{
-    return this.http.get<any>(`${this.url}/list`);
+    return this.http.get<any>(`${this.url}/list`, this.httpOptions);
   }
 
   getForumById(idForum): Observable<Forum>{
-    return this.http.get<any>(`${this.url}/search/${idForum}`);
+    return this.http.get<any>(`${this.url}/search/${idForum}`, this.httpOptions);
   }
 
   getForumBySubcourse(idSubcourse): Observable<Forum[]>{
-    return this.http.get<any>(`${this.url}/subcourse/search/${idSubcourse}`)
+    return this.http.get<any>(`${this.url}/subcourse/search/${idSubcourse}`, this.httpOptions)
   }
 
   postForum(forum): Observable<Forum>{
-    return this.http.post<any>(`${this.url}/create`, forum);
+    return this.http.post<any>(`${this.url}/create`, forum, this.httpOptions);
   }
 
   updateForum(forum): Observable<Forum>{
-    return this.http.post<any>(`${this.url}/update`, forum);
+    return this.http.post<any>(`${this.url}/update`, forum, this.httpOptions);
   }
 
   deleteForum(forum): Observable<Forum>{
-    return this.http.post<any>(`${this.url}/delete`, forum);
+    return this.http.post<any>(`${this.url}/delete`, forum, this.httpOptions);
   }
 }

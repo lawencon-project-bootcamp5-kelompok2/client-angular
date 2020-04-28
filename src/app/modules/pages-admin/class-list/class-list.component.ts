@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KelasData } from '../kelas-data';
+import { KelasService } from 'src/app/service/kelas.service';
+import { Kelas } from 'src/app/model/kelas';
 
 @Component({
   selector: 'app-class-list',
@@ -8,33 +10,17 @@ import { KelasData } from '../kelas-data';
 })
 export class ClassListComponent implements OnInit {
 
-  kelas : KelasData[]
+  // kelas : KelasData[]
   kelas1 : KelasData
   selectedRow : KelasData
+  kelas : Kelas[];
 
-  constructor() { }
+  constructor(private kelasService: KelasService) { }
 
   ngOnInit(): void {
-    this.kelas = [
-      {
-        noUrut : 1,
-        kelasKode : "X123",
-        namaCourse : "Java",
-        namaTrainer : "Imam Farisi"
-      },
-      {
-        noUrut : 2,
-        kelasKode : "X124",
-        namaCourse : "Java",
-        namaTrainer : "Albus Dumbledore"
-      },
-      {
-        noUrut : 3,
-        kelasKode : "K343",
-        namaCourse : "Phyton",
-        namaTrainer : "Albert Einstein"
-      }
-    ]
+    this.kelasService.getKelas().subscribe( result => {
+      this.kelas = result
+    });
   }
 
   onRowSelect(event){

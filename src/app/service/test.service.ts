@@ -8,8 +8,8 @@ import { Test } from '../model/test';
 })
 export class TestService {
 
-  url = "http://c374350a.ngrok.io/course";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  url = "http://3fd71fe6.ngrok.io/test";
+  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
   };
@@ -22,22 +22,22 @@ export class TestService {
   }
 
   getTest(): Observable<Test[]>{
-    return this.http.get<any>(`${this.url}/list`);
+    return this.http.get<any>(`${this.url}/list`, this.httpOptions);
   }
 
   getTestById(id): Observable<Test>{
-    return this.http.post<any>(`${this.url}/search`, id);
+    return this.http.post<any>(`${this.url}/search`, id, this.httpOptions);
   }
 
   insertTest(test): Observable<Test>{
-    return this.http.post<any>(`${this.url}/insert`, test);
+    return this.http.post<any>(`${this.url}/insert`, test, this.httpOptions);
   }
 
   updateTest(test): Observable<Test>{
-    return this.http.post<any>(`${this.url}/update`, test);
+    return this.http.post<any>(`${this.url}/update`, test, this.httpOptions);
   }
 
   deleteTest(test): Observable<Test>{
-    return this.http.post<any>(`${this.url}/delete`, test);
+    return this.http.post<any>(`${this.url}/delete`, test, this.httpOptions);
   }
 }

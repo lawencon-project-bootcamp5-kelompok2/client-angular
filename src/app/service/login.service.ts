@@ -9,8 +9,9 @@ import { TokenStorageService } from '../service/token-storage.service'
 })
 export class LoginService {
 
-  url = "http://c374350a.ngrok.io/course";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  url = "http://3fd71fe6.ngrok.io/login";
+  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
+  .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers: this.headers
   };
@@ -25,15 +26,15 @@ export class LoginService {
   }
 
   getLogin(): Observable<Login[]> {
-    return this.http.get<any>(`${this.url}/show`);
+    return this.http.get<any>(`${this.url}/show`, this.httpOptions);
   }
 
   getUsername(user): Observable<Login> {
-    return this.http.get<any>(`${this.url}/show/username/${user}`);
+    return this.http.get<any>(`${this.url}/show/username/${user}`, this.httpOptions);
   }
 
   insertLogin(login): Observable<Login> {
-    return this.http.post<any>(`${this.url}/insert`, login);
+    return this.http.post<any>(`${this.url}/insert`, login, this.httpOptions);
   }
 
   updateLogin(id, user, pass, role): Observable<Login> {
@@ -45,7 +46,7 @@ export class LoginService {
   }
 
   register(user): Observable<any> {
-    return this.http.post("http://localhost:8080/login/signup", {
+    return this.http.post("http://3fd71fe6.ngrok.io/login/signup", {
       nama: user.nama,
       email: user.email,
       password: user.password
@@ -54,7 +55,7 @@ export class LoginService {
 
   login(credentials): Observable<any> {
     this.isLoggedIn = true;
-    return this.http.post("http://localhost:8080/login/signin", {
+    return this.http.post("http://3fd71fe6.ngrok.io/login/signin", {
       email: credentials.email,
       password: credentials.password
     }, this.httpOptions);
@@ -69,6 +70,6 @@ export class LoginService {
   }
 
   getStudentBoard(): Observable<any> {
-    return this.http.get("http://localhost:8080/api/test/student", { responseType: 'text' });
+    return this.http.get("http://c629ca37.ngrok.io/api/test/student", { responseType: 'text' });
   }
 }

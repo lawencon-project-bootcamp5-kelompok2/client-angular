@@ -9,8 +9,9 @@ import { Course } from '../model/course';
 })
 export class CourseService {
 
-  url = "http://localhost:8080/course";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  url = "http://3fd71fe6.ngrok.io/course";
+  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
+  .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
   };
@@ -23,18 +24,15 @@ export class CourseService {
   }
 
   addCourse(course : Course) : Observable<Course>{
-    const url = `$(this.url)/$(insert)`;
-    return this.http.post<Course>(url, course, this.httpOptions).pipe(
-      map (() => course), catchError(this.handleError)
-    );
+    return this.http.post<Course>(`${this.url}/insert`, course, this.httpOptions);
   }
 
   getCourse() : Observable<Course[]>{
-    return this.http.get<Course[]>(`${this.url}/list`);
+    return this.http.get<Course[]>(`${this.url}/list`, this.httpOptions);
   }
 
   getCourseById(id): Observable<Course>{
-    return this.http.get<Course>(`${this.url}/search/${id}`);
+    return this.http.get<Course>(`${this.url}/search/${id}`, this.httpOptions);
   }
 
 }

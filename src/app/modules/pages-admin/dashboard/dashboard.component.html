@@ -1,1 +1,49 @@
-<p>dashboard works!</p>
+<section class="content-header">
+    <h1>
+      Selamat Datang
+    </h1>
+  </section>
+  
+  <section class="content">
+  
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Daftar Kelas</h3>
+      </div>
+      <div class="box-body">
+        <p-table [value]="kelas">
+            <ng-template pTemplate="header">                  
+              <tr>
+                <th style="width: 100px;">Kode</th>
+                <th>Kelas</th>
+                <th>Instruktur</th>
+                <th>Jadwal</th>
+                <th style="width: 150px">Opsi</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-kelas>
+              <tr>
+                <td>{{kelas.kodeKelas}}</td>
+                <td>{{kelas.course.namaCourse}}</td>
+                <td>{{kelas.course.trainer.namaTrainer}}</td>
+                <td>{{kelas.openKelas}} WIB</td>
+                <td>
+                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['./add-materi']" [queryParams]="{idCourse:kelas.course.idCourse}">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['./add-materi']" [queryParams]="{idCourse:kelas.course.idCourse}">
+                    <i class="fa fa-pencil"></i>
+                  </button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+      </div>
+      <div class="box-footer">
+      </div>
+    </div>
+  
+    <!-- PILIH COURSE -->
+  
+  </section>
+  
