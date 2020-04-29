@@ -9,7 +9,7 @@ import { Forum } from '../model/forum';
 })
 export class ForumAnswerService {
 
-  url = "http://d250db20.ngrok.io/course";
+  url = "http://localhost:8080/course";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {

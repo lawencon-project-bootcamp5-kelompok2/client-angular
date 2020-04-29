@@ -16,8 +16,8 @@ export class TrainerListComponent implements OnInit {
   trainer1 : Trainer
   selectedRow : Trainer
   idTemp 
-  search 
-  count : number = 1
+  search : string 
+  count : number = 0
   private updateSubscription : Subscription
 
   constructor(private trainerService : TrainerService, private router : Router) { }
@@ -79,6 +79,10 @@ export class TrainerListComponent implements OnInit {
 
   searchClick(){
     this.router.navigateByUrl("/admin/list-trainer")
+  }
+
+  rowCount() : number{
+    return this.count = this.count + 1
   }
 
 }

@@ -8,7 +8,7 @@ import { Test } from '../model/test';
 })
 export class TestService {
 
-  url = "http://d250db20.ngrok.io/test";
+  url = "http://localhost:8080/test";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KelasData } from '../kelas-data';
+import { Kelas } from 'src/app/model/kelas';
+import { KelasService } from 'src/app/service/kelas.service';
 
 @Component({
   selector: 'app-list-rekap-class',
@@ -7,40 +9,29 @@ import { KelasData } from '../kelas-data';
   styleUrls: ['./list-rekap-class.component.scss']
 })
 export class ListRekapClassComponent implements OnInit {
-  kelas : KelasData[]
-  kelas1 : KelasData
-  selectedRow : KelasData
+  kelas : Kelas[]
+  kelas1 : Kelas
+  selectedRow : Kelas
 
-  constructor() { }
+  constructor(private kelasService: KelasService) { }
 
   ngOnInit(): void {
-    this.kelas = [
-      {
-        noUrut : 1,
-        kelasKode : "X123",
-        namaCourse : "Java",
-        namaTrainer : "Imam Farisi"
-      },
-      {
-        noUrut : 2,
-        kelasKode : "X124",
-        namaCourse : "Java",
-        namaTrainer : "Albus Dumbledore"
-      },
-      {
-        noUrut : 3,
-        kelasKode : "K343",
-        namaCourse : "Phyton",
-        namaTrainer : "Albert Einstein"
-      }
-    ]
+    this.getData()
+  }
+
+  getData(){
+    this.kelasService.getKelas().subscribe(
+      data => this.kelas = data,
+      err => console.log("Ada Error : "+err),
+      () => console.log("Complete")
+    )
   }
 
   onRowSelect(event){
     this.kelas1 = this.cloneSelection(event.data);
   }
 
-  cloneSelection(d : KelasData){
+  cloneSelection(d : Kelas){
     let kelas = {};
     for(let prop in d){
       kelas[prop] = d[prop];
