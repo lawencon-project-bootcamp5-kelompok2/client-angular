@@ -1,3 +1,4 @@
+<p-toast position="center"></p-toast>
 <section class="content-header"></section>
 <section class="content">
     <div class="row">
@@ -25,7 +26,7 @@
                       <div class="col-sm-8">
                         <div class="input-group date">
                           <div class="ui-g-12 ui-md-4">
-                            <p-calendar [(ngModel)]="test.idSubcourse.tanggalMulai"></p-calendar>
+                            <p-calendar [(ngModel)]="test.idSubcourse.tanggalMulai" dateFormat="yy-mm-dd" dataType="string"></p-calendar>
                           </div>
                           
                         </div>
@@ -37,7 +38,7 @@
                         <div class="input-group date">
                           
                           <div class="ui-g-12 ui-md-4">
-                            <p-calendar [(ngModel)]="test.idSubcourse.tanggalSelesai"></p-calendar>
+                            <p-calendar [(ngModel)]="test.idSubcourse.tanggalSelesai" dateFormat="yy-mm-dd" dataType="string"></p-calendar>
                           </div>
                           
                         </div>
@@ -55,7 +56,7 @@
                       <div class="col-sm-8">
                         <div class="input-group date">
                           <div class="ui-g-12 ui-md-4">
-                            <p-calendar [(ngModel)]="test.waktuMulai" showTime="true" hourFormat="24"></p-calendar>
+                            <p-calendar [(ngModel)]="test.waktuMulai" [timeOnly]="true" showSeconds="true" hourFormat="24" dataType="string"></p-calendar>
                           </div>
                           
                         </div>
@@ -66,7 +67,7 @@
                       <div class="col-sm-8">
                         <div class="input-group date">
                           <div class="ui-g-12 ui-md-4">
-                            <p-calendar [(ngModel)]="test.waktuSelesai" showTime="true" hourFormat="24"></p-calendar>
+                            <p-calendar [(ngModel)]="test.waktuSelesai" [timeOnly]="true" showSeconds="true" hourFormat="24" dataType="string"></p-calendar>
                           </div>
                           
                         </div>

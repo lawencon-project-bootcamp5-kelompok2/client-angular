@@ -17,10 +17,10 @@
                 </div>
                 <div class="box-body">
                     <div class="box-tools">
-                        <button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp; Materi</button>
+                        <button class="btn btn-primary" [routerLink]="['../add-materi']" [queryParams]="{idCourse:idCourse}"><i class="glyphicon glyphicon-plus"></i>&nbsp; Materi</button>
                     </div>
                     <br>
-                    <p-table [value]="materi" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="subcourse" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
@@ -38,14 +38,14 @@
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-materi>
+                        <ng-template pTemplate="body" let-rowData let-subcourse>
                           <tr [pSelectableRow]="rowData">
-                            <td>{{materi.noUrut}}</td>
-                            <td>{{materi.namaMateri}}</td>
-                            <td>{{materi.tglMulai}}</td>
-                            <td>{{materi.tglSelesai}}</td>
-                            <td>{{materi.tglMulaiKuis}}</td>
-                            <td>{{materi.tglSelesaiKuis}}</td>
+                            <!-- <td>{{materi.noUrut}}</td> -->
+                            <td>{{subcourse.namaSubcourse}}</td>
+                            <td>{{subcourse.tanggalMulai}}</td>
+                            <td>{{subcourse.tanggalSelesai}}</td>
+                            <!-- <td>{{materi.tglMulaiKuis}}</td> -->
+                            <!-- <td>{{materi.tglSelesaiKuis}}</td> -->
                             <td>
                               <button type="button" class="btn btn-block btn-primary" routerLink="./#">
                                 <i class="glyphicon glyphicon-pencil"></i>

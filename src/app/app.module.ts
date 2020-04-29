@@ -10,6 +10,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CalendarModule } from 'primeng/calendar';
     TableModule, FormsModule, CalendarModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CheckboxModule
+    CheckboxModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

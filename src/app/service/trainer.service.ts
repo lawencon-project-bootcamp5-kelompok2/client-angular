@@ -9,7 +9,7 @@ import { Trainer } from '../model/trainer';
 })
 export class TrainerService {
 
-  url = "http://3fd71fe6.ngrok.io/trainer";
+  url = "http://d250db20.ngrok.io/trainer";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
@@ -27,23 +27,15 @@ export class TrainerService {
   }
 
   getTrainerById(id): Observable<Trainer>{
-<<<<<<< HEAD
-    return this.http.post<any>(`${this.url}/search`, id, this.httpOptions);
-=======
     return this.http.get<any>(`${this.url}/search/`+id, this.httpOptions);
->>>>>>> 280ae1d04a245f503b589c03350662bf5cdc1492
   }
 
-  insertTrainer(trainer): Observable<Trainer>{
+  insertTrainer(trainer): Observable<any>{
     return this.http.post<any>(`${this.url}/insert`, trainer, this.httpOptions);
   }
 
-  updateTrainer(trainer): Observable<Trainer>{
-<<<<<<< HEAD
-    return this.http.post<any>(`${this.url}/update`, trainer, this.httpOptions);
-=======
+  updateTrainer(trainer): Observable<any>{
     return this.http.put<any>(`${this.url}/update`, trainer, this.httpOptions);
->>>>>>> 280ae1d04a245f503b589c03350662bf5cdc1492
   }
 
   deleteTrainer(id) {

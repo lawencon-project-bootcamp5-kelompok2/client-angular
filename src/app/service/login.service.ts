@@ -9,7 +9,7 @@ import { TokenStorageService } from '../service/token-storage.service'
 })
 export class LoginService {
 
-  url = "http://3fd71fe6.ngrok.io/login";
+  url = "http://d250db20.ngrok.io/login";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -33,20 +33,20 @@ export class LoginService {
     return this.http.get<any>(`${this.url}/show/username/${user}`, this.httpOptions);
   }
 
-  insertLogin(login): Observable<Login> {
+  insertLogin(login): Observable<any> {
     return this.http.post<any>(`${this.url}/insert`, login, this.httpOptions);
   }
 
-  updateLogin(id, user, pass, role): Observable<Login> {
+  updateLogin(id, user, pass, role): Observable<any> {
     return this.http.post<any>(`${this.url}/update/${id}/${user}/${pass}/${role}`, this.httpOptions);
   }
 
-  deleteLogin(id): Observable<Login> {
+  deleteLogin(id): Observable<any> {
     return this.http.post<any>(`${this.url}/delete/${id}`, this.httpOptions);
   }
 
   register(user): Observable<any> {
-    return this.http.post("http://3fd71fe6.ngrok.io/login/signup", {
+    return this.http.post("http://d250db20.ngrok.io/login/signup", {
       nama: user.nama,
       email: user.email,
       password: user.password
@@ -55,7 +55,7 @@ export class LoginService {
 
   login(credentials): Observable<any> {
     this.isLoggedIn = true;
-    return this.http.post("http://3fd71fe6.ngrok.io/login/signin", {
+    return this.http.post("http://d250db20.ngrok.io/login/signin", {
       email: credentials.email,
       password: credentials.password
     }, this.httpOptions);
@@ -70,6 +70,6 @@ export class LoginService {
   }
 
   getStudentBoard(): Observable<any> {
-    return this.http.get("http://c629ca37.ngrok.io/api/test/student", { responseType: 'text' });
+    return this.http.get("http://d250db20.ngrok.io/api/test/student", { responseType: 'text' });
   }
 }

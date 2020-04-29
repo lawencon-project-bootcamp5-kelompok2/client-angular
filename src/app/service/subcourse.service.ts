@@ -8,7 +8,7 @@ import { Subcourse } from '../model/subcourse';
 })
 export class SubcourseService {
 
-  url = "http://3fd71fe6.ngrok.io/subcourse";
+  url = "http://d250db20.ngrok.io/subcourse";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
@@ -33,15 +33,15 @@ export class SubcourseService {
     return this.http.get<any>(`${this.url}/search/course/${courseId}`, this.httpOptions);
   }
 
-  insertSubcourse(subcourse): Observable<Subcourse>{
+  insertSubcourse(subcourse): Observable<any>{
     return this.http.post<any>(`${this.url}/insert`, subcourse, this.httpOptions);
   }
 
-  updateSubcourse(subcourse): Observable<Subcourse>{
+  updateSubcourse(subcourse): Observable<any>{
     return this.http.put<any>(`${this.url}/update`, subcourse, this.httpOptions);
   }
 
-  deleteSubcourse(idSubcourse): Observable<Subcourse>{
+  deleteSubcourse(idSubcourse): Observable<any>{
     return this.http.delete<any>(`${this.url}/delete/${idSubcourse}`, this.httpOptions);
   }
 }

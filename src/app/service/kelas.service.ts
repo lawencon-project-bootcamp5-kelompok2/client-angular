@@ -8,7 +8,7 @@ import { Kelas } from '../model/kelas';
 })
 export class KelasService {
 
-  url = "http://3fd71fe6.ngrok.io/kelas";
+  url = "http://d250db20.ngrok.io/kelas";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -30,15 +30,15 @@ export class KelasService {
     return this.http.get<any>(`${this.url}/search/${idKelas}`, this.httpOptions);
   }
 
-  insertKelas(kelas): Observable<Kelas>{
+  insertKelas(kelas): Observable<string>{
     return this.http.post<any>(`${this.url}/insert`, kelas, this.httpOptions);
   }
 
-  updateKelas(kelas): Observable<Kelas>{
+  updateKelas(kelas): Observable<string>{
     return this.http.put<any>(`${this.url}/update`, kelas, this.httpOptions);
   }
 
-  deleteKelas(kelas): Observable<Kelas>{
-    return this.http.delete<any>(`${this.url}/delete`, this.httpOptions);
+  deleteKelas(idKelas): Observable<string>{
+    return this.http.delete<any>(`${this.url}/delete/${idKelas}`, this.httpOptions);
   }
 }

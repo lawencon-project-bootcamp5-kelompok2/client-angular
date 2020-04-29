@@ -8,7 +8,7 @@ import { Student } from '../model/student';
 })
 export class StudentService {
 
-  url = "http://3fd71fe6.ngrok.io/student";
+  url = "http://d250db20.ngrok.io/student";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
@@ -29,15 +29,15 @@ export class StudentService {
     return this.http.get<any>(`${this.url}/search/${id}`, this.httpOptions);
   }
 
-  insertStudent(student): Observable<Student>{
+  insertStudent(student): Observable<any>{
     return this.http.post<any>(`${this.url}/insert`, student, this.httpOptions);
   }
 
-  updateStudent(student): Observable<Student>{
+  updateStudent(student): Observable<any>{
     return this.http.put<any>(`${this.url}/update`, student, this.httpOptions);
   }
 
-  deleteStudent(student): Observable<Student>{
+  deleteStudent(student): Observable<any>{
     return this.http.post<any>(`${this.url}/delete`, student, this.httpOptions);
   }
 

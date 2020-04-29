@@ -9,7 +9,7 @@ import { Course } from '../model/course';
 })
 export class CourseService {
 
-  url = "http://3fd71fe6.ngrok.io/course";
+  url = "http://d250db20.ngrok.io/course";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -33,6 +33,14 @@ export class CourseService {
 
   getCourseById(id): Observable<Course>{
     return this.http.get<Course>(`${this.url}/search/${id}`, this.httpOptions);
+  }
+
+  updateCourse(course : Course) : Observable<string>{
+    return this.http.put<any>(`${this.url}/update`, course, this.httpOptions);
+  }
+
+  deleteCourse(idCourse) : Observable<string>{
+    return this.http.delete<any>(`${this.url}/delete/${idCourse}`, this.httpOptions);
   }
 
 }

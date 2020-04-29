@@ -5,6 +5,7 @@ import { CourseService } from 'src/app/service/course.service';
 import { Course } from 'src/app/model/course';
 import { TrainerService } from 'src/app/service/trainer.service';
 import { Trainer } from 'src/app/model/trainer';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-add-class',
@@ -20,7 +21,7 @@ export class AddClassComponent implements OnInit {
   checkbox: boolean = false;
 
   constructor(private kelasService: KelasService, private courseService: CourseService,
-    private trainerService: TrainerService) { }
+    private trainerService: TrainerService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.kelasService.getKelas().subscribe(result =>
@@ -39,11 +40,21 @@ export class AddClassComponent implements OnInit {
 
   onSubmit(){
     this.kelasService.insertKelas(this.kelasInput).subscribe(result=> {
-
+      this.onSuccess();
       },
-      err => console.log(this.kelasInput),
+      err => {
+        this.onFailed();
+        console.log(err);        
+      },
       () => console.log("Insert Success!")
     )
+  }
+
+  onSuccess(){
+    this.messageService.add({severity:'success', summary:'Success!', detail:'Tambah Kelas Berhasil!'})
+  }
+  onFailed(){
+    this.messageService.add({severity:'error', summary:'Error!', detail:'Tambah Kelas Gagal!'})
   }
 
 }

@@ -9,7 +9,7 @@ import { Forum } from '../model/forum';
 })
 export class ForumAnswerService {
 
-  url = "http://3fd71fe6.ngrok.io/course";
+  url = "http://d250db20.ngrok.io/course";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -31,11 +31,11 @@ export class ForumAnswerService {
     return this.http.post<any>(`${this.url}/search`, forumAnswer, this.httpOptions);
   }
 
-  getUpdate(forumAnswer): Observable<ForumAnswer>{
+  getUpdate(forumAnswer): Observable<string>{
     return this.http.post<any>(`${this.url}/update`, forumAnswer, this.httpOptions);
   }
 
-  getDelete(forumAnswer): Observable<ForumAnswer>{
+  getDelete(forumAnswer): Observable<string>{
     return this.http.post<any>(`${this.url}/delete`, forumAnswer, this.httpOptions);
   }
 }

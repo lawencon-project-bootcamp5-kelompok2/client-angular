@@ -8,7 +8,7 @@ import { Jawaban } from '../model/jawaban';
 })
 export class JawabanService {
 
-  url = "http://3fd71fe6.ngrok.io/course";
+  url = "http://d250db20.ngrok.io/course";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -30,15 +30,15 @@ export class JawabanService {
     return this.http.post<any>(`${this.url}/search`, jawaban, this.httpOptions);
   }
 
-  insertJawaban(jawaban): Observable<Jawaban>{
+  insertJawaban(jawaban): Observable<string>{
     return this.http.post<any>(`${this.url}/insert`, jawaban, this.httpOptions);
   }
 
-  updateJawaban(jawaban): Observable<Jawaban>{
+  updateJawaban(jawaban): Observable<string>{
     return this.http.post<any>(`${this.url}/update`, jawaban, this.httpOptions);
   }
 
-  deleteJawaban(jawaban): Observable<Jawaban>{
+  deleteJawaban(jawaban): Observable<string>{
     return this.http.post<any>(`${this.url}/delete`, jawaban, this.httpOptions);
   }
 }

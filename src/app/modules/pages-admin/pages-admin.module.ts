@@ -32,6 +32,7 @@ import { RekapAbsenStudentClassComponent } from './rekap-absen-student-class/rek
 import { RekapAbsenStudentComponent } from './rekap-absen-student/rekap-absen-student.component';
 
 import { CheckboxModule } from 'primeng/checkbox';
+import {ToastModule} from 'primeng/toast';
 
 
 
@@ -45,7 +46,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     RekapAbsenStudentListComponent, RekapAbsenStudentClassComponent, RekapAbsenStudentComponent],
   imports: [
     CommonModule, PagesAdminRoutingModule, LayoutModule,FormsModule, TableModule, PagesAdminRoutingModule, CalendarModule,
-    CheckboxModule
+    CheckboxModule, ToastModule
   ]
 })
 export class PagesAdminModule { }

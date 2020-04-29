@@ -4,12 +4,13 @@ import { throwError, Observable } from 'rxjs';
 import { Absensi } from '../model/absensi';
 import { catchError, map } from 'rxjs/operators';
 import { URL } from 'url';
+import { Subcourse } from '../model/subcourse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AbsensiService {
-  url = "http://3fd71fe6.ngrok.io/absensi";
+  url = "http://d250db20.ngrok.io/absensi";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -32,17 +33,15 @@ export class AbsensiService {
     return this.http.get<Absensi>(`${this.url}/search/${idAbsen}`, this.httpOptions);
   }
 
-  addAbsen(absen : Absensi) : Observable<Absensi>{
-    return this.http.post<Absensi>(`${this.url}/insert`, absen, this.httpOptions).pipe(
-      map(() => absen), catchError(this.handleError)
-    );
+  addAbsen(absen : Absensi) : Observable<string>{
+    return this.http.post<any>(`${this.url}/insert`, absen, this.httpOptions);
   }
 
-  updateAbsen(absen) : Observable<Absensi>{
+  updateAbsen(absen) : Observable<string>{
     return this.http.put<any>(`${this.url}/update`, absen, this.httpOptions);
   }
 
-  getAbsenBySubcourse(idSubcourse, idTrainer): Observable<string> {
+  getAbsenBySubcourse(idSubcourse, idTrainer): Observable<Subcourse> {
     return this.http.get<any>(`${this.url}/${idSubcourse}/${idTrainer}`, this.httpOptions);
   }
   
