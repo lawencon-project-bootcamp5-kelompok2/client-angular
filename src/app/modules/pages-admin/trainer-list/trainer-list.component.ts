@@ -3,6 +3,7 @@ import { TrainerData } from '../trainer-data';
 import { Trainer } from 'src/app/model/trainer';
 import { TrainerService } from 'src/app/service/trainer.service';
 import { Router } from '@angular/router';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-trainer-list',
@@ -17,16 +18,21 @@ export class TrainerListComponent implements OnInit {
   idTemp 
   search 
   count : number = 1
+  private updateSubscription : Subscription
 
   constructor(private trainerService : TrainerService, private router : Router) { }
 
   ngOnInit(): void {
-    this.getAllDataTrainer()
+    this.updateSubscription = interval(500).subscribe(
+      (val) => {
+        this.getAllDataTrainer()
+      }
+    )
   }
 
   getAllDataTrainer(){
     let resp
-    if (this.search == null) {
+    if (this.search == null || this.search == "") {
       resp = this.trainerService.getTrainer()
       resp.subscribe(
           (data)=>this.trainer = data,
@@ -69,7 +75,6 @@ export class TrainerListComponent implements OnInit {
       (err)=>console.log("ada error : "+err),
       ()=>console.log("Complete")
     )
-    window.location.reload();
   }
 
   searchClick(){
