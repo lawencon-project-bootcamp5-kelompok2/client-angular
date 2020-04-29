@@ -7,8 +7,9 @@ import { throwError, Observable } from 'rxjs';
 })
 export class SoalService {
 
-  url = "http://localhost:8080/soal";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  url = "http://3fd71fe6.ngrok.io/soal";
+  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
+  .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
   };

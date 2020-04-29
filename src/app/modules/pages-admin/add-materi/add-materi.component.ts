@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { SubcourseService } from 'src/app/service/subcourse.service';
+import { TestService } from 'src/app/service/test.service';
+import { Subcourse } from 'src/app/model/subcourse';
+import { Test } from 'src/app/model/test';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-materi',
@@ -11,10 +16,21 @@ export class AddMateriComponent implements OnInit {
   dateTestSelesai: Date
   dateTglMulai : Date
   dateTglSelesai : Date
+  subcourse = new Subcourse();
+  test = new Test();
+  idCourse: any;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private subcourseService: SubcourseService, 
+    private testService: TestService) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params =>
+      this.idCourse = params.idCourse
+    )
+  }
+
+  onSubmit() {
+
   }
 
 }

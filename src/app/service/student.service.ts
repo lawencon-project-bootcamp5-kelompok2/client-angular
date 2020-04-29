@@ -8,8 +8,8 @@ import { Student } from '../model/student';
 })
 export class StudentService {
 
-  url = "http://localhost:8080/student";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  url = "http://3fd71fe6.ngrok.io/student";
+  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
   };
@@ -22,26 +22,26 @@ export class StudentService {
   }
 
   getStudents(): Observable<Student[]>{
-    return this.http.get<any>(`${this.url}/list`);
+    return this.http.get<any>(`${this.url}/list`, this.httpOptions);
   }
 
   getStudentById(id): Observable<Student>{
-    return this.http.get<any>(`${this.url}/search/${id}`);
+    return this.http.get<any>(`${this.url}/search/${id}`, this.httpOptions);
   }
 
   insertStudent(student): Observable<Student>{
-    return this.http.post<any>(`${this.url}/insert`, student);
+    return this.http.post<any>(`${this.url}/insert`, student, this.httpOptions);
   }
 
   updateStudent(student): Observable<Student>{
-    return this.http.put<any>(`${this.url}/update`, student);
+    return this.http.put<any>(`${this.url}/update`, student, this.httpOptions);
   }
 
   deleteStudent(student): Observable<Student>{
-    return this.http.post<any>(`${this.url}/delete`, student);
+    return this.http.post<any>(`${this.url}/delete`, student, this.httpOptions);
   }
 
   reportStudent(idStudent, idCourse): Observable<Student>{
-    return this.http.get<any>(`${this.url}/${idStudent}/${idCourse}`);
+    return this.http.get<any>(`${this.url}/${idStudent}/${idCourse}`, this.httpOptions);
   }
 }

@@ -17,17 +17,19 @@
                 </div>
                 <div class="box-body">
                     <div class="box-tools">
-                        <button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp; Kelas</button>
+                        <button class="btn btn-primary" [routerLink]="['../add-class']">
+                          <i class="glyphicon glyphicon-plus"></i>&nbsp; Kelas
+                        </button>
                     </div>
                     <br>
                     <p-table [value]="kelas" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
-                            <th style="width: 5%">No</th>
-                            <th>Kode Kelas</th>
+                            <th style="width: 10%">Kode</th>
                             <th>Course</th>
                             <th>Trainer</th>
+                            <th>Jadwal</th>
                             <th colspan="2" style="width: 15%">Pilih</th>
                           </tr>
                         </ng-template>
@@ -35,12 +37,12 @@
                         <!-- <tbody> -->
                         <ng-template pTemplate="body" let-rowData let-kelas>
                           <tr [pSelectableRow]="rowData">
-                            <td>{{kelas.noUrut}}</td>
-                            <td>{{kelas.kelasKode}}</td>
-                            <td>{{kelas.namaCourse}}</td>
-                            <td>{{kelas.namaTrainer}}</td>
+                            <td>{{kelas.kodeKelas}}</td>
+                            <td>{{kelas.course.namaCourse}}</td>
+                            <td>{{kelas.course.trainer.namaTrainer}}</td>
+                            <td>{{kelas.openKelas}}</td>
                             <td>
-                              <button type="button" class="btn btn-block btn-primary" routerLink="./#">
+                              <button type="button" class="btn btn-block btn-primary" [routerLink]="['../edit-class']" [queryParams]="{idKelas: kelas.idKelas}">
                                 <i class="glyphicon glyphicon-pencil"></i>
                               </button>
                             </td>

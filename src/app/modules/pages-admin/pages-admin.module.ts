@@ -31,12 +31,21 @@ import { RekapAbsenStudentListComponent } from './rekap-absen-student-list/rekap
 import { RekapAbsenStudentClassComponent } from './rekap-absen-student-class/rekap-absen-student-class.component';
 import { RekapAbsenStudentComponent } from './rekap-absen-student/rekap-absen-student.component';
 
+import { CheckboxModule } from 'primeng/checkbox';
+
 
 
 @NgModule({
-  declarations: [AdminComponent, DashboardComponent, TrainerListComponent, AddTrainerComponent, EditTrainerComponent, CourseListComponent, AddCourseComponent, MateriListComponent, AddMateriComponent, ClassListComponent, AddClassComponent, EditClassComponent, EditCourseComponent, EditMateriComponent, ListRekapClassComponent, ListRekapJadwalComponent, RekapJadwalComponent, RekapNilaiListComponent, RekapNilaiComponent, RekapAbsenTrainerListComponent, RekapAbsenTrainerComponent, RekapAbsenTrainerClassComponent, RekapAbsenStudentListComponent, RekapAbsenStudentClassComponent, RekapAbsenStudentComponent],
+  declarations: [AdminComponent, DashboardComponent, TrainerListComponent, 
+    AddTrainerComponent, EditTrainerComponent, CourseListComponent, AddCourseComponent, 
+    MateriListComponent, AddMateriComponent, ClassListComponent, AddClassComponent, 
+    EditClassComponent, EditCourseComponent, EditMateriComponent, ListRekapClassComponent, 
+    ListRekapJadwalComponent, RekapJadwalComponent, RekapNilaiListComponent, RekapNilaiComponent, 
+    RekapAbsenTrainerListComponent, RekapAbsenTrainerComponent, RekapAbsenTrainerClassComponent, 
+    RekapAbsenStudentListComponent, RekapAbsenStudentClassComponent, RekapAbsenStudentComponent],
   imports: [
-    CommonModule, PagesAdminRoutingModule, LayoutModule,FormsModule, TableModule, PagesAdminRoutingModule, CalendarModule
+    CommonModule, PagesAdminRoutingModule, LayoutModule,FormsModule, TableModule, PagesAdminRoutingModule, CalendarModule,
+    CheckboxModule
   ]
 })
 export class PagesAdminModule { }

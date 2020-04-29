@@ -24,7 +24,6 @@ export class DashBoardComponent implements OnInit {
   selectedRow: Course;
   courses : Course[];
   course : Course;
-  trainers : Trainer[];
   colCourse: any[];
   student: Student = new Student();
   takenCourse: Kelas[] = [];
@@ -35,21 +34,10 @@ export class DashBoardComponent implements OnInit {
 
   constructor(private courseService: CourseService, private trainerService: TrainerService, private studentService: StudentService,
     private kelasService: KelasService, private userService: LoginService, private tokenStorage: TokenStorageService, public router: Router) {
-    courseService.getCourse().subscribe(
-      result => this.courses = result,
-      err => console.log("Error found!," + JSON.stringify(err)),
-      () => console.log("done!")      
-    );
 
     kelasService.getKelas().subscribe(
       result => this.kelas = result,
       err => console.log(("error found," + JSON.stringify(err)))
-    );
-
-    trainerService.getTrainer().subscribe(
-      result => this.trainers = result,
-      err => console.log("Error found!" + JSON.stringify(err)),
-      () => console.log("done!")    
     );
 
     studentService.getStudentById(1).subscribe(
@@ -70,7 +58,7 @@ export class DashBoardComponent implements OnInit {
     this.userService.getStudentBoard().subscribe(
       data => {
         this.content = data;
-        this.studentService.getStudentById(1).subscribe(
+        this.studentService.getStudentById(this.tokenStorage).subscribe(
           result => this.takenCourse = result.kelas
         )
         

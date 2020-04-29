@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { KelasService } from 'src/app/service/kelas.service';
+import { Kelas } from 'src/app/model/kelas';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  kelas: Kelas[];
+
+  constructor(private kelasService: KelasService) { }
 
   ngOnInit(): void {
+    this.kelasService.getKelas().subscribe( result => {
+      this.kelas = result
+    })
   }
 
 }

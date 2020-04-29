@@ -9,8 +9,9 @@ import { URL } from 'url';
   providedIn: 'root'
 })
 export class AbsensiService {
-  url = "http://localhost:8080/absensi";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  url = "http://3fd71fe6.ngrok.io/absensi";
+  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
+  .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
   };
@@ -24,11 +25,11 @@ export class AbsensiService {
   }
 
   getAbsen() : Observable<Absensi[]>{
-    return this.http.get<Absensi[]>(`${this.url}/list`);
+    return this.http.get<Absensi[]>(`${this.url}/list`, this.httpOptions);
   }
 
   searchAbsen(idAbsen) : Observable<Absensi>{
-    return this.http.get<Absensi>(`${this.url}/search/${idAbsen}`);
+    return this.http.get<Absensi>(`${this.url}/search/${idAbsen}`, this.httpOptions);
   }
 
   addAbsen(absen : Absensi) : Observable<Absensi>{
@@ -38,11 +39,11 @@ export class AbsensiService {
   }
 
   updateAbsen(absen) : Observable<Absensi>{
-    return this.http.put<any>(`${this.url}/update`, absen);
+    return this.http.put<any>(`${this.url}/update`, absen, this.httpOptions);
   }
 
   getAbsenBySubcourse(idSubcourse, idTrainer): Observable<string> {
-    return this.http.get<any>(`${this.url}/${idSubcourse}/${idTrainer}`);
+    return this.http.get<any>(`${this.url}/${idSubcourse}/${idTrainer}`, this.httpOptions);
   }
   
 }

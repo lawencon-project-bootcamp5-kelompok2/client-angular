@@ -10,8 +10,9 @@ import { Materi } from '../model/materi';
 })
 export class MateriService {
 
-  url = "http://localhost:8080/materi";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  url = "http://3fd71fe6.ngrok.io/materi";
+  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
+  .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
   };
@@ -26,7 +27,7 @@ export class MateriService {
   uploadFile(uploadMateri: File): Observable<Materi>{
     const formData: FormData = new FormData();
     formData.append('file', uploadMateri, uploadMateri.name);
-    return this.http.post<Materi>(`${this.url}/uploadFile`, formData).pipe(
+    return this.http.post<Materi>(`${this.url}/uploadFile`, formData, this.httpOptions).pipe(
     //  map(() => { return true})
     );
   }
