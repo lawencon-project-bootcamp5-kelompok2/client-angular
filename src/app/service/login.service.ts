@@ -9,7 +9,7 @@ import { TokenStorageService } from '../service/token-storage.service'
 })
 export class LoginService {
 
-  url = "http://caf62d24.ngrok.io/login";
+  url = "http://localhost:8080/login";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -46,7 +46,7 @@ export class LoginService {
   }
 
   register(user): Observable<any> {
-    return this.http.post("http://caf62d24.ngrok.io/login/signup", {
+    return this.http.post("http://localhost:8080/login/signup", {
       nama: user.nama,
       email: user.email,
       password: user.password
@@ -55,7 +55,7 @@ export class LoginService {
 
   login(credentials): Observable<any> {
     this.isLoggedIn = true;
-    return this.http.post("http://caf62d24.ngrok.io/login/signin", {
+    return this.http.post("http://localhost:8080/login/signin", {
       email: credentials.email,
       password: credentials.password
     }, this.httpOptions);
@@ -69,7 +69,4 @@ export class LoginService {
     }
   }
 
-  getStudentBoard(): Observable<any> {
-    return this.http.get("http://caf62d24.ngrok.io/api/test/student", { responseType: 'text' });
-  }
 }

@@ -8,7 +8,7 @@ import { Subcourse } from '../model/subcourse';
 })
 export class SubcourseService {
 
-  url = "http://caf62d24.ngrok.io/subcourse";
+  url = "http://localhost:8080/subcourse";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers

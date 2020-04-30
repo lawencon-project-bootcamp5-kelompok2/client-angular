@@ -46,6 +46,7 @@ export class DashBoardComponent implements OnInit {
       result => this.kelas = result,
       err => console.log(("error found," + JSON.stringify(err)))
     );
+    
 
     // this.studentService.getStudentById(this.idStudent).subscribe(
     //   result => this.student = result,
@@ -62,11 +63,11 @@ export class DashBoardComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-    this.userService.getStudentBoard().subscribe(
-      data => {
-        this.content = data;
         this.studentService.getStudentByEmail(user.email).subscribe(
-          result => this.takenCourse = result.kelas
+          result  => { 
+            this.takenCourse = result.kelas
+           
+          }
         )
         
         if(this.takenCourse.length >= 0){
@@ -84,14 +85,7 @@ export class DashBoardComponent implements OnInit {
           
           return parseInt(filter) > value;
         }
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
       }
-    );
-
-    
-  }
 
   onRowSelect(event) {
     this.course = this.cloneSelection(event.data);
