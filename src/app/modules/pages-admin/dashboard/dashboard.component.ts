@@ -3,6 +3,8 @@ import { KelasService } from 'src/app/service/kelas.service';
 import { Kelas } from 'src/app/model/kelas';
 import { TrainerService } from 'src/app/service/trainer.service';
 import { Trainer } from 'src/app/model/trainer';
+import { StudentService } from 'src/app/service/student.service';
+import { Student } from 'src/app/model/student';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,10 +15,13 @@ export class DashboardComponent implements OnInit {
 
   kelas: Kelas[] = [new Kelas()];
   trainer: Trainer[] = [new Trainer()];
+  student: Student[] = [new Student()];
   totalKelas: any;
   totalTrainer: any;
+  totalStudent: any;
 
-  constructor(private kelasService: KelasService, private trainerService: TrainerService) { }
+  constructor(private kelasService: KelasService, private trainerService: TrainerService,
+    private studentService: StudentService) { }
 
   ngOnInit(): void {
     this.kelasService.getKelas().subscribe( result => {
@@ -29,8 +34,10 @@ export class DashboardComponent implements OnInit {
       this.totalTrainer = res.length;
     });
 
-    this.totalKelas = this.kelas.length;
-    this.totalTrainer = this.trainer.length;
+    this.studentService.getStudents().subscribe( res => {
+      this.student = res;
+      this.totalStudent = res.length;
+    })
 
   }
 
