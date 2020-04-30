@@ -6,7 +6,6 @@ import { Student } from 'src/app/model/student';
 import { Kelas } from 'src/app/model/kelas';
 import { KelasService } from 'src/app/service/kelas.service';
 import { StudentService } from 'src/app/service/student.service';
-import { HttpResponse } from '@angular/common/http';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 
 @Component({
@@ -19,7 +18,7 @@ export class EnrollComponent implements OnInit {
   idKelas: any;
   namaKelas: any;
   kelas: Kelas = new Kelas();
-  student = new Student();
+  student : Student = new Student();
 
   constructor(private route: ActivatedRoute, private courseService: CourseService,
     private kelasService: KelasService, private studentService: StudentService, private routerLink: Router,
@@ -35,20 +34,22 @@ export class EnrollComponent implements OnInit {
     }
     );
 
+    this.studentService.getStudentByEmail(user.email).subscribe( res => {
+      this.student = res
+    })
+
     // this.courseService.getCourseById(this.idCourse).subscribe(
     //   result => this.course = result,
     //   err => console.log(err)
     // );
 
-    this.kelasService.getKelasById(this.namaKelas).subscribe(result => {
+    this.kelasService.getKelasById(this.idKelas).subscribe(result => {
       this.kelas = result;
       },
-      err => console.log(err) 
+      err => console.log(this.student) 
     );
 
-    this.studentService.getStudentByEmail(user.email).subscribe( res => {
-      this.student = res
-    })
+    
   }
 
   onPilih(){

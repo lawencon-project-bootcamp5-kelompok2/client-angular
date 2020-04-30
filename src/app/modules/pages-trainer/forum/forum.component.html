@@ -18,7 +18,9 @@
     <div class="box-body">
         <div class="form-group">
           <label>Diskusikan sesuatu</label>
-          <textarea [(ngModel)]="postForum.deskripsi" class="form-control" rows="3" placeholder="Ikut Berdiskusi . . . "></textarea>
+          <label>Topik : </label>
+          <input [(ngModel)]="postForum.subjek" class="form-control" rows="3" placeholder="Topik diskusi anda . . .">
+          <input [(ngModel)]="postForum.deskripsi" class="form-control" rows="3" placeholder="Ikut Berdiskusi . . . ">
           <button style="width: fit-content;" type="submit" class="btn btn-block btn-primary pull-right" (click)="onSend()">
             <i class="fa fa-angle-double-right"></i>
             <span> Send</span>
