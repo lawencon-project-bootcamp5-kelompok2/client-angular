@@ -24,6 +24,7 @@
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
+                            <th style="width: 5%">No</th>
                             <th>NIK</th>
                             <th>Nama Trainer</th>
                             <th >Email</th>
@@ -32,8 +33,9 @@
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-trainer>
+                        <ng-template pTemplate="body" let-rowData let-trainer let-i="rowIndex">
                           <tr [pSelectableRow]="rowData">
+                            <td>{{ i+1 }}</td>
                             <td>{{trainer.nik}}</td>
                             <td>{{trainer.namaTrainer}}</td>
                             <td>{{trainer.email}}</td>
