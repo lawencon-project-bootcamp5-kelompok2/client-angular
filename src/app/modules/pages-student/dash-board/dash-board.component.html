@@ -33,7 +33,7 @@
             <td>{{takenCourse.openKelas}} WIB</td>
             <td>
               <button type="button" class="btn btn-block btn-primary" [routerLink]="['./silabus']" [queryParams]="{idCourse:takenCourse.course.idCourse}">
-                <i class="fa fa-search"></i>
+                <i class="fa fa-search">Cari</i>
               </button>
             </td>
           </tr>
@@ -84,7 +84,7 @@
             <td>{{kelas.openKelas}} WIB</td>
             <td>
               <button type="button" class="btn btn-block btn-primary" [routerLink]="['./enroll']"
-               [queryParams]="{idCourse:kelas.course.idCourse, namaCourse:kelas.course.namaCourse}">
+               [queryParams]="{idKelas:kelas.idKelas, namaCourse:kelas.course.namaCourse}">
                 Lihat
               </button>
             </td>

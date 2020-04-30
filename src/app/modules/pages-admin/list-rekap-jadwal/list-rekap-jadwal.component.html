@@ -1,7 +1,7 @@
 <section class="content">
     <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
             <div class="box">
                 <div class="box-header bg-light-blue-active color-palette">
                     <h4 class="box-title">Rekap Jadwal</h4>
@@ -16,23 +16,23 @@
                       </div>
                 </div>
                 <div class="box-body">
-                    <p-table [value]="jadwal" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="course" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
-                            <th style="width: 5%">No</th>
+                            <th style="width: 6%">No</th>
                             <th>Course</th>
-                            <th style="width: 8%">Pilih</th>
+                            <th style="width: 10%">Pilih</th>
                           </tr>
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-jadwal>
+                        <ng-template pTemplate="body" let-rowData let-course let-i="rowIndex">
                           <tr [pSelectableRow]="rowData">
-                            <td>{{jadwal.noUrut}}</td>
-                            <td>{{jadwal.namaCourse}}</td>
+                            <td>{{i+1}}</td>
+                            <td>{{course.namaCourse}}</td>
                             <td>
-                              <button type="button" class="btn btn-block btn-primary" routerLink="./#">
+                              <button type="button" class="btn btn-block btn-primary" [routerLink]="['../rekap-jadwal-course']" [queryParams]="{id: course.idCourse}">
                                 <i class="glyphicon glyphicon-search"></i>
                               </button>
                             </td>

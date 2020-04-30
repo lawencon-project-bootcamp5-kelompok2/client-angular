@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, catchError, map} from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Course } from '../model/course';
+import { RekapJadwalKelas } from '../model/rekap-jadwal-kelas';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
 
-  url = "http://caf62d24.ngrok.io/course";
+  url = "http://localhost:8080/course";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -41,6 +42,10 @@ export class CourseService {
 
   deleteCourse(idCourse) : Observable<string>{
     return this.http.delete<any>(`${this.url}/delete/${idCourse}`, this.httpOptions);
+  }
+
+  rekapJadwalPerKelas(idCourse) : Observable<RekapJadwalKelas[]>{
+    return this.http.get<RekapJadwalKelas[]>(`${this.url}/rekap/`+idCourse,this.httpOptions)
   }
 
 }

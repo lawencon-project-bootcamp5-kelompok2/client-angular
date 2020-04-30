@@ -16,9 +16,12 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
 export class EnrollComponent implements OnInit {
 
   idKelas: any;
+  idStudent: any;
   namaKelas: any;
   kelas: Kelas = new Kelas();
-  student : Student = new Student();
+  student = new Student();
+  studentEm = new Student();
+  user : any;
 
   constructor(private route: ActivatedRoute, private courseService: CourseService,
     private kelasService: KelasService, private studentService: StudentService, private routerLink: Router,
@@ -27,10 +30,12 @@ export class EnrollComponent implements OnInit {
 
   ngOnInit() {
     const user = this.tokenStorage.getUser();
-
+    this.user = user;
     this.route.queryParams.subscribe(params => {
-      this.idKelas = params.idCourse;
+      this.idKelas = params.idKelas;
       this.namaKelas = params.namaCourse
+     
+      
     }
     );
 
@@ -49,14 +54,23 @@ export class EnrollComponent implements OnInit {
       err => console.log(this.student) 
     );
 
-    
+    this.studentService.getStudentByEmail(this.user.email).subscribe( res => {
+      this.studentEm = res;
+    },
+    err => console.log(err)
+    );
+
+    this.studentService.getStudentById(this.studentEm.idStudent).subscribe( res => {
+      this.student = res;
+    },
+    err => console.log(err)
+    );
   }
 
   onPilih(){
-    // this.student.idStudent = ;
-    // this.student.namaStudent = "Rizky";
-    // this.student.npm = 115;
-    // this.student.role = "Student";
+    this.student.idStudent = this.studentEm.idStudent;
+    this.student.namaStudent = this.user.nama;
+    
     this.student.kelas = [this.kelas];
     this.studentService.updateStudent(this.student).subscribe(
       err => console.log(err),
