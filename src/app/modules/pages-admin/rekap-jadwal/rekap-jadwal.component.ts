@@ -25,6 +25,8 @@ export class RekapJadwalComponent implements OnInit {
     )
 
     this.getData()
+
+    document.getElementById("side").className="active";
   }
 
   getData(){

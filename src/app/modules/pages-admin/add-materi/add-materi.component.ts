@@ -31,6 +31,8 @@ export class AddMateriComponent implements OnInit {
     this.subcourse.idCourse.trainer = null;
     this.subcourse.idMateri = null;
     this.subcourse.idCourse.idCourse = this.idCourse;
+
+    document.getElementById("side").className="active";
   }
 
   onSubmit() {

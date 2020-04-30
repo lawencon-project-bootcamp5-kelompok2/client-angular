@@ -14,6 +14,8 @@ export class RekapAbsenTrainerListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.getElementById("side").className="active";
+    
     this.trainer = [
       {
         noUrut:1,

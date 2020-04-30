@@ -41,6 +41,8 @@ export class EditClassComponent implements OnInit {
     });
 
     this.kelasInput.idKelas = this.idKelas;
+
+    document.getElementById("side").className="active";
   }
 
   onSubmit(){

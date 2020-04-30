@@ -17,6 +17,8 @@ export class ListRekapClassComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData()
+
+    document.getElementById("side").className="active";
   }
 
   getData(){

@@ -29,6 +29,8 @@ export class EnrollComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById("sideEnroll").className="active";
+    
     const user = this.tokenStorage.getUser();
     this.user = user;
     this.route.queryParams.subscribe(params => {

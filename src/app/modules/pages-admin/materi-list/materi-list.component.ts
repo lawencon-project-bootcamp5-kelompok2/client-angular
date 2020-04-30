@@ -45,6 +45,8 @@ export class MateriListComponent implements OnInit {
       this.idSubcourse = params.idSubcourse;
       
     });
+
+    document.getElementById("side").className="active";
   }
 
   onDelete(){

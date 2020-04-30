@@ -28,7 +28,9 @@ export class CourseListComponent implements OnInit {
 
     this.route.queryParams.subscribe(result => {
       this.idCourse = result.idCourse
-    })
+    });
+
+    document.getElementById("side").className="active";
 
     // this.updateSubscription = interval(1000).subscribe( val => {
     //   this.getCourse()

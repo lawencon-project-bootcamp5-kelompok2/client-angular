@@ -35,6 +35,8 @@ export class CourseDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
+    document.getElementById("sideKelas").className="active";
+
     this.route.queryParams.subscribe(params => {
       this.idCourse = params.idCourse;
       this.namaCourse = params.namaCourse

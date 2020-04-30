@@ -12,6 +12,7 @@ export class ForumComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById("sideEnroll").className="active";
   }
 
 }

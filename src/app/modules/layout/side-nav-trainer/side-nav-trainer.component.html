@@ -4,25 +4,25 @@
     <section class="sidebar">
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li>
-          <a href="#">
-            <i class="fa fa-play"></i> <span>Enroll</span>
+        <li id="sideDashboard">
+          <a href="./trainer">
+            <i class="glyphicon glyphicon-home"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <li id="sideKelas">
+          <a href="./trainer/">
             <i class="fa fa-tasks"></i>
-            <span>List Materi</span>
+            <span>Course</span>
           </a>
         </li>
-        <li>
+        <li id="sideReport">
             <a href="#">
               <i class="fa fa-tasks"></i>
               <span>Report</span>
             </a>
           </li>
-        <li>
-          <a href="../widgets.html">
+        <li id="sideNilai">
+          <a href="./trainer/nilai">
             <i class="fa fa-check-square-o"></i> <span>Nilai E-Learning</span>
           </a>
         </li>
@@ -34,11 +34,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="./trainer/list-rekap-nilai"><i class="fa fa-circle-o"></i> Nilai</a></li>
-            <li><a href="./trainer/list-rekap-absen"><i class="fa fa-circle-o"></i> Absen</a></li>
+            <li id="sideRekapNilai"><a href="./trainer/list-rekap-nilai"><i class="fa fa-circle-o"></i> Nilai</a></li>
+            <li id="sideRekapAbsen"><a href="./trainer/list-rekap-absen"><i class="fa fa-circle-o"></i> Absen</a></li>
           </ul>
         </li>
-        <li>
+        <li id="sideSetting">
           <a href="../widgets.html">
             <i class="fa fa-gears"></i> <span>Setting</span>
           </a>

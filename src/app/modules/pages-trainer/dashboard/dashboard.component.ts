@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    document.getElementById("sideDashboard").className="active";
+    
     const user = this.tokenStorage.getUser();
     this.nama = user.nama;
 

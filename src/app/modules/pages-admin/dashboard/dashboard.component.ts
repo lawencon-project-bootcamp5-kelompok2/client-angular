@@ -37,7 +37,9 @@ export class DashboardComponent implements OnInit {
     this.studentService.getStudents().subscribe( res => {
       this.student = res;
       this.totalStudent = res.length;
-    })
+    });
+
+    document.getElementById("sideDashboard").className="active";
 
   }
 

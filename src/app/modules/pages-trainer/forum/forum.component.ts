@@ -24,6 +24,7 @@ export class ForumComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById("sideKelas").className="active";
     const user=this.sessionStorage.getUser();
     this.emailSender = user.email;
 

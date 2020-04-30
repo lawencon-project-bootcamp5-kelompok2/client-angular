@@ -20,6 +20,8 @@ export class RekapNilaiListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.getElementById("sideRekapNilai").className="active";
+    
     this.listMateri = [
       {
         noUrut:1,

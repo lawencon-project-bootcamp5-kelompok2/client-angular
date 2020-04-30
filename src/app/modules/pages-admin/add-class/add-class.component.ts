@@ -36,6 +36,8 @@ export class AddClassComponent implements OnInit {
       this.trainer = result,
       err => console.log(err)
     );
+
+    document.getElementById("side").className="active";
   }
 
   onSubmit(){

@@ -19,29 +19,9 @@ export class NilaiComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.aaa = [
-    //   {
-    //     id:1,
-    //     enroll:"Java",
-    //     instruktur:"Imam Farisi",
-    //     nilai:88,
-    //     grade:"A"
-    //   },
-    //   {
-    //     id:1,
-    //     enroll:"PHP",
-    //     instruktur:"Albert Einstein",
-    //     nilai:80,
-    //     grade:"A"
-    //   }
-    // ];
+    document.getElementById("sideNilai").className="active";
 
-    this.cols = [
-      {field:"enroll", header:"Enroll"},
-      {field:"instruktur", header:"Instuktur"},
-      {field:"nilai", header:"Nilai"},
-      {field:"grade", header:"Grade"},
-    ];
+    
   }
 
   onRowSelect(event) {

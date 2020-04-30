@@ -30,6 +30,8 @@ export class EditMateriComponent implements OnInit {
     })
 
     this.subcourse.idSubcourse = this.idSubcourse
+
+    document.getElementById("side").className="active";
   }
 
   onSubmit(){

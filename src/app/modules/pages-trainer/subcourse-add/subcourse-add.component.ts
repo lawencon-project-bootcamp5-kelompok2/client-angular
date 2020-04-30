@@ -33,6 +33,8 @@ export class SubcourseAddComponent implements OnInit {
     private soalService: SoalService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    document.getElementById("sideKelas").className="active";
+
     this.route.queryParams.subscribe(params => {
       this.idCourse = params.idCourse;
     });

@@ -19,6 +19,7 @@ export class AddTrainerComponent implements OnInit {
     private router: Router, private messageService: MessageService) { }
 
   ngOnInit(): void {
+    document.getElementById("side").className="active";
   }
 
   onSubmit(){
