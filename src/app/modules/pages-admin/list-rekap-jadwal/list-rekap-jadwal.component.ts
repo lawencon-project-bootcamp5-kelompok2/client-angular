@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JadwalData } from '../jadwal-data';
+import { Course } from 'src/app/model/course';
+import { CourseService } from 'src/app/service/course.service';
 
 @Component({
   selector: 'app-list-rekap-jadwal',
@@ -8,43 +10,30 @@ import { JadwalData } from '../jadwal-data';
 })
 export class ListRekapJadwalComponent implements OnInit {
 
-  jadwal : JadwalData[]
-  jadwal1 : JadwalData
-  selectedRow : JadwalData
+  
+  course : Course[]
+  course1 : Course
+  selectedRow : Course
 
-  constructor() { }
+  constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
-    this.jadwal = [
-      {
-        noUrut: 1,
-        namaCourse: "Java"
-      },
-      {
-        noUrut: 2,
-        namaCourse: "Phyton"
-      },
-      {
-        noUrut: 3,
-        namaCourse: "PHP"
-      },
-      {
-        noUrut: 4,
-        namaCourse: "Kotlin"
-      }
-    ]
+    this.courseService.getCourse().subscribe(
+      data => this.course = data,
+      err => console.log("Ada Error" + err),
+      () => console.log("Complete")
+    )
   }
 
   onRowSelect(event){
-    this.jadwal1 = this.cloneSelection(event.data);
+    this.course1 = this.cloneSelection(event.data);
   }
 
-  cloneSelection(d : JadwalData){
-    let jadwal = {};
+  cloneSelection(d : Course){
+    let course = {};
     for(let prop in d){
-      jadwal[prop] = d[prop];
+      course[prop] = d[prop];
     }
     return d;
-  }  
-
+  }
 }

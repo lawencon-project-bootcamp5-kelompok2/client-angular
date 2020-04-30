@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { JadwalPerCourseData } from '../jadwalPerCourse-data';
+import { ActivatedRoute } from '@angular/router';
+import { CourseService } from 'src/app/service/course.service';
+import { Course } from 'src/app/model/course';
+import { RekapJadwalKelas } from 'src/app/model/rekap-jadwal-kelas';
 
 @Component({
   selector: 'app-rekap-jadwal',
@@ -8,67 +12,37 @@ import { JadwalPerCourseData } from '../jadwalPerCourse-data';
 })
 export class RekapJadwalComponent implements OnInit {
 
-  jadwalPerCourse : JadwalPerCourseData[]
-  jadwalPerCourse1 : JadwalPerCourseData
-  selectedRow : JadwalPerCourseData
+  course : RekapJadwalKelas[]
+  course1 : RekapJadwalKelas
+  selectedRow : RekapJadwalKelas
+  idTemp
 
-  constructor() { }
+  constructor(private activatedRoute : ActivatedRoute, private courseService : CourseService) { }
 
   ngOnInit(): void {
-    this.jadwalPerCourse = [
-      {
-        noUrut:1,
-        kelasKode : "X123",
-        namaTrainer : "Imam Farisi",
-        namaMateri : "Java Basic",
-        tgl : "21/4/2020"
-      },
-      {
-        noUrut:1,
-        kelasKode : "X123",
-        namaTrainer : "Imam Farisi",
-        namaMateri : "Java Basic",
-        tgl : "21/4/2020"
-      },
-      {
-        noUrut:2,
-        kelasKode : "X123",
-        namaTrainer : "Imam Farisi",
-        namaMateri : "Java Basic",
-        tgl : "22/4/2020"
-      },
-      {
-        noUrut:3,
-        kelasKode : "X124",
-        namaTrainer : "Albus Dumbledore",
-        namaMateri : "Java Basic",
-        tgl : "21/4/2020"
-      },
-      {
-        noUrut:4,
-        kelasKode : "X124",
-        namaTrainer : "Albus Dumbledore",
-        namaMateri : "OOP",
-        tgl : "24/4/2020"
-      },
-      {
-        noUrut:5,
-        kelasKode : "X125",
-        namaTrainer : "Albert Einstein",
-        namaMateri : "Java Basic",
-        tgl : "21/4/2020"
-      },
-    ]
+    this.activatedRoute.queryParams.subscribe(
+      params => this.idTemp = params.id
+    )
+
+    this.getData()
+  }
+
+  getData(){
+    this.courseService.rekapJadwalPerKelas(this.idTemp).subscribe(
+      data => this.course = data,
+      err => console.log("Ada error : "+err),
+      () => console.log("Complete")
+    )
   }
 
   onRowSelect(event){
-    this.jadwalPerCourse1 = this.cloneSelection(event.data);
+    this.course1 = this.cloneSelection(event.data);
   }
 
-  cloneSelection(d : JadwalPerCourseData){
-    let jadwalPerCourse = {};
+  cloneSelection(d : RekapJadwalKelas){
+    let course = {};
     for(let prop in d){
-      jadwalPerCourse[prop] = d[prop];
+      course[prop] = d[prop];
     }
     return d;
   }

@@ -20,7 +20,7 @@
                         <button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>&nbsp; Print</button>
                     </div>
                     <br>
-                    <p-table [value]="jadwalPerCourse" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="course" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
@@ -33,13 +33,13 @@
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-jadwalPerCourse>
+                        <ng-template pTemplate="body" let-rowData let-course let-i="rowIndex">
                           <tr [pSelectableRow]="rowData">
-                            <td>{{jadwalPerCourse.noUrut}}</td>
-                            <td>{{jadwalPerCourse.kelasKode}}</td>
-                            <td>{{jadwalPerCourse.namaTrainer}}</td>
-                            <td>{{jadwalPerCourse.namaMateri}}</td>
-                            <td>{{jadwalPerCourse.tgl}}</td>
+                            <td>{{i+1}}</td>
+                            <td>{{course.kodeKelas}}</td>
+                            <td>{{course.namaTrainer}}</td>
+                            <td>{{course.namaSubcourse}}</td>
+                            <td>{{course.tanggalMulai}}</td>
                           </tr>
                           
                         </ng-template>

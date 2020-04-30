@@ -32,12 +32,12 @@
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-kelas>
+                        <ng-template pTemplate="body" let-rowData let-kelas let-i="rowIndex">
                           <tr [pSelectableRow]="rowData">
-                            <td>{{kelas.noUrut}}</td>
-                            <td>{{kelas.kelasKode}}</td>
-                            <td>{{kelas.namaCourse}}</td>
-                            <td>{{kelas.namaTrainer}}</td>
+                            <td>{{i+1}}</td>
+                            <td>{{kelas.kodeKelas}}</td>
+                            <td>{{kelas.course.namaCourse}}</td>
+                            <td>{{kelas.course.trainer.namaTrainer}}</td>
                           </tr>
                           
                         </ng-template>

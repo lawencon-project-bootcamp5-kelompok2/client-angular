@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, catchError, map} from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Course } from '../model/course';
+import { RekapJadwalKelas } from '../model/rekap-jadwal-kelas';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,10 @@ export class CourseService {
 
   deleteCourse(idCourse) : Observable<string>{
     return this.http.delete<any>(`${this.url}/delete/${idCourse}`, this.httpOptions);
+  }
+
+  rekapJadwalPerKelas(idCourse) : Observable<RekapJadwalKelas[]>{
+    return this.http.get<RekapJadwalKelas[]>(`${this.url}/rekap/`+idCourse,this.httpOptions)
   }
 
 }
