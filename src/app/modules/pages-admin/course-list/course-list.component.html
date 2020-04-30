@@ -35,7 +35,7 @@
                           <tr [pSelectableRow]="rowData">
                             <td>{{course.namaCourse}}</td>
                             <td>
-                                <button class="btn btn-primary" [routerLink]="['../list-materi']" [queryParams]="{idCourse:course.idCourse}">
+                                <button class="btn btn-primary" [routerLink]="['../list-materi']" [queryParams]="{idCourse:course.idCourse, namaCourse:course.namaCourse}">
                                   Lihat Materi
                                 </button>
                             </td>

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class PertemuanService {
 
-  url = "http://d250db20.ngrok.io/pertemuan";
+  url = "http://caf62d24.ngrok.io/pertemuan";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {

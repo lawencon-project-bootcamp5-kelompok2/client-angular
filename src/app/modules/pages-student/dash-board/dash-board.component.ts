@@ -11,6 +11,7 @@ import { Kelas } from 'src/app/model/kelas';
 import { LoginService} from '../../../service/login.service'
 import {TokenStorageService} from '../../../service/token-storage.service';
 import {Router} from '@angular/router';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-dash-board',
@@ -19,7 +20,7 @@ import {Router} from '@angular/router';
 })
 export class DashBoardComponent implements OnInit {
 
-  tableIsEmpty = true;
+  tableIsEmpty = false;
   cols : any[];
   selectedRow: Course;
   courses : Course[];
@@ -31,25 +32,31 @@ export class DashBoardComponent implements OnInit {
   idCourse: any;
   content: any;
   nama : string;
+  idStudent: string;
 
   constructor(private courseService: CourseService, private trainerService: TrainerService, private studentService: StudentService,
-    private kelasService: KelasService, private userService: LoginService, private tokenStorage: TokenStorageService, public router: Router) {
-
-    kelasService.getKelas().subscribe(
-      result => this.kelas = result,
-      err => console.log(("error found," + JSON.stringify(err)))
-    );
-
-    studentService.getStudentById(1).subscribe(
-      result => this.student = result,
-      err => console.log("Error! " + JSON.stringify(err)),
-      () => console.log("done!")
-    );
-  }
+    private kelasService: KelasService, private userService: LoginService, private tokenStorage: TokenStorageService, public router: Router) {}
 
   ngOnInit() {
     const user = this.tokenStorage.getUser();
     this.nama = user.nama;
+    this.idStudent = user.id;
+
+    this.kelasService.getKelas().subscribe(
+      result => this.kelas = result,
+      err => console.log(("error found," + JSON.stringify(err)))
+    );
+
+    // this.studentService.getStudentById(this.idStudent).subscribe(
+    //   result => this.student = result,
+    //   err => console.log(err),
+    //   () => console.log("done!")
+    // );
+
+    this.studentService.getStudentByEmail(user.email).subscribe( res => {
+      this.student = res,
+      err => console.log(err)      
+    })
 
     if (!this.tokenStorage.getToken()) {
       this.router.navigate(['/login']);
@@ -58,7 +65,7 @@ export class DashBoardComponent implements OnInit {
     this.userService.getStudentBoard().subscribe(
       data => {
         this.content = data;
-        this.studentService.getStudentById(this.tokenStorage).subscribe(
+        this.studentService.getStudentByEmail(user.email).subscribe(
           result => this.takenCourse = result.kelas
         )
         

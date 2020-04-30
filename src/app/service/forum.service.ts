@@ -8,7 +8,7 @@ import { Forum } from '../model/forum';
 })
 export class ForumService {
 
-  url = "http://d250db20.ngrok.io/forum";
+  url = "http://caf62d24.ngrok.io/forum";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {

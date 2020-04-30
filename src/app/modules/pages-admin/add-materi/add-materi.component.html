@@ -1,8 +1,9 @@
-<p-toast position="center"></p-toast>
 <section class="content-header"></section>
 <section class="content">
     <div class="row">
-      <div class="col-md-2"></div>
+      <div class="col-md-2">
+        <p-toast class="col-md-2" position="bottom-center"></p-toast>
+      </div>
       <div class="col-md-8">
         <!-- Default box -->
         <div class="box">
@@ -18,7 +19,7 @@
                       <label for="inputMateri" class="col-sm-4 control-label">Nama Materi</label>
 
                       <div class="col-sm-8">
-                        <input [(ngModel)]="test.idSubcourse.namaSubcourse" type="text" class="form-control" placeholder="Nama Materi">
+                        <input [(ngModel)]="subcourse.namaSubcourse" type="text" class="form-control" placeholder="Nama Materi">
                       </div>
                     </div>
                     <div class="form-group">
@@ -26,7 +27,7 @@
                       <div class="col-sm-8">
                         <div class="input-group date">
                           <div class="ui-g-12 ui-md-4">
-                            <p-calendar [(ngModel)]="test.idSubcourse.tanggalMulai" dateFormat="yy-mm-dd" dataType="string"></p-calendar>
+                            <p-calendar [(ngModel)]="subcourse.tanggalMulai" dateFormat="yy-mm-dd" dataType="string"></p-calendar>
                           </div>
                           
                         </div>
@@ -38,36 +39,7 @@
                         <div class="input-group date">
                           
                           <div class="ui-g-12 ui-md-4">
-                            <p-calendar [(ngModel)]="test.idSubcourse.tanggalSelesai" dateFormat="yy-mm-dd" dataType="string"></p-calendar>
-                          </div>
-                          
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-4 control-label">Deskripsi Test</label>
-                      <div class="col-sm-8">
-                        <textarea class="form-control" rows="4" placeholder="Enter ..."></textarea>
-                      </div>
-                      
-                    </div>
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-4 control-label">Waktu Mulai</label>
-                      <div class="col-sm-8">
-                        <div class="input-group date">
-                          <div class="ui-g-12 ui-md-4">
-                            <p-calendar [(ngModel)]="test.waktuMulai" [timeOnly]="true" showSeconds="true" hourFormat="24" dataType="string"></p-calendar>
-                          </div>
-                          
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputPassword3" class="col-sm-4 control-label">Waktu Selesai</label>
-                      <div class="col-sm-8">
-                        <div class="input-group date">
-                          <div class="ui-g-12 ui-md-4">
-                            <p-calendar [(ngModel)]="test.waktuSelesai" [timeOnly]="true" showSeconds="true" hourFormat="24" dataType="string"></p-calendar>
+                            <p-calendar [(ngModel)]="subcourse.tanggalSelesai" dateFormat="yy-mm-dd" dataType="string"></p-calendar>
                           </div>
                           
                         </div>

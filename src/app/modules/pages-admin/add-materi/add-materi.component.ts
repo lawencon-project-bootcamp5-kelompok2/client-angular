@@ -18,37 +18,35 @@ export class AddMateriComponent implements OnInit {
   dateTglMulai : Date;
   dateTglSelesai : Date;
   subcourse = new Subcourse();
-  test = new Test();
   idCourse: any;
 
   constructor(private route: ActivatedRoute, private subcourseService: SubcourseService, 
-    private testService: TestService, private messageService: MessageService) { }
+    private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params =>
       this.idCourse = params.idCourse
     );
 
-    this.test.idSubcourse.idCourse.trainer = null;
-    this.test.idSubcourse.idMateri = null;
-    this.test.fileSoal = null;
-    this.test.idSubcourse.idCourse.idCourse = this.idCourse;
+    this.subcourse.idCourse.trainer = null;
+    this.subcourse.idMateri = null;
+    this.subcourse.idCourse.idCourse = this.idCourse;
   }
 
   onSubmit() {
-    this.testService.insertTest(this.test).subscribe(res => {
+    this.subcourseService.insertSubcourse(this.subcourse).subscribe( res => {
       this.onSuccess();
-      }, err => {
-        this.onFailed();
-        console.log(err);
-      })
+    }, err => {
+      this.onFailed();
+      console.log(err);      
+    })
   }
 
   onSuccess(){
-    this.messageService.add({severity:'success', summary:'Success!', detail:'Tambah Kelas Berhasil!'})
+    this.messageService.add({severity:'success', summary:'Success!', detail:'Tambah Materi Berhasil!'})
   }
   onFailed(){
-    this.messageService.add({severity:'error', summary:'Error!', detail:'Tambah Kelas Gagal!'})
+    this.messageService.add({severity:'error', summary:'Error!', detail:'Tambah Materi Gagal!'})
   }
 
 }

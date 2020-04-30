@@ -38,21 +38,19 @@
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-subcourse>
+                        <ng-template pTemplate="body" let-rowData let-subcourse let-i="rowIndex">
                           <tr [pSelectableRow]="rowData">
-                            <!-- <td>{{materi.noUrut}}</td> -->
+                            <td>{{ i+1 }}.</td>
                             <td>{{subcourse.namaSubcourse}}</td>
                             <td>{{subcourse.tanggalMulai}}</td>
                             <td>{{subcourse.tanggalSelesai}}</td>
-                            <!-- <td>{{materi.tglMulaiKuis}}</td> -->
-                            <!-- <td>{{materi.tglSelesaiKuis}}</td> -->
                             <td>
-                              <button type="button" class="btn btn-block btn-primary" routerLink="./#">
+                              <button type="button" class="btn btn-block btn-primary" [routerLink]="['../edit-materi']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
                                 <i class="glyphicon glyphicon-pencil"></i>
                               </button>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#modal-danger">
+                                <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#modal-danger" [routerLink]="['./']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </button>
                             </td>
@@ -78,7 +76,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-outline" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-outline">Ya</button>
+              <button type="button" class="btn btn-outline" data-dismiss="modal" (click)="onDelete()">Ya</button>
             </div>
           </div>
           <!-- /.modal-content -->
