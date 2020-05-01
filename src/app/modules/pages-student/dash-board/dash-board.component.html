@@ -5,92 +5,98 @@
 </section>
 
 <section class="content">
-
-  <div class="box">
-    <div class="box-header with-border">
-      <h3 class="box-title">Course Anda</h3>
-    </div>
-    <div class="box-body" *ngIf="tableIsEmpty; else notEmpty">
-      <p align="center">Anda belum menambahkan course ke dalam akun anda, silahkan pilih salah satu course dibawah.</p>
-    </div>
-    <div class="box-body">
-    <ng-template #notEmpty>
-      <p-table [value]="takenCourse">
-        <ng-template pTemplate="header">                  
-          <tr>
-            <th style="width: 100px;">Kode</th>
-            <th>Kelas</th>
-            <th>Instruktur</th>
-            <th>Jadwal</th>
-            <th style="width: 80px">Mulai</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData let-takenCourse>
-          <tr>
-            <td>{{takenCourse.kodeKelas}}</td>
-            <td>{{takenCourse.course.namaCourse}}</td>
-            <td>{{takenCourse.course.trainer.namaTrainer}}</td>
-            <td>{{takenCourse.openKelas}} WIB</td>
-            <td>
-              <button type="button" class="btn btn-block btn-primary" [routerLink]="['./silabus']" [queryParams]="{idKelas:takenCourse.idKelas}">
-                <i class="fa fa-search">Cari</i>
-              </button>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </ng-template>
-    </div>
-    <div class="box-footer">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="box">
+        <div class="box-header bg-green-active color-palette">
+          <h3 class="box-title">Course Anda</h3>
+        </div>
+        <div class="box-body" *ngIf="tableIsEmpty; else notEmpty">
+          <p align="center">Anda belum menambahkan course ke dalam akun anda, silahkan pilih salah satu course dibawah.</p>
+        </div>
+        <div class="box-body">
+       
+          <p-table [value]="takenCourse" #notEmpty>
+            <ng-template pTemplate="header">                  
+              <tr>
+                <th style="width: 100px;">Kode</th>
+                <th>Kelas</th>
+                <th>Instruktur</th>
+                <th>Jadwal</th>
+                <th style="width: 80px">Mulai</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-takenCourse>
+              <tr>
+                <td>{{takenCourse.kodeKelas}}</td>
+                <td>{{takenCourse.course.namaCourse}}</td>
+                <td>{{takenCourse.course.trainer.namaTrainer}}</td>
+                <td>{{takenCourse.openKelas}} WIB</td>
+                <td>
+                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['./silabus']" [queryParams]="{idKelas:takenCourse.idKelas}">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        
+        </div>
+        <div class="box-footer">
+        </div>
+      </div>
+      <div class="box with-border">
+        <div class="box-header bg-light-blue-active color-palette">
+          <h3 class="box-title">Pilih Kelas</h3>
+    
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="collapse" title="Collapse"
+                    type="button">
+              <i class="fa fa-minus"></i></button>
+            <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="remove" title="Remove" type="button">
+              <i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body">
+          <p-table #dt [value]="kelas" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+            <ng-template pTemplate="caption">
+              <div style="text-align: right">        
+                  <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                  <input type="text" pInputText size="50" placeholder="Pencarian . . ." (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+              </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+              <tr>  
+                <th style="width: 100px;">Kode</th>
+                <th>Kelas</th>
+                <th>Instruktur</th>
+                <th>Mulai</th>
+                <th style="width: 80px">Pilih</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-kelas>
+              <tr [pSelectableRow]="rowData">
+                <td>{{kelas.kodeKelas}}</td>
+                <td>{{kelas.course.namaCourse}}</td>
+                <td>{{kelas.course.trainer.namaTrainer}}</td>
+                <td>{{kelas.openKelas}} WIB</td>
+                <td>
+                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['./enroll']"
+                   [queryParams]="{idKelas:kelas.idKelas, namaCourse:kelas.course.namaCourse}">
+                    Lihat
+                  </button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
     </div>
   </div>
+  
 
   <!-- PILIH COURSE -->
 
-  <div class="box">
-    <div class="box-header with-border">
-      <h3 class="box-title">Pilih Kelas</h3>
-
-      <div class="box-tools pull-right">
-        <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="collapse" title="Collapse"
-                type="button">
-          <i class="fa fa-minus"></i></button>
-        <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="remove" title="Remove" type="button">
-          <i class="fa fa-times"></i></button>
-      </div>
-    </div>
-    <div class="box-body">
-      <p-table #dt [value]="kelas" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
-        <ng-template pTemplate="caption">
-          <div style="text-align: right">        
-              <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-              <input type="text" pInputText size="50" placeholder="Pencarian . . ." (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
-          </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-          <tr>  
-            <th style="width: 100px;">Kode</th>
-            <th>Kelas</th>
-            <th>Instruktur</th>
-            <th>Mulai</th>
-            <th style="width: 80px">Pilih</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData let-kelas>
-          <tr [pSelectableRow]="rowData">
-            <td>{{kelas.kodeKelas}}</td>
-            <td>{{kelas.course.namaCourse}}</td>
-            <td>{{kelas.course.trainer.namaTrainer}}</td>
-            <td>{{kelas.openKelas}} WIB</td>
-            <td>
-              <button type="button" class="btn btn-block btn-primary" [routerLink]="['./enroll']"
-               [queryParams]="{idKelas:kelas.idKelas, namaCourse:kelas.course.namaCourse}">
-                Lihat
-              </button>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
-  </div>
+  
 </section>
