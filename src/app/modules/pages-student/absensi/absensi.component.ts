@@ -23,6 +23,8 @@ export class AbsensiComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById("sideEnroll").className="active";
+    
     this.route.queryParams.subscribe(params => 
       this.idSubcourse = params.idSubcourse
     );

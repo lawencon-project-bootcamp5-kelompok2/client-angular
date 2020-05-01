@@ -26,7 +26,7 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h2 class="box-title">Java</h2>
+        <h2 class="box-title">{{course.namaCourse}}</h2>
         <div class="box-tools pull-right">
             <button class="btn btn-sm btn-block btn-primary" type="button" (click)="editDeskripsi()"> <i class="glyphicon glyphicon-pencil" *ngIf="!editClick"></i>&nbsp; {{buttonEdit}}</button>
         </div>
@@ -35,7 +35,7 @@
       <div class="box-body">
         <h4>Pengenalan</h4>
         <div *ngIf="!editClick">
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <p>{{course.deskripsi}}</p>
           <!-- <p></p> -->
         </div>
         <div *ngIf="editClick">
@@ -80,7 +80,7 @@
                 <th>Materi</th>
                 <th>Mulai</th>
                 <th>Selesai</th>
-                <th>File Materi</th>
+                <th colspan="1">File Materi</th>
                 <th>Forum</th>
                 <th>Edit</th>
               </tr>
@@ -90,70 +90,30 @@
                 <td>{{subcourse.namaSubcourse}}</td>
                 <td>{{subcourse.tanggalMulai}}</td>
                 <td>{{subcourse.tanggalSelesai}}</td>
+                <!-- <td>
+                  <button type="button" class="btn btn-block btn-primary" (click)="onDownloadMateri(subcourse.idSubcourse)">
+                    <i class="glyphicon glyphicon-cloud-download" style="width: fit-content;"></i>
+                  </button>
+                </td> -->
                 <td>
-                  <button type="button" class="btn btn-block btn-primary" (click)="onClickMateri(subcourse.idMateri.idMateri)">
-                    <i class="glyphicon glyphicon-download-alt"></i>
+                  <button type="button" class="btn btn-block btn-primary" (click)="showUpload(subcourse.idSubcourse)">
+                    <i class="glyphicon glyphicon-cloud-upload" style="width: fit-content;"></i>
                   </button>
                 </td>
                 <td>
                   <button type="button" class="btn btn-block btn-primary" [routerLink]="['../forum']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
-                    <i class="glyphicon glyphicon-comment"></i>
+                    <i class="glyphicon glyphicon-comment" style="width: fit-content;"></i>
                   </button>
                 </td>
                 <td>
                   <button type="button" class="btn btn-block btn-primary" [routerLink]="['../editsubcourse']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
-                    <i class="glyphicon glyphicon-pencil"></i>
+                    <i class="glyphicon glyphicon-pencil" style="width: fit-content;"></i>
                   </button>
                 </td>
               </tr>
             </ng-template>
           </p-table>
-          <!-- <div *ngIf = "!dataNotNull">
-              <table>
-                  <tr>
-                      <td colspan="3">
-                          <p>Materi belum diisi silahkan buat materi baru</p>            
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>&nbsp;</td>
-                      <td>
-                          <button type="button" class="btn btn-block btn-primary" routerLink="../addsubcourse/" queryParams="prop: 'xxx'"><i class="glyphicon glyphicon-plus"></i> Tambah Materi</button>
-                      </td>
-                      <td></td>
-                  </tr>
-              </table>
-          </div> -->
-          <div class="col-md-10" *ngIf="dataNotNull">
-              <!-- <table class="table">
-                  <thead>
-                      <tr>
-                          <th style="width: 10%">Pertemuan</th>
-                          <th>Materi</th>
-                          <th>Tanggal</th>
-                          <th style="width: 30%">Nama File</th>
-                          <th style="width: 7%">Nilai Test</th>
-                          <th style="width: 7%">Forum</th>
-                          <th style="width: 7%">Absen</th>
-                          <th style="width: 5%">Action</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>Java Basic</td>
-                          <td>20-4-2020</td>
-                          <td>Java Basic for Dummy.mp4</td>
-                          <td><a href="" class="btn btn-block btn-primary">Nilai</a></td>
-                          <td><a href="" class="btn btn-block btn-primary">Forum</a></td>
-                          <td><a href="" class="btn btn-block btn-primary">Absen</a></td>
-                          <td>
-                              <a href="" class="btn btn-block btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-                          </td>
-                      </tr>
-                  </tbody>
-              </table> -->
-              
+          <div class="col-md-10" *ngIf="dataNotNull">              
           </div>
           
         </div>
@@ -183,4 +143,18 @@
       </div>
   </section>
   <!-- /.content -->
-  
+
+<p-dialog header="Upload Materi {{subcourseInput.namaSubcourse}}" [(visible)]="display">
+  <div class="form-group" enctype="multipart/form-data">
+    <label for="inputMateri" class="col-sm-4 control-label">Silahkan Upload File Materi</label>
+    <div class="col-sm-8">
+      <input enctype="multipart/form-data" name="fileMateri" type="file" id="fileMateri" (change)="handleInputMateri($event.target.files)">
+    </div>
+  </div>
+  <p-footer>
+    <button type="submit" pButton icon="pi pi-check" (click)="onUploadMateri(); display=false" label="Upload"></button>
+    <button type="button" pButton icon="pi pi-times" (click)="display=false" label="Cancel" class="ui-button-secondary"></button>
+</p-footer>
+</p-dialog>
+
+<p-toast position="bottom-center"></p-toast>

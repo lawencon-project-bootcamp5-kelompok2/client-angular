@@ -13,6 +13,8 @@ export class TestPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById("sideEnroll").className="active";
+    
     setInterval(this.fungsi, 1000);
   }
 

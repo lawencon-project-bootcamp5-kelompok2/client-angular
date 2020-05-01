@@ -15,6 +15,8 @@ export class RekapAbsenStudentClassComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.getElementById("side").className="active";
+    
     this.kelas = [
       {
         noUrut : 1,

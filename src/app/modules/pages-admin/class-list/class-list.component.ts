@@ -21,6 +21,8 @@ export class ClassListComponent implements OnInit {
     this.kelasService.getKelas().subscribe( result => {
       this.kelas = result
     });
+
+    document.getElementById("sideClass").className="active";
   }
 
   onRowSelect(event){

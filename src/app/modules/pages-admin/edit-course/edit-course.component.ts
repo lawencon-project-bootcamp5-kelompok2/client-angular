@@ -34,6 +34,8 @@ export class EditCourseComponent implements OnInit {
       this.course = res
     })
 
+    document.getElementById("side").className="active";
+
   }
 
   onSubmit(){

@@ -20,6 +20,9 @@ import { RekapNilaiListComponent } from './rekap-nilai-list/rekap-nilai-list.com
 import { RekapNilaiComponent } from './rekap-nilai/rekap-nilai.component';
 import { ForumComponent } from './forum/forum.component';
 
+import { DialogModule } from 'primeng/dialog';
+import {ToastModule} from 'primeng/toast';
+
 
 @NgModule({
   declarations: [TrainerComponent, DashboardComponent, CourseDetailComponent, SubcourseEditComponent, SubcourseAddComponent, ListAbsenComponent, 
@@ -28,7 +31,7 @@ import { ForumComponent } from './forum/forum.component';
   imports: [
     CommonModule,
     PagesTrainerRoutingModule,
-    LayoutModule,CalendarModule,FormsModule,TableModule
+    LayoutModule,CalendarModule,FormsModule,TableModule, DialogModule, ToastModule
   ]
 })
 export class PagesTrainerModule { }

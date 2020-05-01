@@ -13,8 +13,7 @@ export class TrainerService {
   headers = new HttpHeaders().set('Content-type', 'application/json').
     set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
-    headers : this.headers,
-    //responseType: 'text' as 'json'
+    headers : this.headers
   };
 
   constructor(private http: HttpClient) { }

@@ -25,8 +25,14 @@ export class SilabusComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    document.getElementById("sideEnroll").className="active"
+    
     this.route.queryParams.subscribe(
       params => {this.idKelas = params.idKelas}
+
+    
+
     );
 
     this.kelasService.getKelasById(this.idKelas).subscribe(

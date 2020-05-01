@@ -31,6 +31,8 @@ export class TrainerListComponent implements OnInit {
   }
 
   getAllDataTrainer(){
+    document.getElementById("side").className="active";
+
     let resp
     if (this.search == null || this.search == "") {
       resp = this.trainerService.getTrainer()

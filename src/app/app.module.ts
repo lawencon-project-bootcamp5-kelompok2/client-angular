@@ -11,6 +11,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import {ToastModule} from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ToastModule} from 'primeng/toast';
     HttpClientModule,
     ReactiveFormsModule,
     CheckboxModule,
-    ToastModule
+    ToastModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

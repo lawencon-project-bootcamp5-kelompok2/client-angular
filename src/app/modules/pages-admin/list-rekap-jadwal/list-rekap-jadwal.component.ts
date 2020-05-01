@@ -23,6 +23,8 @@ export class ListRekapJadwalComponent implements OnInit {
       err => console.log("Ada Error" + err),
       () => console.log("Complete")
     )
+
+    document.getElementById("side").className="active";
   }
 
   onRowSelect(event){

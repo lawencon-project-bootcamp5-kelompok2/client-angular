@@ -4,25 +4,25 @@
     <section class="sidebar">
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li>
-          <a href="#">
-            <i class="fa fa-play"></i> <span>Ini Admin</span>
+        <li id="sideDashboard">
+          <a href="./admin">
+            <i class="fa fa-play"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li>
-          <a href="#">
+        <li id="sideClass">
+          <a href="./admin/list-class">
             <i class="fa fa-tasks"></i>
-            <span>List Materi</span>
+            <span>List Kelas</span>
           </a>
         </li>
-        <li>
+        <li id="side">
             <a href="#">
               <i class="fa fa-tasks"></i>
               <span>Report</span>
             </a>
           </li>
-        <li>
-          <a href="../widgets.html">
+        <li id="side">
+          <a href="./admin/rekap-nilai-list">
             <i class="fa fa-check-square-o"></i> <span>Nilai E-Learning</span>
           </a>
         </li>
@@ -34,9 +34,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Jadwal</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Nilai</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Kelas</a></li>
+            <li id="side"><a href="./admin/list-class"><i class="fa fa-circle-o"></i> Jadwal</a></li>
+            <li id="side"><a href="./admin/rekap-nilai-list"><i class="fa fa-circle-o"></i> Nilai</a></li>
+            <li id="side"><a href="./admin/list-class"><i class="fa fa-circle-o"></i> Kelas</a></li>
             <li class="treeview">
               <a href="#"><i class="fa fa-circle-o"></i> Absen
                 <span class="pull-right-container">
@@ -44,13 +44,13 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Trainer</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Murid</a></li>
+                <li id="side"><a href="./admin/rekap-absen-trainer-list"><i class="fa fa-circle-o"></i> Trainer</a></li>
+                <li id="side"><a href="./admin/rekap-absen-student-list"><i class="fa fa-circle-o"></i> Murid</a></li>
               </ul>
             </li>
           </ul>
         </li>
-        <li>
+        <li id="side">
           <a href="../widgets.html">
             <i class="fa fa-gears"></i> <span>Setting</span>
           </a>

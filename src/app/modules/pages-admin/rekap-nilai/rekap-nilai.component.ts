@@ -14,6 +14,8 @@ export class RekapNilaiComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.getElementById("side").className="active";
+    
     this.rekapNilai = [
       {
         npm: 234234324,

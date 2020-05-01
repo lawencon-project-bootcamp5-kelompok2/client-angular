@@ -6,7 +6,6 @@ import { Student } from 'src/app/model/student';
 import { Kelas } from 'src/app/model/kelas';
 import { KelasService } from 'src/app/service/kelas.service';
 import { StudentService } from 'src/app/service/student.service';
-import { HttpResponse } from '@angular/common/http';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 
 @Component({
@@ -30,6 +29,8 @@ export class EnrollComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById("sideEnroll").className="active";
+    
     const user = this.tokenStorage.getUser();
     this.user = user;
     this.route.queryParams.subscribe(params => {
@@ -40,6 +41,10 @@ export class EnrollComponent implements OnInit {
     }
     );
 
+    this.studentService.getStudentByEmail(user.email).subscribe( res => {
+      this.student = res
+    })
+
     // this.courseService.getCourseById(this.idCourse).subscribe(
     //   result => this.course = result,
     //   err => console.log(err)
@@ -48,7 +53,7 @@ export class EnrollComponent implements OnInit {
     this.kelasService.getKelasById(this.idKelas).subscribe(result => {
       this.kelas = result;
       },
-      err => console.log(err) 
+      err => console.log(this.student) 
     );
 
     this.studentService.getStudentByEmail(this.user.email).subscribe( res => {

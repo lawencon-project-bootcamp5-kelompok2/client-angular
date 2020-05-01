@@ -4,6 +4,7 @@ import { ForumService } from 'src/app/service/forum.service';
 import { Forum } from 'src/app/model/forum';
 import { Subcourse } from 'src/app/model/subcourse';
 import { SubcourseService } from 'src/app/service/subcourse.service';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
 
 @Component({
   selector: 'app-forum',
@@ -14,14 +15,19 @@ export class ForumComponent implements OnInit {
 
   idSubcourse: any;
   forum: Forum[];
-  postForum = new Forum();
-  subcourse = new Subcourse();
+  postForum: Forum = new Forum();
+  subcourse: Subcourse = new Subcourse();
+  emailSender: any;
 
   constructor(private route: ActivatedRoute, private forumService: ForumService,
-    private subcourseService: SubcourseService) {
+    private subcourseService: SubcourseService, private sessionStorage: TokenStorageService) {
   }
 
   ngOnInit() {
+    document.getElementById("sideKelas").className="active";
+    const user=this.sessionStorage.getUser();
+    this.emailSender = user.email;
+
     this.route.queryParams.subscribe(params =>
       this.idSubcourse = params.idSubcourse
     );
@@ -38,10 +44,13 @@ export class ForumComponent implements OnInit {
   }
 
   onSend(){
-    this.postForum.emailSender = "cobaEmail@haha.com";
+    this.postForum.emailSender = this.emailSender;
     this.postForum.idSubcourse = this.idSubcourse;
-    this.forumService.postForum(this.postForum).subscribe(
-      err => console.log(err)      
+    this.forumService.postForum(this.postForum).subscribe( res => {
+
+    }, err => {
+      console.log(this.postForum) 
+    }     
     );
   }
 

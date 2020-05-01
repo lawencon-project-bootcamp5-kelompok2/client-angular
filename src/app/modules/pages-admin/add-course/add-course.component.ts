@@ -22,7 +22,9 @@ export class AddCourseComponent implements OnInit {
     this.trainerService.getTrainer().subscribe(result => {
       this.trainer = result
     }, err => console.log(err)
-    )
+    );
+
+    document.getElementById("side").className="active";
   }
 
   onSubmit(){
