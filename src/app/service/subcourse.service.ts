@@ -30,7 +30,7 @@ export class SubcourseService {
   }
 
   getSubcourseByCourse(courseId): Observable<Subcourse[]>{
-    return this.http.get<any>(`${this.url}/search/course/${courseId}`, this.httpOptions);
+    return this.http.get<any>(`${this.url}/search/course/`+courseId, this.httpOptions);
   }
 
   insertSubcourse(subcourse): Observable<string>{

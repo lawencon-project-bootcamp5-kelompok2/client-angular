@@ -27,7 +27,7 @@ export class KelasService {
   }
 
   getKelasById(idKelas): Observable<Kelas>{
-    return this.http.get<any>(`${this.url}/search/${idKelas}`, this.httpOptions);
+    return this.http.get<any>(`${this.url}/search/`+idKelas, this.httpOptions);
   }
 
   insertKelas(kelas): Observable<string>{

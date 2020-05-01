@@ -32,7 +32,7 @@
             <td>{{takenCourse.course.trainer.namaTrainer}}</td>
             <td>{{takenCourse.openKelas}} WIB</td>
             <td>
-              <button type="button" class="btn btn-block btn-primary" [routerLink]="['./silabus']" [queryParams]="{idCourse:takenCourse.course.idCourse}">
+              <button type="button" class="btn btn-block btn-primary" [routerLink]="['./silabus']" [queryParams]="{idKelas:takenCourse.idKelas}">
                 <i class="fa fa-search">Cari</i>
               </button>
             </td>

@@ -44,7 +44,7 @@ export class DashBoardComponent implements OnInit {
 
     this.kelasService.getKelas().subscribe(
       result => this.kelas = result,
-      err => console.log(("error found," + JSON.stringify(err)))
+      err => console.log(("error found," + err))
     );
     
 

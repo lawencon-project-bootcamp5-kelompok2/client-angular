@@ -14,7 +14,7 @@ export class TrainerService {
     set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers,
-    responseType: 'text' as 'json'
+    //responseType: 'text' as 'json'
   };
 
   constructor(private http: HttpClient) { }
