@@ -78,12 +78,12 @@
             <ng-template pTemplate="body" let-rowData let-kelas>
               <tr [pSelectableRow]="rowData">
                 <td>{{kelas.kodeKelas}}</td>
-                <td>{{kelas.course.namaCourse}}</td>
-                <td>{{kelas.course.trainer.namaTrainer}}</td>
+                <td>{{kelas.namaCourse}}</td>
+                <td>{{kelas.namaTrainer}}</td>
                 <td>{{kelas.openKelas}} WIB</td>
                 <td>
                   <button type="button" class="btn btn-block btn-primary" [routerLink]="['./enroll']"
-                   [queryParams]="{idKelas:kelas.idKelas, namaCourse:kelas.course.namaCourse}">
+                   [queryParams]="{idKelas:kelas.idKelas, namaCourse:kelas.namaCourse}">
                     Lihat
                   </button>
                 </td>

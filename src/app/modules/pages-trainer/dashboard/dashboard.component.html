@@ -66,11 +66,11 @@
         <ng-template pTemplate="body" let-rowData let-kelas>
           <tr>
             <td>{{kelas.kodeKelas}}</td>
-            <td>{{kelas.course.namaCourse}}</td>
+            <td>{{kelas.namaCourse}}</td>
             <td>{{kelas.openKelas}}</td>
             <td>
               <button class="btn btn-sm btn-block btn-primary" type="button" [routerLink]="['./coursedetail']"
-               [queryParams]="{idCourse:kelas.course.idCourse, namaCourse:kelas.course.namaCourse}">
+               [queryParams]="{idCourse:kelas.idCourse, namaCourse:kelas.namaCourse}">
                 <i class="fa fa-search"></i>
               </button>
             </td>

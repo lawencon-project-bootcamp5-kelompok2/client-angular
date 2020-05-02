@@ -31,6 +31,10 @@ export class TrainerService {
     return this.http.get<any>(`${this.url}/search/`+id, this.httpOptions);
   }
 
+  getTrainerByEmail(email): Observable<Trainer>{
+    return this.http.get<any>(`${this.url}/search/email/${email}`, this.httpOptions);
+  }
+
   insertTrainer(trainer): Observable<any>{
     return this.http.post<any>(`${this.url}/insert`, trainer, this.httpOptions);
   }

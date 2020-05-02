@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Kelas } from 'src/app/model/kelas';
 import { KelasService } from 'src/app/service/kelas.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
+import { Trainer } from 'src/app/model/trainer';
+import { TrainerService } from 'src/app/service/trainer.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,8 +14,9 @@ export class DashboardComponent implements OnInit {
 
   kelas: Kelas[];
   nama: string
+  trainer: Trainer = new Trainer()
 
-  constructor(private tokenStorage : TokenStorageService,private kelasService: KelasService) {
+  constructor(private tokenStorage : TokenStorageService,private kelasService: KelasService, private trainerService: TrainerService) {
     // kelasService.getKelas().subscribe( result => {
     //   this.kelas = result
     // });
@@ -25,9 +28,12 @@ export class DashboardComponent implements OnInit {
     const user = this.tokenStorage.getUser();
     this.nama = user.nama;
 
-    this.kelasService.getKelas().subscribe( result => {
-      this.kelas = result
-    });
+    this.trainerService.getTrainerByEmail(user.email).subscribe(res => {
+      this.trainer = res,
+      this.kelasService.getKelasByTrainer(this.trainer.idTrainer).subscribe(res => {
+        this.kelas = res
+      })
+    })
   }
 
 }

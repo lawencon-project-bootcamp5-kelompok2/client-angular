@@ -28,49 +28,32 @@ export class DashBoardComponent implements OnInit {
   colCourse: any[];
   student: Student = new Student();
   takenCourse: Kelas[] = [];
-  kelas: Kelas[];
+  kelas: any;
   idCourse: any;
   content: any;
   nama : string;
   idStudent: string;
 
   constructor(private courseService: CourseService, private trainerService: TrainerService, private studentService: StudentService,
-    private kelasService: KelasService, private userService: LoginService, private tokenStorage: TokenStorageService, public router: Router) {}
+    private kelasService: KelasService, private userService: LoginService, private tokenStorage: TokenStorageService, public router: Router) { }
 
   ngOnInit() {
-    document.getElementById("sideDashboard").className="active";
-    
+    document.getElementById("sideDashboard").className = "active";
+
     const user = this.tokenStorage.getUser();
     this.nama = user.nama;
-    this.idStudent = user.id;
 
-    this.kelasService.getKelas().subscribe(
-      result => this.kelas = result,
-      err => console.log(("error found," + err))
-    );
-    
-
-    // this.studentService.getStudentById(this.idStudent).subscribe(
-    //   result => this.student = result,
-    //   err => console.log(err),
-    //   () => console.log("done!")
-    // );
-
-    this.studentService.getStudentByEmail(user.email).subscribe( res => {
+    this.studentService.getStudentByEmail(user.email).subscribe(res => {
       this.student = res,
-      err => console.log(err)      
+      this.takenCourse = res.kelas,
+      this.kelasService.getAvailableKelas(this.student.idStudent).subscribe(res => {
+        this.kelas = res
+      })
     })
 
     if (!this.tokenStorage.getToken()) {
       this.router.navigate(['/login']);
     }
-
-        this.studentService.getStudentByEmail(user.email).subscribe(
-          result  => { 
-            this.takenCourse = result.kelas
-           
-          }
-        )
         
         if(this.takenCourse.length >= 0){
           this.tableIsEmpty = false;

@@ -30,6 +30,14 @@ export class KelasService {
     return this.http.get<any>(`${this.url}/search/`+idKelas, this.httpOptions);
   }
 
+  getAvailableKelas(idStudent: string): Observable<any[]>{
+    return this.http.get<any[]>(`${this.url}/search/available/`+idStudent, this.httpOptions);
+  }
+
+  getKelasByTrainer(idTrainer: string): Observable<any[]>{
+    return this.http.get<any[]>(`${this.url}/search/trainer/`+idTrainer, this.httpOptions);
+  }
+
   insertKelas(kelas): Observable<string>{
     return this.http.post<any>(`${this.url}/insert`, kelas, this.httpOptions);
   }
