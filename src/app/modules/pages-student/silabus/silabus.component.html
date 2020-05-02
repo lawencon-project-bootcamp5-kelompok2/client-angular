@@ -25,9 +25,16 @@
               <tr [pSelectableRow]="rowData">
                 <td>{{i+1}}</td>
                 <td>{{subcourse.namaSubcourse}}</td>
-                <td>{{subcourse.tanggalMulai}}</td>
+                <td>{{subcourse.tanggalMmulai}}</td>
                 <td>{{subcourse.tanggalSelesai}}</td>
-                <td style="width: 5%;"><button class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button></td>
+                <td style="width: 5%;">
+                  <div *ngIf="hiddenGo(subcourse.tanggalMmulai)">
+                    <button class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+                  <div *ngIf="!hiddenGo(subcourse.tanggalMmulai)">
+                    <p>N/A</p>
+                  </div>
+                </td>
                 <td style="width: 13%;"><button class="btn">Kuis</button></td>
               </tr>
             </ng-template>

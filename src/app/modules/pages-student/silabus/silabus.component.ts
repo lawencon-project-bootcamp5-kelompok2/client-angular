@@ -6,6 +6,7 @@ import { Course } from 'src/app/model/course';
 import { Kelas } from 'src/app/model/kelas';
 import { KelasService } from 'src/app/service/kelas.service';
 import { FnParam } from '@angular/compiler/src/output/output_ast';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-silabus',
@@ -21,6 +22,9 @@ export class SilabusComponent implements OnInit {
   kelas : Kelas
   course: Course = new Course();
   selectedRow : Subcourse
+  today : Date = new Date()
+  dvs : Date
+  pipe
   constructor(private route: ActivatedRoute, private subcourseService: SubcourseService, private kelasService : KelasService) {
   }
 
@@ -28,11 +32,11 @@ export class SilabusComponent implements OnInit {
 
     document.getElementById("sideEnroll").className="active"
     
-    this.route.queryParams.subscribe(
-      params => {this.idKelas = params.idKelas}
-
+    console.log(this.today);
     
 
+    this.route.queryParams.subscribe(
+      params => {this.idKelas = params.idKelas}
     );
 
     this.kelasService.getKelasById(this.idKelas).subscribe(
@@ -49,8 +53,6 @@ export class SilabusComponent implements OnInit {
       
     )
 
-
-    
   }
 
   onRowSelect(event){
@@ -63,6 +65,17 @@ export class SilabusComponent implements OnInit {
       subcourse[prop] = d[prop];
     }
     return d;
+  }
+
+  hiddenGo(tgl : Date) : boolean{
+    this.pipe = new DatePipe('en-US')
+    let getToday : Date = this.pipe.transform(this.today, "yyyy-MM-dd")
+    if (tgl <= getToday) {
+      return true
+    } else {
+      return false
+    }
+    
   }
 
 }
