@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormNilai } from '../form-nilai';
+import { ActivatedRoute } from '@angular/router';
+import { SubcourseService } from 'src/app/service/subcourse.service';
+import { KelasService } from 'src/app/service/kelas.service';
+import { Kelas } from 'src/app/model/kelas';
+import { Subcourse } from 'src/app/model/subcourse';
 
 @Component({
   selector: 'app-list-nilai',
@@ -14,43 +19,81 @@ export class ListNilaiComponent implements OnInit {
   selectedRow: FormNilai 
   notifNilai : string
 
-  constructor() { }
+  idKelas : string
+  idSubcourse : string
+  kelas : Kelas
+  subcourse : Subcourse
+  formInput : any
+
+  constructor(private route: ActivatedRoute, private subcourseService: SubcourseService, private kelasService: KelasService) { }
 
   ngOnInit(): void {
-    this.formNilai = [
-      {
-        noUrut:1,
-        npm: "342342342",
-        namaStudent : "Cloud Strife",
-        fileLink : "#",
-        nilaiForm : null
-      },
-      {
-        noUrut:2,
-        npm: "43534534",
-        namaStudent : "Dr Neo Cortex",
-        fileLink : "#",
-        nilaiForm : 80
-      }
-    ]
 
-    this.cols = [
-      {field: "noUrut", header:"No"},
-      {field: "npm", header:"NPM"},
-      {field: "namaStudent", header:"Nama Student"},
-      {field: "fileLink", header:"Link File Test"},
-      {field: "nilaiForm", header:"Nilai"}
-    ]
+    // this.formNilai = [
+    //   {
+    //     noUrut:1,
+    //     npm: "342342342",
+    //     namaStudent : "Cloud Strife",
+    //     fileLink : "#",
+    //     nilaiForm : null
+    //   },
+    //   {
+    //     noUrut:2,
+    //     npm: "43534534",
+    //     namaStudent : "Dr Neo Cortex",
+    //     fileLink : "#",
+    //     nilaiForm : 80
+    //   }
+    // ]
+
+    // this.cols = [
+    //   {field: "noUrut", header:"No"},
+    //   {field: "npm", header:"NPM"},
+    //   {field: "namaStudent", header:"Nama Student"},
+    //   {field: "fileLink", header:"Link File Test"},
+    //   {field: "nilaiForm", header:"Nilai"}
+    // ]
+
+    this.route.queryParams.subscribe(params => {
+      this.idKelas = params.idKelas;
+      this.idSubcourse = params.idSubcourse
+    });
+
+    this.kelasService.getKelasById(this.idKelas).subscribe(
+      result => {
+        this.kelas = result;
+      }
+    )
+
+    this.subcourseService.getSubcourseById(this.idSubcourse).subscribe(
+      result => {
+        this.subcourse = result;
+    });
+
+    this.subcourseService.getInputNilai(this.idSubcourse, this.idKelas).subscribe(
+      result => {
+        this.formInput = result;
+      }
+    )
+
   }
 
   onRowSelect(event){
     this.formNilai1 = this.cloneSelection(event.data);
   }
 
-  cloneSelection(d : FormNilai){
-    let formNilai = {};
+  // cloneSelection(d : FormNilai){
+  //   let formNilai = {};
+  //   for(let prop in d){
+  //     formNilai[prop] = d[prop];
+  //   }
+  //   return d;
+  // }
+
+  cloneSelection(d : any){
+    let formInput = {};
     for(let prop in d){
-      formNilai[prop] = d[prop];
+      formInput[prop] = d[prop];
     }
     return d;
   }

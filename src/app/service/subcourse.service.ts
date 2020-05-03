@@ -41,6 +41,10 @@ export class SubcourseService {
     return this.http.get<any>(`${this.url}/nilai/${idSubcourse}/${idKelas}`, this.httpOptions);
   }
 
+  getInputNilai(idSubcourse, idKelas): Observable<any>{
+    return this.http.get<any>(`${this.url}/inputnilai/${idSubcourse}/${idKelas}`, this.httpOptions);
+  }
+
   insertSubcourse(subcourse): Observable<string>{
     return this.http.post<string>(`${this.url}/insert`, subcourse, this.httpOptions);
   }

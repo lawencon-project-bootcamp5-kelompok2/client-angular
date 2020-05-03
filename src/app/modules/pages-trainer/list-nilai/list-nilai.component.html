@@ -4,10 +4,10 @@
         <div class="col-md-10">
             <div class="box">
                 <div class="box-header bg-light-blue-active color-palette">
-                    <h4 class="box-title">List Nilai Materi Java Basic</h4>
+                    <h4 class="box-title">Input Nilai Materi {{subcourse.namaSubcourse}} Kelas {{kelas.kodeKelas}}</h4>
                 </div>
                 <div class="box-body">
-                    <p-table [value]="formNilai" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="formInput" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
@@ -20,14 +20,16 @@
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-formNilai>
+                        <ng-template pTemplate="body" let-rowData let-formInput>
                           <tr [pSelectableRow]="rowData">
-                            <td>{{formNilai.noUrut}}</td>
-                            <td>{{formNilai.npm}}</td>
-                            <td>{{formNilai.namaStudent}}</td>
-                            <td><a href="{{formNilai.fileLink}}">Link...</a></td>
+                            <td></td>
+                            <td>{{formInput.npm}}</td>
+                            <td>{{formInput.namaStudent}}</td>
+                            <!-- <td><a href="{{formNilai.fileLink}}">Link...</a></td> -->
+                            <td><a href="#">Link...</a></td>
                             <td>
-                              <input class="form-control" placeholder="Nilai" type="number" [(ngModel)]="formNilai.nilaiForm" value="{{formNilai.nilaiForm}}">
+                              <!-- <input class="form-control" placeholder="Nilai" type="number" [(ngModel)]="formNilai.nilaiForm" value="{{formNilai.nilaiForm}}"> -->
+                              <input class="form-control" placeholder="Nilai" type="number">
                             </td>
                           </tr>
                          

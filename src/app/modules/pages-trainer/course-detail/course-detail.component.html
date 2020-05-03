@@ -82,9 +82,9 @@
                 <th>Selesai</th>
                 <th colspan="1">File Materi</th>
                 <th>Forum</th>
-                <th>Lihat Absen</th>
-                <th>Lihat Nilai</th>
                 <th>Edit</th>
+                <th>Konfirmasi Absen</th>
+                <th>Lihat Nilai</th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-subcourse>
@@ -108,18 +108,18 @@
                   </button>
                 </td>
                 <td>
+                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['../editsubcourse']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
+                    <i class="glyphicon glyphicon-pencil" style="width: fit-content;"></i>
+                  </button>
+                </td>
+                <td>
                   <button type="button" class="btn btn-block btn-primary" [routerLink]="['../listabsen']" [queryParams]="{idSubcourse:subcourse.idSubcourse, idKelas:kelas.idKelas}">
-                    <i class="glyphicon glyphicon-list-alt" style="width: fit-content;"></i>
+                    <i class="glyphicon glyphicon-th-list" style="width: fit-content;"></i>
                   </button>
                 </td>
                 <td>
                   <button type="button" class="btn btn-block btn-primary" [routerLink]="['../nilaimateri']" [queryParams]="{idSubcourse:subcourse.idSubcourse, idKelas:kelas.idKelas}">
                     <i class="glyphicon glyphicon-list-alt" style="width: fit-content;"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['../editsubcourse']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
-                    <i class="glyphicon glyphicon-pencil" style="width: fit-content;"></i>
                   </button>
                 </td>
               </tr>

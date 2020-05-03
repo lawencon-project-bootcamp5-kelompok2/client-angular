@@ -4,12 +4,12 @@
         <div class="col-md-10">
             <div class="box">
                 <div class="box-header bg-light-blue-active color-palette">
-                    <h4 class="box-title">Rekap Absen per Materi</h4>
+                    <h4 class="box-title">Rekap Absen {{namaCourse}} Kelas {{kelas.kodeKelas}}</h4>
                    
                 </div>
                 <div class="box-body">
                     
-                    <p-table [value]="listMateri" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="subcourse" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
@@ -22,14 +22,14 @@
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-listMateri>
+                        <ng-template pTemplate="body" let-rowData let-subcourse>
                           <tr [pSelectableRow]="rowData">
-                            <td>{{listMateri.noUrut}}</td>
-                            <td>{{listMateri.namaMateri}}</td>
-                            <td>{{listMateri.tglMulai}}</td>
-                            <td>{{listMateri.tglSelesai}}</td>
+                            <td></td>
+                            <td>{{subcourse.namaSubcourse}}</td>
+                            <td>{{subcourse.tanggalMulai}}</td>
+                            <td>{{subcourse.tanggalSelesai}}</td>
                             <td>
-                              <button type="button" class="btn btn-block btn-primary" routerLink="./#">
+                              <button type="button" class="btn btn-block btn-primary" routerLink="../rekap-absen">
                                 <i class="glyphicon glyphicon-search"></i>
                               </button>
                             </td>

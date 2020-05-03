@@ -60,6 +60,7 @@
             <th>Kode Kelas</th>
             <th>Course</th>
             <th>Jadwal</th>
+            <th>Rekap Absen</th>
             <th>Input Nilai</th>
             <th>Options</th>
           </tr>
@@ -69,6 +70,11 @@
             <td>{{kelas.kodeKelas}}</td>
             <td>{{kelas.namaCourse}}</td>
             <td>{{kelas.openKelas}}</td>
+            <td>
+              <button type="button" class="btn btn-block btn-primary" [routerLink]="['./list-rekap-absen']" [queryParams]="{idKelas:kelas.idKelas, namaCourse:kelas.namaCourse}">
+                <i class="glyphicon glyphicon-th-list" style="width: fit-content;"></i>
+              </button>
+            </td>
             <td>
               <button type="button" class="btn btn-block btn-primary" [routerLink]="['./nilai']" [queryParams]="{idKelas:kelas.idKelas}">
                 <i class="glyphicon glyphicon-list-alt" style="width: fit-content;"></i>
