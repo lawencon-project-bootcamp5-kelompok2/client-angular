@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Absen } from '../absen';
+import { ActivatedRoute } from '@angular/router';
+import { AbsensiService } from 'src/app/service/absensi.service';
+import { SubcourseService } from 'src/app/service/subcourse.service';
+import { KelasService } from 'src/app/service/kelas.service';
+import { Subcourse } from 'src/app/model/subcourse';
+import { Kelas } from 'src/app/model/kelas';
 
 @Component({
   selector: 'app-list-absen',
@@ -13,11 +19,42 @@ export class ListAbsenComponent implements OnInit {
   absen1: Absen;
   cols : any[];
   selectedRow: Absen;
+  idSubcourse
+  idKelas
+  detail
+  subcourse: Subcourse
+  kelas: Kelas
 
-
-  constructor() { }
+  constructor(private route: ActivatedRoute, private absensiService: AbsensiService, private subcourseService: SubcourseService,
+    private kelasService: KelasService) { }
 
   ngOnInit(): void {
+    document.getElementById("sideKelas").className="active";
+
+    this.route.queryParams.subscribe(params => {
+      this.idSubcourse = params.idSubcourse;
+      this.idKelas = params.idKelas;
+    });
+
+    this.subcourseService.getSubcourseById(this.idSubcourse).subscribe(
+      result => {
+        this.subcourse = result;
+      }
+    )
+
+    this.kelasService.getKelasById(this.idKelas).subscribe(
+      result => {
+        this.kelas = result;
+      }
+    )
+
+    this.absensiService.getDetailAbsen(this.idSubcourse, this.idKelas).subscribe(
+      result => {
+        this.detail = result;
+      }
+    )
+
+
     this.absen = [
       {
         noUrut: 1,
@@ -38,10 +75,10 @@ export class ListAbsenComponent implements OnInit {
     this.absen1 = this.cloneSelection(event.data);
   }
 
-  cloneSelection(d : Absen){
-    let absen = {};
+  cloneSelection(d : any){
+    let detail = {};
     for(let prop in d){
-      absen[prop] = d[prop];
+      detail[prop] = d[prop];
     }
     return d;
   }

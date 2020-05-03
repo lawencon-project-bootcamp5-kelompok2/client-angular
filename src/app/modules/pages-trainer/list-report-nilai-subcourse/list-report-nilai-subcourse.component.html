@@ -4,10 +4,10 @@
         <div class="col-md-10">
             <div class="box">
                 <div class="box-header bg-light-blue-active color-palette">
-                    <h4 class="box-title">List Nilai Kelas A123 Java </h4>
+                    <h4 class="box-title">List Nilai Kelas {{kelas.kodeKelas}} </h4>
                 </div>
                 <div class="box-body">
-                    <p-table [value]="pNilai" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="subcourse" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
@@ -19,13 +19,13 @@
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-pNilai>
+                        <ng-template pTemplate="body" let-rowData let-subcourse>
                           <tr [pSelectableRow]="rowData">
-                            <td>{{pNilai.noUrut}}</td>
-                            <td>{{pNilai.materi}}</td>
-                            <td>{{pNilai.tanggal}}</td>
+                            <td></td>
+                            <td>{{subcourse.namaSubcourse}}</td>
+                            <td>{{subcourse.tanggalSelesai}}</td>
                             <td>
-                              <button class="btn btn-primary" routerLink="{{pNilai.link}}">Lihat</button>
+                              <button type="button" class="btn btn-primary" [routerLink]="['../form-nilai']" [queryParams]="{idKelas:kelas.idKelas, idSubcourse:subcourse.idSubcourse}">Lihat</button>
                             </td>
                           </tr>
                          

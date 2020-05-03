@@ -26,7 +26,7 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-        <h2 class="box-title">{{course.namaCourse}}</h2>
+        <h2 class="box-title">{{kelas.course.namaCourse}} Kelas {{kelas.kodeKelas}}</h2>
         <div class="box-tools pull-right">
             <button class="btn btn-sm btn-block btn-primary" type="button" (click)="editDeskripsi()"> <i class="glyphicon glyphicon-pencil" *ngIf="!editClick"></i>&nbsp; {{buttonEdit}}</button>
         </div>
@@ -35,7 +35,7 @@
       <div class="box-body">
         <h4>Pengenalan</h4>
         <div *ngIf="!editClick">
-          <p>{{course.deskripsi}}</p>
+          <p>{{kelas.course.deskripsi}}</p>
           <!-- <p></p> -->
         </div>
         <div *ngIf="editClick">
@@ -82,6 +82,8 @@
                 <th>Selesai</th>
                 <th colspan="1">File Materi</th>
                 <th>Forum</th>
+                <th>Lihat Absen</th>
+                <th>Lihat Nilai</th>
                 <th>Edit</th>
               </tr>
             </ng-template>
@@ -103,6 +105,16 @@
                 <td>
                   <button type="button" class="btn btn-block btn-primary" [routerLink]="['../forum']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
                     <i class="glyphicon glyphicon-comment" style="width: fit-content;"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['../listabsen']" [queryParams]="{idSubcourse:subcourse.idSubcourse, idKelas:kelas.idKelas}">
+                    <i class="glyphicon glyphicon-list-alt" style="width: fit-content;"></i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['../nilaimateri']" [queryParams]="{idSubcourse:subcourse.idSubcourse, idKelas:kelas.idKelas}">
+                    <i class="glyphicon glyphicon-list-alt" style="width: fit-content;"></i>
                   </button>
                 </td>
                 <td>

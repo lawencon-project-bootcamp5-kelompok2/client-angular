@@ -4,10 +4,10 @@
         <div class="col-md-10">
             <div class="box">
                 <div class="box-header bg-light-blue-active color-palette">
-                    <h4 class="box-title">Laporan Nilai Materi Java Basic</h4>
+                    <h4 class="box-title">Laporan Nilai Materi {{subcourse.namaSubcourse}} Kelas {{kelas.kodeKelas}}</h4>
                 </div>
                 <div class="box-body">
-                    <p-table [value]="rNilai" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="detail" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
@@ -20,13 +20,13 @@
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-rNilai>
+                        <ng-template pTemplate="body" let-rowData let-detail>
                           <tr [pSelectableRow]="rowData">
-                            <td>{{rNilai.noUrut}}</td>
-                            <td>{{rNilai.npm}}</td>
-                            <td>{{rNilai.namaStudent}}</td>
-                            <td>{{rNilai.statusAbsen}}</td>
-                            <td>{{rNilai.nilai}}</td>
+                            <td></td>
+                            <td>{{detail.npm}}</td>
+                            <td>{{detail.namaStudent}}</td>
+                            <td>{{detail.status}}</td>
+                            <td>{{detail.nilai}}</td>
                           </tr>
                          
                         </ng-template>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="box-footer">
                     <div class="box-tools pull-right">
-                        <button class="btn btn-primary">Cetak Laporan</button>
+                        <button class="btn btn-primary" (click)="onSubmit()" type="submit">Cetak Laporan</button>
                     </div>
                 </div>
             </div>

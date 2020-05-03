@@ -7,6 +7,7 @@ import { SubcourseService } from 'src/app/service/subcourse.service';
 import { MateriService } from 'src/app/service/materi.service';
 import { saveAs } from 'file-saver';
 import { MessageService } from 'primeng/api';
+import { KelasService } from 'src/app/service/kelas.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -15,11 +16,13 @@ import { MessageService } from 'primeng/api';
 })
 export class CourseDetailComponent implements OnInit {
 
-  course: Course = new Course();
+  course: any;
   subcourse: Subcourse[] = [new Subcourse()];
   subcourseInput: Subcourse = new Subcourse();
   selectSubcourse: Subcourse = new Subcourse();
-  courses: Course[];
+  courses: any;
+  kelas: any;
+  idKelas: any;
   idCourse: any;
   namaCourse: any;
   idSubcourse: any;
@@ -27,7 +30,7 @@ export class CourseDetailComponent implements OnInit {
   fileMateri: File = null;
 
   constructor(private route: ActivatedRoute, private courseService: CourseService, private messageService: MessageService,
-    private subcourseService: SubcourseService, private materiService: MateriService) { }
+    private subcourseService: SubcourseService, private materiService: MateriService, private kelasService: KelasService) { }
 
   editClick : boolean = false;
   dataNotNull : boolean = true;
@@ -39,6 +42,7 @@ export class CourseDetailComponent implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       this.idCourse = params.idCourse;
+      this.idKelas = params.idKelas;
       this.namaCourse = params.namaCourse
     });
 
@@ -46,6 +50,12 @@ export class CourseDetailComponent implements OnInit {
       result => {
         this.course = result;
     });
+
+    this.kelasService.getKelasById(this.idKelas).subscribe(
+      result => {
+        this.kelas = result;
+      }
+    )
 
     this.subcourseService.getSubcourseByCourse(this.namaCourse).subscribe(
       result => {

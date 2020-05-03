@@ -47,8 +47,8 @@ export class TrainerService {
     return this.http.delete(this.url+'/delete/'+id,this.httpOptions)
   }
 
-  reportTrainer(idTrainer, idSubcourse): Observable<Trainer>{
-    return this.http.get<any>(`${this.url}/${idTrainer}/${idSubcourse}`, this.httpOptions);
+  reportTrainer(idTrainer, idSubcourse): Observable<any>{
+    return this.http.get<any>(`${this.url}/report/${idTrainer}/${idSubcourse}`, this.httpOptions);
   }
 
   searchData(search) : Observable<Trainer[]>{

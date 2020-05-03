@@ -33,6 +33,14 @@ export class SubcourseService {
     return this.http.get<any>(`${this.url}/search/course/`+courseId, this.httpOptions);
   }
 
+  getSubcourseByKelas(idKelas): Observable<Subcourse[]>{
+    return this.http.get<any>(`${this.url}/search/kelas/`+idKelas, this.httpOptions);
+  }
+
+  getNilai(idSubcourse, idKelas): Observable<any>{
+    return this.http.get<any>(`${this.url}/nilai/${idSubcourse}/${idKelas}`, this.httpOptions);
+  }
+
   insertSubcourse(subcourse): Observable<string>{
     return this.http.post<string>(`${this.url}/insert`, subcourse, this.httpOptions);
   }
