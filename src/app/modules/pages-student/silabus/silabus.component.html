@@ -25,13 +25,13 @@
               <tr [pSelectableRow]="rowData">
                 <td>{{i+1}}</td>
                 <td>{{subcourse.namaSubcourse}}</td>
-                <td>{{subcourse.tanggalMmulai}}</td>
+                <td>{{subcourse.tanggalMulai}}</td>
                 <td>{{subcourse.tanggalSelesai}}</td>
                 <td style="width: 5%;">
-                  <div *ngIf="hiddenGo(subcourse.tanggalMmulai)">
-                    <button class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+                  <div *ngIf="hiddenGo(subcourse.tanggalMulai)">
+                    <button class="btn btn-primary" [routerLink]="['../pertemuan']" [queryParams]="{idKelas:kelas.idKelas, subCourse:subcourse.idSubcourse}"><i class="glyphicon glyphicon-search"></i></button>
                   </div>
-                  <div *ngIf="!hiddenGo(subcourse.tanggalMmulai)">
+                  <div *ngIf="!hiddenGo(subcourse.tanggalMulai)">
                     <p>N/A</p>
                   </div>
                 </td>
@@ -42,6 +42,7 @@
         </div>
         <div class="box-footer">
           <p>*Detail kelas akan berubah mengikuti trainer, silahkan berkoordinasi dengan trainer.</p>
+          <p>*N/A berarti subcourse belum tersedia, subcourse akan tersedia apabila waktu terpenuhi.</p>
         </div>
       </div>
     </div>

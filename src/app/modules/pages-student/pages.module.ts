@@ -12,10 +12,11 @@ import { AbsensiComponent } from './absensi/absensi.component';
 import { NilaiComponent } from './nilai/nilai.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { SilabusComponent } from './silabus/silabus.component';
+import { PertemuanComponent } from './pertemuan/pertemuan.component';
 
 @NgModule({
   declarations: [PagesComponent, DashBoardComponent, EnrollComponent, DetailMateriComponent, AbsensiComponent,
-  NilaiComponent, TestPageComponent, SilabusComponent],
+  NilaiComponent, TestPageComponent, SilabusComponent, PertemuanComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

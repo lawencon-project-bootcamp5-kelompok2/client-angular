@@ -36,4 +36,8 @@ export class PertemuanService {
   deletePertemuan(idPertemuan): Observable<string>{
     return this.http.delete<any>(`${this.url}/delete/${idPertemuan}`, this.httpOptions);
   }
+
+  getPertemuanBySubcourse(idSubcourse) : Observable<Pertemuan[]>{
+    return this.http.get<any>(`${this.url}/search/pertemuan/${idSubcourse}`, this.httpOptions)
+  }
 }

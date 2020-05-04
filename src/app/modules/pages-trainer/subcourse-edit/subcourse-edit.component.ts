@@ -16,7 +16,7 @@ export class SubcourseEditComponent implements OnInit {
   fileUpload: ElementRef;
   fileMateri: File = null;
   fileTest: File = null;
-
+  deskrpisi
   constructor(private route: ActivatedRoute, private subcourseService: SubcourseService,
     private materiService: MateriService) { }
 
@@ -43,7 +43,8 @@ export class SubcourseEditComponent implements OnInit {
         idMateri: null,
         idForum: result.idForum,
         tanggalMulai: new Date(result.tanggalMulai),
-        tanggalSelesai: new Date(result.tanggalSelesai)
+        tanggalSelesai: new Date(result.tanggalSelesai),
+        deskripsi: null
       },
       err => console.log(err)      
     );

@@ -9,6 +9,7 @@ import { TestPageComponent } from './test-page/test-page.component';
 import { ForumComponent } from './forum/forum.component';
 import { NilaiComponent } from './nilai/nilai.component';
 import { SilabusComponent } from './silabus/silabus.component';
+import { PertemuanComponent } from './pertemuan/pertemuan.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
       {path: 'detail-materi', component: DetailMateriComponent},
       {path: 'test-page', component: TestPageComponent},
       {path: 'forum', component: ForumComponent},
-      {path: 'nilai', component: NilaiComponent}
+      {path: 'nilai', component: NilaiComponent},
+      {path: 'pertemuan', component: PertemuanComponent}
     ]
   }
 ];
