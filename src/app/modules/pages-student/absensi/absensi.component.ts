@@ -35,11 +35,11 @@ export class AbsensiComponent implements OnInit {
       () => console.log("done!")      
     );
 
-    this.absen.idSubcourse = this.idSubcourse;
-    this.absen.idStudent.idStudent = 1;
-    this.absen.pertemuan.idPertemuan = 1;
-    this.absen.status = false;
-    this.absen.tanggal = "27-04-2020";
+    // this.absen.idSubcourse = this.idSubcourse;
+    // this.absen.idStudent.idStudent = 1;
+    // this.absen.pertemuan.idPertemuan = 1;
+    // this.absen.status = false;
+    // this.absen.tanggal = "27-04-2020";
   }
 
   onAbsensi(){

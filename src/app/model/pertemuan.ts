@@ -6,5 +6,5 @@ export class Pertemuan {
     pertemuan;
     tanggalPertemuan;
     idSubcourse: Subcourse = new Subcourse();
-    idMateri: Materi;   
+    idMateri: Materi = new Materi()
 }

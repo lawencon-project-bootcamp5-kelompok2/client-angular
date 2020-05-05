@@ -13,16 +13,17 @@ import { AbsensiComponent } from './absensi/absensi.component';
 import { NilaiComponent } from './nilai/nilai.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { SilabusComponent } from './silabus/silabus.component';
+import { PertemuanComponent } from './pertemuan/pertemuan.component';
 import { ForumComponent } from './forum/forum.component';
 
 @NgModule({
   declarations: [PagesComponent, DashBoardComponent, EnrollComponent, DetailMateriComponent, AbsensiComponent,
-  NilaiComponent, TestPageComponent, SilabusComponent, ForumComponent],
+  NilaiComponent, TestPageComponent, SilabusComponent, PertemuanComponent, ForumComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
     LayoutModule,
-    TableModule, FormsModule
+    TableModule,FormsModule
   ]
 })
 export class PagesModule {

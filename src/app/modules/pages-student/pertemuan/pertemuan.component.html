@@ -1,0 +1,55 @@
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+      <div class="col-md-6">
+          <div class="box">
+              <div class="box-header bg-green-active color-palette">
+                <h4 class="box-title">Deskripsi Subcourse {{subcourse.namaSubcourse}}</h4>
+              </div>
+              <div class="box-body">
+                <p>{{subcourse.deskripsi}}</p>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="box">
+          <div class="box-header bg-light-blue-active color-palette">
+            <h4 class="box-title">Pertemuan {{subcourse.namaSubcourse}}</h4>
+          </div>
+          <div class="box-body">
+            <p-table #dt [value]="pertemuan" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+              <ng-template pTemplate="header">
+                <tr>  
+                  <th>Pertemuan</th>
+                  <th>Tanggal</th>
+                  <th style="width: 12%">Pilih</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData let-pertemuan>
+                <tr [pSelectableRow]="rowData">
+                  <td>{{pertemuan.pertemuan}}</td>
+                  <td>{{pertemuan.tanggalPertemuan}}</td>
+                  <td style="width: 5%;">
+                    <div *ngIf="hiddenGo(pertemuan.tanggalPertemuan)">
+                      <button class="btn btn-primary" [routerLink]="['../detail-materi']" [queryParams]="{pertemuan:pertemuan.idPertemuan, subCourse:subcourse.idSubcourse}"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                    <div *ngIf="!hiddenGo(pertemuan.tanggalPertemuan)">
+                      <p>N/A</p>
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+          <div class="box-footer">
+            <p>*N/A berarti subcourse belum tersedia, subcourse akan tersedia apabila waktu terpenuhi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  
+  </section>
+  <!-- /.content -->
+  

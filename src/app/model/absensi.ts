@@ -5,9 +5,9 @@ import { Subcourse } from './subcourse';
 
 export class Absensi{
     idAbsensi;
-    idStudent: Student = new Student();
-    idSubcourse: Subcourse = new Subcourse();
+    idStudent: Student
+    idSubcourse: Subcourse
     tanggal;
     status;
-    pertemuan: Pertemuan = new Pertemuan();
+    pertemuan: Pertemuan
 }

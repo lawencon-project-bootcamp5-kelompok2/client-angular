@@ -48,7 +48,8 @@ export class TrainerService {
   }
 
   reportTrainer(idTrainer, idSubcourse): Observable<any>{
-    return this.http.get<any>(`${this.url}/report/${idTrainer}/${idSubcourse}`, this.httpOptions);
+    return this.http.get<any>(`${this.url}/report/${idTrainer}/${idSubcourse}`, 
+    { headers: this.httpOptions.headers, responseType: 'arraybuffer' as 'json'});
   }
 
   searchData(search) : Observable<Trainer[]>{

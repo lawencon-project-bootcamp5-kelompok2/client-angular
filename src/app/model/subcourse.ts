@@ -10,4 +10,5 @@ export class Subcourse{
     tanggalSelesai : Date;
     // idMateri: Materi = new Materi();
     idForum: Forum;
+    deskripsi
 }
