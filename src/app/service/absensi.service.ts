@@ -29,10 +29,6 @@ export class AbsensiService {
     return this.http.get<Absensi[]>(`${this.url}/list`, this.httpOptions);
   }
 
-  getDetailAbsen(idSubcourse, idKelas): Observable<any> {
-    return this.http.get<any>(`${this.url}/detail/${idSubcourse}/${idKelas}`, this.httpOptions);
-  }
-
   searchAbsen(idAbsen) : Observable<Absensi>{
     return this.http.get<Absensi>(`${this.url}/search/${idAbsen}`, this.httpOptions);
   }
@@ -49,4 +45,12 @@ export class AbsensiService {
     return this.http.get<any>(`${this.url}/${idSubcourse}/${idTrainer}`, this.httpOptions);
   }
   
+  getAbsenDataByEmailAndPertemuan(email, pertemuan): Observable<any>{
+    return this.http.get<any>(`${this.url}/search/pertemuan/${pertemuan}/${email}`,this.httpOptions)
+  }
+
+  getDetailAbsen(idSubcourse, idKelas): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/detail/${idSubcourse}/${idKelas}`, this.httpOptions);
+  }
+
 }

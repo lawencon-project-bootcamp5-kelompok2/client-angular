@@ -13,6 +13,7 @@ import { NilaiComponent } from './nilai/nilai.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { SilabusComponent } from './silabus/silabus.component';
 import { PertemuanComponent } from './pertemuan/pertemuan.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [PagesComponent, DashBoardComponent, EnrollComponent, DetailMateriComponent, AbsensiComponent,
@@ -21,7 +22,7 @@ import { PertemuanComponent } from './pertemuan/pertemuan.component';
     CommonModule,
     PagesRoutingModule,
     LayoutModule,
-    TableModule
+    TableModule,FormsModule
   ]
 })
 export class PagesModule {
