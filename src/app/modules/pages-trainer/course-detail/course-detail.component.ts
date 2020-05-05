@@ -88,7 +88,7 @@ export class CourseDetailComponent implements OnInit {
   onUploadMateri(){
       this.subcourseInput.idCourse.idCourse = this.idCourse;
       this.materiService.uploadFile(this.fileMateri).subscribe( result => {
-        this.subcourseInput.idMateri.idMateri = result.idMateri;
+        // this.subcourseInput.idMateri.idMateri = result.idMateri;
       },     
         error => console.log(error),
         () => console.log("done!")

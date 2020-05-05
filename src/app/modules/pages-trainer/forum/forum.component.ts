@@ -5,6 +5,9 @@ import { Forum } from 'src/app/model/forum';
 import { Subcourse } from 'src/app/model/subcourse';
 import { SubcourseService } from 'src/app/service/subcourse.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
+import { PertemuanService } from 'src/app/service/pertemuan.service';
+import { Pertemuan } from 'src/app/model/pertemuan';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-forum',
@@ -16,11 +19,13 @@ export class ForumComponent implements OnInit {
   idSubcourse: any;
   forum: Forum[];
   postForum: Forum = new Forum();
-  subcourse: Subcourse = new Subcourse();
+  pertemuan: Pertemuan = new Pertemuan();
   emailSender: any;
+  idPertemuan: any;
+  updateSubscription: Subscription;
 
   constructor(private route: ActivatedRoute, private forumService: ForumService,
-    private subcourseService: SubcourseService, private sessionStorage: TokenStorageService) {
+    private pertemuanService: PertemuanService, private sessionStorage: TokenStorageService) {
   }
 
   ngOnInit() {
@@ -29,27 +34,33 @@ export class ForumComponent implements OnInit {
     this.emailSender = user.email;
 
     this.route.queryParams.subscribe(params =>
-      this.idSubcourse = params.idSubcourse
+      this.idPertemuan = params.idPertemuan
     );
 
-    this.forumService.getForumBySubcourse(this.idSubcourse).subscribe(
+    this.pertemuanService.getPertemuanById(this.idPertemuan).subscribe( res => {
+      this.pertemuan = res
+    })
+
+    this.updateSubscription = interval(5000).subscribe(val => {
+      this.getForum();
+    })
+
+  }
+
+  getForum(){
+    this.forumService.getForumByPertemuan(this.idPertemuan).subscribe(
       result => this.forum = result,
-      err => console.log(err)      
-    );
-
-    this.subcourseService.getSubcourseById(this.idSubcourse).subscribe(
-      result => this.subcourse = result,
-      err => console.log(err)      
-    );
+      err => console.log()      
+    )
   }
 
   onSend(){
     this.postForum.emailSender = this.emailSender;
-    this.postForum.idSubcourse = this.idSubcourse;
+    this.postForum.idPertemuan.idPertemuan = this.idPertemuan;
     this.forumService.postForum(this.postForum).subscribe( res => {
-
+      console.log("mantapp");      
     }, err => {
-      console.log(this.postForum) 
+      console.log(err) 
     }     
     );
   }

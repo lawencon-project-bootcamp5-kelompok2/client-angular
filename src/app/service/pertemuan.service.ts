@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class PertemuanService {
 
-  url = "http://localhost:8080/pertemuan";
+  url = "http://da7223e8.ngrok.io/pertemuan";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -23,6 +23,10 @@ export class PertemuanService {
 
   getPertemuanById(idPertemuan): Observable<Pertemuan>{
     return this.http.get<any>(`${this.url}/search/${idPertemuan}`, this.httpOptions);
+  }
+
+  getPertemuanBySubcourse(idSubcourse): Observable<Pertemuan[]>{
+    return this.http.get<any>(`${this.url}/search/pertemuan/${idSubcourse}`, this.httpOptions);
   }
 
   addPertemuan(pertemuan): Observable<string>{

@@ -25,6 +25,9 @@ import { RekapAbsenTrainerComponent } from './rekap-absen-trainer/rekap-absen-tr
 import { RekapAbsenStudentListComponent } from './rekap-absen-student-list/rekap-absen-student-list.component';
 import { RekapAbsenStudentClassComponent } from './rekap-absen-student-class/rekap-absen-student-class.component';
 import { RekapAbsenStudentComponent } from './rekap-absen-student/rekap-absen-student.component';
+import { AddPertemuanComponent } from './add-pertemuan/add-pertemuan.component';
+import { PertemuanListComponent } from './pertemuan-list/pertemuan-list.component';
+import { EditPertemuanComponent } from './edit-pertemuan/edit-pertemuan.component';
 
 const routes: Routes = [
   {
@@ -39,9 +42,12 @@ const routes: Routes = [
       {path: 'add-materi', component: AddMateriComponent},
       {path: 'list-class', component: ClassListComponent},
       {path: 'add-class', component: AddClassComponent},
+      {path: 'list-pertemuan', component: PertemuanListComponent},
+      {path: 'add-pertemuan', component: AddPertemuanComponent},
       {path: 'edit-course', component: EditCourseComponent},
       {path: 'edit-materi', component: EditMateriComponent},
       {path: 'edit-class', component: EditClassComponent},
+      {path: 'edit-pertemuan', component: EditPertemuanComponent},
       {path: 'rekap-kelas', component: ListRekapClassComponent},
       {path: 'rekap-jadwal', component: ListRekapJadwalComponent},
       {path: 'rekap-jadwal-course', component: RekapJadwalComponent},

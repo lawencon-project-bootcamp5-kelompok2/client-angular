@@ -33,6 +33,9 @@ import { RekapAbsenStudentComponent } from './rekap-absen-student/rekap-absen-st
 
 import { CheckboxModule } from 'primeng/checkbox';
 import {ToastModule} from 'primeng/toast';
+import { AddPertemuanComponent } from './add-pertemuan/add-pertemuan.component';
+import { PertemuanListComponent } from './pertemuan-list/pertemuan-list.component';
+import { EditPertemuanComponent } from './edit-pertemuan/edit-pertemuan.component';
 
 
 
@@ -43,7 +46,8 @@ import {ToastModule} from 'primeng/toast';
     EditClassComponent, EditCourseComponent, EditMateriComponent, ListRekapClassComponent, 
     ListRekapJadwalComponent, RekapJadwalComponent, RekapNilaiListComponent, RekapNilaiComponent, 
     RekapAbsenTrainerListComponent, RekapAbsenTrainerComponent, RekapAbsenTrainerClassComponent, 
-    RekapAbsenStudentListComponent, RekapAbsenStudentClassComponent, RekapAbsenStudentComponent],
+    RekapAbsenStudentListComponent, RekapAbsenStudentClassComponent, RekapAbsenStudentComponent,
+    AddPertemuanComponent, PertemuanListComponent, EditPertemuanComponent],
   imports: [
     CommonModule, PagesAdminRoutingModule, LayoutModule,FormsModule, TableModule, PagesAdminRoutingModule, CalendarModule,
     CheckboxModule, ToastModule

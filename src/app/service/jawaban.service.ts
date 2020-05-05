@@ -8,7 +8,7 @@ import { Jawaban } from '../model/jawaban';
 })
 export class JawabanService {
 
-  url = "http://localhost:8080/course";
+  url = "http://da7223e8.ngrok.io/course";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {

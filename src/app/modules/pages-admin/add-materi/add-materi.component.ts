@@ -28,8 +28,8 @@ export class AddMateriComponent implements OnInit {
       this.idCourse = params.idCourse
     );
 
-    this.subcourse.idCourse.trainer = null;
-    this.subcourse.idMateri = null;
+    // this.subcourse.idCourse.trainer = null;
+    // this.subcourse.idMateri = null;
     this.subcourse.idCourse.idCourse = this.idCourse;
 
     document.getElementById("side").className="active";
@@ -40,7 +40,7 @@ export class AddMateriComponent implements OnInit {
       this.onSuccess();
     }, err => {
       this.onFailed();
-      console.log(err);      
+      console.log(this.subcourse);      
     })
   }
 

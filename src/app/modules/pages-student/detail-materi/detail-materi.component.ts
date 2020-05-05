@@ -32,9 +32,9 @@ export class DetailMateriComponent implements OnInit {
   }
 
   onClick(){
-    this.materiService.downloadFile(this.subcourse.idMateri.idMateri).subscribe(blob => {
-      saveAs(blob);
-    })
+    // this.materiService.downloadFile(this.subcourse.idMateri.idMateri).subscribe(blob => {
+    //   saveAs(blob);
+    // })
   }
 
 }

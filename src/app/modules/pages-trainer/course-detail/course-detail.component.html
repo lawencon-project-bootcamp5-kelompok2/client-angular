@@ -80,8 +80,7 @@
                 <th>Materi</th>
                 <th>Mulai</th>
                 <th>Selesai</th>
-                <th colspan="1">File Materi</th>
-                <th>Forum</th>
+                <th colspan="1">Pertemuan</th>
                 <th>Edit</th>
                 <th>Konfirmasi Absen</th>
                 <th>Lihat Nilai</th>
@@ -92,19 +91,9 @@
                 <td>{{subcourse.namaSubcourse}}</td>
                 <td>{{subcourse.tanggalMulai}}</td>
                 <td>{{subcourse.tanggalSelesai}}</td>
-                <!-- <td>
-                  <button type="button" class="btn btn-block btn-primary" (click)="onDownloadMateri(subcourse.idSubcourse)">
-                    <i class="glyphicon glyphicon-cloud-download" style="width: fit-content;"></i>
-                  </button>
-                </td> -->
                 <td>
-                  <button type="button" class="btn btn-block btn-primary" (click)="showUpload(subcourse.idSubcourse)">
-                    <i class="glyphicon glyphicon-cloud-upload" style="width: fit-content;"></i>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['../forum']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
-                    <i class="glyphicon glyphicon-comment" style="width: fit-content;"></i>
+                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['../pertemuan-detail']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
+                    <i class="glyphicon glyphicon-briefcase" style="width: fit-content;"></i>
                   </button>
                 </td>
                 <td>
