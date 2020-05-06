@@ -1,9 +1,10 @@
 import { Subcourse } from './subcourse';
+import { Pertemuan } from './pertemuan';
 
 export class Forum {
     idForum;
     emailSender;
     subjek;
     deskripsi;
-    idSubcourse: Subcourse = new Subcourse();
+    idPertemuan: Pertemuan = new Pertemuan();
 }

@@ -43,7 +43,7 @@ export class SubcourseAddComponent implements OnInit {
   onSubmit(){
     this.subcourse.idCourse.idCourse = this.idCourse;
     this.materiService.uploadFile(this.fileMateri).subscribe( result => {
-      this.subcourse.idMateri = result;
+      // this.subcourse.idMateri = result;
     },     
       error => console.log(error),
       () => console.log("done!")

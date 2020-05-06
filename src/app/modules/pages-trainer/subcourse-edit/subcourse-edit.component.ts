@@ -40,7 +40,7 @@ export class SubcourseEditComponent implements OnInit {
         idSubcourse: result.idSubcourse,
         namaSubcourse: result.namaSubcourse,
         idCourse: result.idCourse,
-        idMateri: null,
+        // idMateri: null,
         idForum: result.idForum,
         tanggalMulai: new Date(result.tanggalMulai),
         tanggalSelesai: new Date(result.tanggalSelesai),
@@ -52,7 +52,7 @@ export class SubcourseEditComponent implements OnInit {
 
   onUpdate(){
     this.materiService.uploadFile(this.fileMateri).subscribe(result => {
-      this.subcourse.idMateri = result;
+      // this.subcourse.idMateri = result;
       },
       err => console.log(err),
       () => console.log("done")      

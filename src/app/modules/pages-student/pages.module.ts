@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TableModule} from 'primeng/table';
+import {FormsModule} from '@angular/forms';
 
 import {PagesRoutingModule} from './pages-routing.module';
 import {PagesComponent} from './student/pages.component';
@@ -13,11 +14,11 @@ import { NilaiComponent } from './nilai/nilai.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { SilabusComponent } from './silabus/silabus.component';
 import { PertemuanComponent } from './pertemuan/pertemuan.component';
-import { FormsModule } from '@angular/forms';
+import { ForumComponent } from './forum/forum.component';
 
 @NgModule({
   declarations: [PagesComponent, DashBoardComponent, EnrollComponent, DetailMateriComponent, AbsensiComponent,
-  NilaiComponent, TestPageComponent, SilabusComponent, PertemuanComponent],
+  NilaiComponent, TestPageComponent, SilabusComponent, PertemuanComponent, ForumComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

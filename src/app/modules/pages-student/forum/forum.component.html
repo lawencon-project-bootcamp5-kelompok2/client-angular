@@ -6,7 +6,7 @@
   <!-- Default box -->
   <div class="box">
     <div class="box-header with-border">
-      <h3 class="box-title">Diskusi : Java Basic</h3>
+      <h3 class="box-title">Diskusi : {{pertemuan.idSubcourse.namaSubcourse}}</h3>
       <div class="box-tools pull-right">
         <button class="btn btn-box-tool" data-toggle="tooltip" data-widget="collapse" title="Collapse"
                 type="button">
@@ -17,31 +17,30 @@
     </div>
     <div class="box-body">
         <div class="form-group">
-          <label>Diskusikan sesuatu</label>
-          <textarea class="form-control" rows="3" placeholder="Ikut Berdiskusi . . . "></textarea>
-          <button style="width: fit-content;" type="submit" class="btn btn-block btn-primary pull-right">
+          <label>Diskusikan sesuatu : </label><br>
+          <input [(ngModel)]="postForum.subjek" class="form-control" rows="3" placeholder="Subjek diskusi . . .">
+          <br>
+          <textarea id="textboxid" style="vertical-align: top;" [(ngModel)]="postForum.deskripsi" class="form-control" rows="3" placeholder="Ikut Berdiskusi . . . "></textarea>
+          <br>
+          <button style="width: fit-content;" type="submit" class="btn btn-block btn-primary pull-right" (click)="onSend()">
             <i class="fa fa-angle-double-right"></i>
             <span> Send</span>
           </button>
         </div>
-        <table class="table table-bordered">
-          <tbody>
+        <p-table class="table table-bordered" [value]="forum">
+          <ng-template pTemplate="body" let-forum>
             <tr>
               <td style="width: 160px; height: 100px;" align="center">
-                <img alt="User Image" class="user-image" src="assets/dist/img/user2-160x160.jpg" style="height: 128px; width: 128px;"><br>
-                Murid 1
+                <!-- <img alt="User Image" class="user-image" src="assets/dist/img/user2-160x160.jpg" style="height: 128px; width: 128px;"><br> -->
+                {{forum.emailSender}}
               </td>
-              <td>Mas mau nanya?????</td>
-            </tr>
-            <tr>
-              <td style="width: 160px; height: 100px;" align="center">
-                <img alt="User Image" class="user-image" src="assets/dist/img/user1-128x128.jpg" style="height: 128px; width: 128px;"><br>
-                Mas Imam
+              <td id="subject">
+                <b style="font-size: large;">{{forum.subjek}}</b><br>
+                {{forum.deskripsi}}
               </td>
-              <td>Mau nanya apa??</td>
             </tr>
-          </tbody>
-        </table>
+          </ng-template>
+        </p-table>
     </div>
     <!-- /.box-body -->
     <div class="box-footer">
@@ -52,4 +51,6 @@
   <!-- /.box -->
 
 </section>
+
+
 

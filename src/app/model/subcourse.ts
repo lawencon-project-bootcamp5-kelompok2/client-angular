@@ -8,7 +8,7 @@ export class Subcourse{
     namaSubcourse;
     tanggalMulai;
     tanggalSelesai : Date;
-    idMateri: Materi = new Materi();
+    // idMateri: Materi = new Materi();
     idForum: Forum;
     deskripsi
 }

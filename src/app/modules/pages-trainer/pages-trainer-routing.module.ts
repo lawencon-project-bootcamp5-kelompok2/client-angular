@@ -14,8 +14,12 @@ import { RekapAbsensiComponent } from './rekap-absensi/rekap-absensi.component';
 import { RekapNilaiListComponent } from './rekap-nilai-list/rekap-nilai-list.component';
 import { RekapNilaiComponent } from './rekap-nilai/rekap-nilai.component';
 import { ForumComponent } from './forum/forum.component';
+<<<<<<< HEAD
 import { RekapAbsensiPertemuanListComponent } from './rekap-absensi-pertemuan-list/rekap-absensi-pertemuan-list.component';
 import { RekapNilaiKelasListComponent } from './rekap-nilai-kelas-list/rekap-nilai-kelas-list.component';
+=======
+import { PertemuanDetailComponent } from './pertemuan-detail/pertemuan-detail.component';
+>>>>>>> b985c381ba4c317f024d69f2d31351adfe40f315
 
 const routes: Routes = [
   {
@@ -23,6 +27,7 @@ const routes: Routes = [
       {path: '', component: DashboardComponent},
       {path: 'forum', component: ForumComponent},
       {path: "coursedetail", component: CourseDetailComponent},
+      {path: 'pertemuan-detail', component: PertemuanDetailComponent},
       {path: "addsubcourse", component: SubcourseAddComponent},
       {path: 'listabsen', component: ListAbsenComponent},
       {path: 'form-nilai', component: ListNilaiComponent},

@@ -8,7 +8,7 @@ import { Forum } from '../model/forum';
 })
 export class ForumService {
 
-  url = "http://localhost:8080/forum";
+  url = "http://da7223e8.ngrok.io/forum";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -30,8 +30,8 @@ export class ForumService {
     return this.http.get<any>(`${this.url}/search/${idForum}`, this.httpOptions);
   }
 
-  getForumBySubcourse(idSubcourse): Observable<Forum[]>{
-    return this.http.get<any>(`${this.url}/subcourse/search/${idSubcourse}`, this.httpOptions)
+  getForumByPertemuan(idPertemuan): Observable<Forum[]>{
+    return this.http.get<any>(`${this.url}/search/pertemuan/${idPertemuan}`, this.httpOptions)
   }
 
   postForum(forum): Observable<string>{
