@@ -29,6 +29,15 @@ export class ListRekapClassComponent implements OnInit {
     )
   }
 
+  onSubmit(){
+    this.kelasService.reportKelas().subscribe(result => {
+      const file = new Blob([result], { type: 'application/pdf' });
+      const fileURL = URL.createObjectURL(file);
+      window.open(fileURL);
+      }, err => console.log(err),
+    )
+  }
+
   onRowSelect(event){
     this.kelas1 = this.cloneSelection(event.data);
   }

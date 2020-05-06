@@ -66,7 +66,7 @@ export class ListReportNilaiSubcourseStudentComponent implements OnInit {
   }
 
   onSubmit(){
-    this.trainerService.reportTrainer(this.trainer.idTrainer, this.idSubcourse).subscribe(result => {
+    this.trainerService.reportTrainer(this.trainer.idTrainer, this.idKelas).subscribe(result => {
       const file = new Blob([result], { type: 'application/pdf' });
       const fileURL = URL.createObjectURL(file);
       window.open(fileURL);

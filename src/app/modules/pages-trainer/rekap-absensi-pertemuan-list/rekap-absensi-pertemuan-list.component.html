@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="box">
                 <div class="box-header bg-light-blue-active color-palette">
-                    <h4 class="box-title">Rekap Absen Kelas (kelas apa) Subcourse (subcourse apa) Pertemuan (berapa)</h4>
+                  <h4 class="box-title">Rekap Absen {{subcourse.namaSubcourse}} Kelas {{kelas.kodeKelas}}</h4>
                 </div>
                 <div class="box-body">
                     <p-table [value]="pertemuan" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
@@ -24,7 +24,7 @@
                             <td>{{pertemuan.pertemuan}}</td>
                             <td>{{pipeDate(pertemuan.tanggalPertemuan)}}</td>
                             <td>
-                              <button type="button" class="btn btn-block btn-primary" routerLink="../rekap-absen">
+                              <button type="button" class="btn btn-block btn-primary" routerLink="../rekap-absen" [queryParams]="{idPertemuan:pertemuan.idPertemuan, idSubcourse:idSubcourse, idKelas:idKelas}">
                                 <i class="glyphicon glyphicon-chevron-right"></i>
                               </button>
                             </td>

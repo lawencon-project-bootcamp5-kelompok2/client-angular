@@ -53,4 +53,14 @@ export class AbsensiService {
     return this.http.get<any[]>(`${this.url}/detail/${idSubcourse}/${idKelas}`, this.httpOptions);
   }
 
+  getByPertemuan(idPertemuan, idSubcourse, idKelas): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/search/pertemuan/${idPertemuan}/${idSubcourse}/${idKelas}`, this.httpOptions);
+  }
+
+  getReport(idKelas, idPertemuan): Observable<any> {
+    return this.http.get<any>(`${this.url}/report/${idKelas}/${idPertemuan}`, 
+    { headers: this.httpOptions.headers, responseType: 'arraybuffer' as 'json'});
+  }
+
+
 }

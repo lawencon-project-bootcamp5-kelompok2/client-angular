@@ -17,7 +17,7 @@
                 </div>
                 <div class="box-body">
                     <div class="box-tools">
-                        <button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>&nbsp; Print</button>
+                      <button (click)="onSubmit()" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>&nbsp; Print</button>
                     </div>
                     <br>
                     <p-table [value]="kelas" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">

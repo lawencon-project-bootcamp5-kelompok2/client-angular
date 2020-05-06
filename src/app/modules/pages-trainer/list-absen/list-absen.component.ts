@@ -29,7 +29,7 @@ export class ListAbsenComponent implements OnInit {
     private kelasService: KelasService) { }
 
   ngOnInit(): void {
-    document.getElementById("sideKelas").className="active";
+    // document.getElementById("sideKelas").className="active";
 
     this.route.queryParams.subscribe(params => {
       this.idSubcourse = params.idSubcourse;

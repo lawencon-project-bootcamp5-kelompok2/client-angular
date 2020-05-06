@@ -29,7 +29,7 @@
                             <td>{{subcourse.tanggalMulai}}</td>
                             <td>{{subcourse.tanggalSelesai}}</td>
                             <td>
-                              <button type="button" class="btn btn-block btn-primary" routerLink="../rekap-absen">
+                              <button type="button" class="btn btn-block btn-primary" routerLink="../list-pertemuan-rekap-absen" [queryParams]="{idKelas: kelas.idKelas, idSubcourse: subcourse.idSubcourse}">
                                 <i class="glyphicon glyphicon-search"></i>
                               </button>
                             </td>

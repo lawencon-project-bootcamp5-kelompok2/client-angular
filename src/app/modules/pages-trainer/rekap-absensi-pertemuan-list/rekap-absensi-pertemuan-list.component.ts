@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Pertemuan } from 'src/app/model/pertemuan';
 import { DatePipe } from '@angular/common';
+import { KelasService } from 'src/app/service/kelas.service';
+import { SubcourseService } from 'src/app/service/subcourse.service';
+import { PertemuanService } from 'src/app/service/pertemuan.service';
+import { ActivatedRoute } from '@angular/router';
+import { Kelas } from 'src/app/model/kelas';
+import { Subcourse } from 'src/app/model/subcourse';
 
 @Component({
   selector: 'app-rekap-absensi-pertemuan-list',
@@ -9,23 +15,40 @@ import { DatePipe } from '@angular/common';
 })
 export class RekapAbsensiPertemuanListComponent implements OnInit {
 
-  pertemuan : Pertemuan[]
   pertemuan1 : Pertemuan
   selectedRow : Pertemuan
 
-  constructor() { }
+  idKelas: string
+  idSubcourse: string
+  kelas: Kelas
+  subcourse: Subcourse
+  pertemuan: Pertemuan[]
+
+  constructor(private route: ActivatedRoute, private kelasService: KelasService, private subcourseService: SubcourseService, private pertemuanService: PertemuanService) { }
 
   ngOnInit(): void {
-    //sample
-    this.pertemuan = [
-      {
-        pertemuan : "1",
-        tanggalPertemuan : "2020-05-06",
-        idMateri : null,
-        idPertemuan : "aischlkashc",
-        idSubcourse : null
+    this.route.queryParams.subscribe(params => {
+      this.idKelas = params.idKelas;
+      this.idSubcourse = params.idSubcourse;
+    });
+
+    this.kelasService.getKelasById(this.idKelas).subscribe(
+      result => {
+        this.kelas = result;
       }
-    ]
+    )
+
+    this.subcourseService.getSubcourseById(this.idSubcourse).subscribe(
+      result => {
+        this.subcourse = result;
+      }
+    )
+
+    this.pertemuanService.getPertemuanBySubcourse(this.idSubcourse).subscribe(
+      result => {
+        this.pertemuan = result;
+      }
+    )
   }
 
   pipeDate(tgl : Date) : string{

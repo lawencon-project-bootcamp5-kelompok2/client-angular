@@ -30,7 +30,7 @@ export class PertemuanDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    document.getElementById("sideKelas").className="active";
+    // document.getElementById("sideKelas").className="active";
 
     this.route.queryParams.subscribe(params => {
       this.idSubcourse = params.idSubcourse;
