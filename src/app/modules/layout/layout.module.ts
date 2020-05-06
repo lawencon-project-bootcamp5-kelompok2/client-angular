@@ -6,6 +6,7 @@ import {StudentNavComponent} from './side-nav-student/student-nav.component';
 import {SettingsComponent} from './settings/settings.component';
 import { SideNavTrainerComponent } from './side-nav-trainer/side-nav-trainer.component';
 import { SideNavAdminComponent } from './side-nav-admin/side-nav-admin.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SideNavAdminComponent } from './side-nav-admin/side-nav-admin.component
     StudentNavComponent,
     SettingsComponent,SideNavTrainerComponent, SideNavAdminComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     HeaderComponent,
