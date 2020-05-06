@@ -22,9 +22,9 @@
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-subcourse>
+                        <ng-template pTemplate="body" let-rowData let-subcourse let-i="rowIndex">
                           <tr [pSelectableRow]="rowData">
-                            <td></td>
+                            <td>{{i+1}}</td>
                             <td>{{subcourse.namaSubcourse}}</td>
                             <td>{{subcourse.tanggalMulai}}</td>
                             <td>{{subcourse.tanggalSelesai}}</td>

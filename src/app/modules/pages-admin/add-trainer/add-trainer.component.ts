@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TrainerService } from 'src/app/service/trainer.service';
 import { Trainer } from 'src/app/model/trainer';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
-import { RouterLink, Router } from '@angular/router';
+import { RouterLink, Router, Routes } from '@angular/router';
 import { addTrainer } from 'src/app/model/addTrainer';
 import { MessageService } from 'primeng/api';
 
@@ -16,7 +16,7 @@ export class AddTrainerComponent implements OnInit {
   trainer = new addTrainer();
 
   constructor(private tokenStorage : TokenStorageService, private trainerService: TrainerService,
-    private router: Router, private messageService: MessageService) { }
+    private router: Router, private messageService: MessageService, private route: Router) { }
 
   ngOnInit(): void {
     document.getElementById("side").className="active";
@@ -32,6 +32,7 @@ export class AddTrainerComponent implements OnInit {
       },
       () => console.log("mantap")    
     )
+    this.route.navigate(['/admin/list-trainer'])
   }
 
   onSuccess(){

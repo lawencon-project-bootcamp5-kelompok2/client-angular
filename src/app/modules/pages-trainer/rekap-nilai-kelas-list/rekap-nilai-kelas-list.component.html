@@ -1,0 +1,41 @@
+<section class="content">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="box">
+                <div class="box-header bg-light-blue-active color-palette">
+                    <h4 class="box-title">Daftar Kelas</h4>
+                </div>
+                <div class="box-body">
+                    <p-table [value]="kelas" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                        <!-- <thead>                   -->
+                        <ng-template pTemplate="header">
+                          <tr>
+                            <th style="width: 7%;">No</th>
+                            <th>Kode Kelas</th>
+                            <th>Course</th>
+                            <th style="width: 10%">Pilih</th>
+                          </tr>
+                        </ng-template>
+                        <!-- </thead> -->
+                        <!-- <tbody> -->
+                        <ng-template pTemplate="body" let-rowData let-kelas let-i="rowIndex">
+                          <tr [pSelectableRow]="rowData">
+                            <td>{{i+1}}</td>
+                            <td>{{kelas.kodeKelas}}</td>
+                            <td>{{kelas.course.namaCourse}}</td>
+                            <td>
+                              <button type="button" class="btn btn-block btn-primary" routerLink="../list-rekap-nilai">
+                                <i class="glyphicon glyphicon-chevron-right"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          
+                        </ng-template>
+                        <!-- </tbody> -->        
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
