@@ -7,20 +7,20 @@ import {Component, OnInit} from '@angular/core';
 })
 export class TestPageComponent implements OnInit {
   // TODO: kondisi buttonOn ngeGet dari backend
-  buttonOn = true;
+  buttonOn : boolean;
 
   constructor() {
   }
 
   ngOnInit() {
-    document.getElementById("sideEnroll").className="active";
+    //document.getElementById("sideEnroll").className="active";
     
     setInterval(this.fungsi, 1000);
   }
 
-  fungsi() {
+  fungsi() : boolean{
 
-    let countDeadline = new Date("Apr 18, 2020 20:50:00").getTime();
+    let countDeadline = new Date("May 7, 2020 12:36:00").getTime();
 
     let now = new Date().getTime();
   
@@ -33,10 +33,15 @@ export class TestPageComponent implements OnInit {
     if (distance < 0) {
       document.getElementById("infoTest").innerHTML = "<font color='red'><b>Maaf anda tidak bisa upload karena waktu sudah habis<b></font>";
       document.getElementById("timer").innerHTML ="00:00:00";
+      return false
     } else {
       document.getElementById("infoTest").innerHTML = "<b>Upload jawaban dibawah ini sebelum waktu habis<b>";
       document.getElementById("timer").innerHTML = hours.toString().padStart(2, "0") + ":" + 
         minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+      return true
     }
+
+    console.log(this.buttonOn);
+    
   }
 }

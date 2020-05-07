@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {LoginService} from '../../../service/login.service';
 import {TokenStorageService} from '../../../service/token-storage.service';
 import {Router} from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 declare var $;
 
@@ -18,10 +19,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: LoginService, private tokenStorage: TokenStorageService, public router: Router) {
+  constructor(private title: Title, private authService: LoginService, private tokenStorage: TokenStorageService, public router: Router) {
   }
 
   ngOnInit() {
+    this.title.setTitle("Login - E-Learning")
     $('body').addClass('hold-transition login-page');
     $(() => {
       $('input').iCheck({

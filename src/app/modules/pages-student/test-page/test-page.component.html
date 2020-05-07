@@ -28,12 +28,12 @@
             <label class="custom-file-label" for="exampleInputFile"></label>
           </div>
         </div>
-      <div *ngIf="buttonOn; else off">
-        <button style="width: 80px;" type="submit" class="btn btn-block btn-primary">Submit</button>  
+      <div *ngIf="fungsi()">
+        <button style="width: 80px;" type="submit" class="btn btn-primary">Submit</button>  
       </div>
-      <ng-template #off>
-        <button style="width: 80px;" type="submit" class="btn btn-block btn-primary disabled">Submit</button>
-      </ng-template>
+      <div *ngIf="!fungsi()">
+        <button style="width: 80px;" type="submit" class="btn btn-primary disabled">Submit</button>
+      </div>
     </div>
     <!-- /.box-body -->
     <!-- /.box-footer-->
