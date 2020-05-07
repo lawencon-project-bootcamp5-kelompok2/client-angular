@@ -22,14 +22,14 @@
                         </ng-template>
                         <!-- </thead> -->
                         <!-- <tbody> -->
-                        <ng-template pTemplate="body" let-rowData let-subcourse>
+                        <ng-template pTemplate="body" let-rowData let-subcourse let-i="rowIndex">
                           <tr [pSelectableRow]="rowData">
-                            <td></td>
+                            <td>{{i+1}}</td>
                             <td>{{subcourse.namaSubcourse}}</td>
                             <td>{{subcourse.tanggalMulai}}</td>
                             <td>{{subcourse.tanggalSelesai}}</td>
                             <td>
-                              <button type="button" class="btn btn-block btn-primary" routerLink="../rekap-absen">
+                              <button type="button" class="btn btn-block btn-primary" routerLink="../list-pertemuan-rekap-absen" [queryParams]="{idKelas: kelas.idKelas, idSubcourse: subcourse.idSubcourse}">
                                 <i class="glyphicon glyphicon-search"></i>
                               </button>
                             </td>

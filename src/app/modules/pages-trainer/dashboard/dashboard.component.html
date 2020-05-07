@@ -1,98 +1,52 @@
 <section class="content-header">
-    <h1>
-      Hello {{nama}}
-      <!-- <small>it all starts here</small> -->
-    </h1>
-  </section>
-  
-  <!-- Main content -->
-  <section class="content">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="box">
-          <div class="box-header with-border bg-green-active color-palette">
-            <h3 class="box-title">Next Task</h3>
-          </div>
-          <div class="box-body bg-green disabled color-palette">
-            <p>Tanggal 27-4-2020</p>
-            <p>Test Mingguan </p>
-            <p>Materi : Java Basic</p>
-          </div>
-          <!-- /.box-body -->
-          <div class="box-footer bg-green color-palette">
-            
-          </div>
-          <!-- /.box-footer-->
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="box">
-          <div class="box-header with-border">
-            <h3 class="box-title">Ini Harusnya grafik</h3>
-          </div>
-          <div class="box-body">
-           
-          </div>
-          <!-- /.box-body -->
-          <div class="box-footer">
-            
-          </div>
-          <!-- /.box-footer-->
-        </div>
-      </div>
-    </div>
-  
-  </section>
-  <!-- /.content -->
+  <h1>
+    Hello {{nama}}
+  </h1>
+</section>
 
-  <!-- Main content -->
 <section class="content">
-
-  <!-- Default box -->
-  <div class="box">
-    <div class="box-header with-border">
-      <h1 class="box-title">Kelas anda</h1>
-    </div>
-    <div class="box-body">
-      <p-table [value]="kelas">
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Kode Kelas</th>
-            <th>Course</th>
-            <th>Jadwal</th>
-            <th>Rekap Absen</th>
-            <th>Input Nilai</th>
-            <th>Options</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData let-kelas>
-          <tr>
-            <td>{{kelas.kodeKelas}}</td>
-            <td>{{kelas.namaCourse}}</td>
-            <td>{{kelas.openKelas}}</td>
-            <td>
-              <button type="button" class="btn btn-block btn-primary" [routerLink]="['./list-rekap-absen']" [queryParams]="{idKelas:kelas.idKelas, namaCourse:kelas.namaCourse}">
-                <i class="glyphicon glyphicon-th-list" style="width: fit-content;"></i>
-              </button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-block btn-primary" [routerLink]="['./nilai']" [queryParams]="{idKelas:kelas.idKelas}">
-                <i class="glyphicon glyphicon-list-alt" style="width: fit-content;"></i>
-              </button>
-            </td>
-            <td>
-              <button class="btn btn-sm btn-block btn-primary" type="button" [routerLink]="['./coursedetail']"
-               [queryParams]="{idCourse:kelas.idCourse, idKelas:kelas.idKelas, namaCourse:kelas.namaCourse}">
-                <i class="fa fa-search"></i>
-              </button>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
+<div class="box">
+  <div class="box-header with-border">
+    <h1 class="box-title">Kelas anda</h1>
   </div>
-  <!-- /.box -->
+  <div class="box-body">
+    <p-table [value]="kelas">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Kode Kelas</th>
+          <th>Course</th>
+          <th>Jadwal</th>
+          <th>Rekap Absen</th>
+          <th>Input Nilai</th>
+          <th>Options</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-kelas>
+        <tr>
+          <td>{{kelas.kodeKelas}}</td>
+          <td>{{kelas.namaCourse}}</td>
+          <td>{{kelas.openKelas}}</td>
+          <td>
+            <button type="button" class="btn btn-block btn-primary" [routerLink]="['./list-rekap-absen']" [queryParams]="{idKelas:kelas.idKelas, namaCourse:kelas.namaCourse}">
+              <i class="glyphicon glyphicon-th-list" style="width: fit-content;"></i>
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-block btn-primary" [routerLink]="['./nilai']" [queryParams]="{idKelas:kelas.idKelas}">
+              <i class="glyphicon glyphicon-list-alt" style="width: fit-content;"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-block btn-primary" type="button" [routerLink]="['./coursedetail']"
+             [queryParams]="{idCourse:kelas.idCourse, idKelas:kelas.idKelas, namaCourse:kelas.namaCourse}">
+              <i class="fa fa-search"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
 
 </section>
-<!-- /.content -->
-  
+

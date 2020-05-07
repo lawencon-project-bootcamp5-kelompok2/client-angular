@@ -26,27 +26,6 @@ export class RekapAbsensiListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.listMateri = [
-    //   {
-    //     noUrut:1,
-    //     namaMateri : "Java Basic",
-    //     tglMulai : "21-4-2020",
-    //     tglSelesai : "24-4-2020"
-    //   },
-    //   {
-    //     noUrut:2,
-    //     namaMateri : "OOP",
-    //     tglSelesai : "26-4-2020",
-    //     tglMulai : "25-4-2020"
-    //   },
-    //   {
-    //     noUrut:3,
-    //     namaMateri : "Java Features",
-    //     tglSelesai : "28-4-2020",
-    //     tglMulai : "27-4-2020"
-    //   }
-    // ]
-
     this.route.queryParams.subscribe(params => {
       this.idKelas = params.idKelas;
       this.namaCourse = params.namaCourse
@@ -68,14 +47,6 @@ export class RekapAbsensiListComponent implements OnInit {
   onRowSelect(event){
     this.listMateri1 = this.cloneSelection(event.data);
   }
-
-  // cloneSelection(d : ListMateriData){
-  //   let listMateri = {};
-  //   for(let prop in d){
-  //     listMateri[prop] = d[prop];
-  //   }
-  //   return d;
-  // }
 
   cloneSelection(d : any){
     let subcourse = {};

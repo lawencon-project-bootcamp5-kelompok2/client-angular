@@ -22,17 +22,19 @@ import { ForumComponent } from './forum/forum.component';
 
 import { DialogModule } from 'primeng/dialog';
 import {ToastModule} from 'primeng/toast';
+import { RekapAbsensiPertemuanListComponent } from './rekap-absensi-pertemuan-list/rekap-absensi-pertemuan-list.component';
+import { RekapNilaiKelasListComponent } from './rekap-nilai-kelas-list/rekap-nilai-kelas-list.component';
 import { PertemuanDetailComponent } from './pertemuan-detail/pertemuan-detail.component';
 
 
 @NgModule({
   declarations: [TrainerComponent, DashboardComponent, CourseDetailComponent, SubcourseEditComponent, SubcourseAddComponent, ListAbsenComponent, 
     ListNilaiComponent, ListReportNilaiSubcourseComponent, ListReportNilaiSubcourseStudentComponent, RekapAbsensiListComponent, RekapAbsensiComponent, 
-    RekapNilaiListComponent, RekapNilaiComponent, ForumComponent, PertemuanDetailComponent],
+    RekapNilaiListComponent, RekapNilaiComponent, ForumComponent, PertemuanDetailComponent, RekapAbsensiPertemuanListComponent, RekapNilaiKelasListComponent],
   imports: [
     CommonModule,
     PagesTrainerRoutingModule,
-    LayoutModule,CalendarModule,FormsModule,TableModule, DialogModule, ToastModule
+    LayoutModule,CalendarModule,FormsModule, TableModule, DialogModule, ToastModule
   ]
 })
 export class PagesTrainerModule { }

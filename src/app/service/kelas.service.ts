@@ -49,4 +49,9 @@ export class KelasService {
   deleteKelas(idKelas): Observable<string>{
     return this.http.delete<any>(`${this.url}/delete/${idKelas}`, this.httpOptions);
   }
+
+  reportKelas(): Observable<any>{
+    return this.http.get<any>(`${this.url}/report`, 
+    { headers: this.httpOptions.headers, responseType: 'arraybuffer' as 'json'});
+  }
 }

@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   private roles: string[];
   isLoggedIn = false;
   nama : string;
+  email : string;
 
   constructor(private tokenStorageService: TokenStorageService, public router: Router, private userService: LoginService) {
   }
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
       this.nama = user.nama;
+      this.email = user.email;
     }
   }
 
