@@ -15,6 +15,7 @@ import { TestPageComponent } from './test-page/test-page.component';
 import { SilabusComponent } from './silabus/silabus.component';
 import { PertemuanComponent } from './pertemuan/pertemuan.component';
 import { ForumComponent } from './forum/forum.component';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [PagesComponent, DashBoardComponent, EnrollComponent, DetailMateriComponent, AbsensiComponent,
@@ -23,7 +24,7 @@ import { ForumComponent } from './forum/forum.component';
     CommonModule,
     PagesRoutingModule,
     LayoutModule,
-    TableModule,FormsModule
+    TableModule,FormsModule,ToastModule
   ]
 })
 export class PagesModule {

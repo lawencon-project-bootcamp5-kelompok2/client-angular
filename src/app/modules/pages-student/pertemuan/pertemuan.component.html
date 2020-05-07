@@ -21,9 +21,9 @@
             <p-table #dt [value]="pertemuan" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
               <ng-template pTemplate="header">
                 <tr>  
-                  <th>Pertemuan</th>
+                  <th style="width: 20%;">Pertemuan</th>
                   <th>Tanggal</th>
-                  <th style="width: 12%">Pilih</th>
+                  <th style="width: 25%" colspan="2">Pilih</th>
                 </tr>
               </ng-template>
               <ng-template pTemplate="body" let-rowData let-pertemuan>
@@ -37,6 +37,11 @@
                     <div *ngIf="!hiddenGo(pertemuan.tanggalPertemuan)">
                       <p>N/A</p>
                     </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-primary" [routerLink]="['../forum']" [queryParams]="{idPertemuan:pertemuan.idPertemuan}">
+                      <i class="glyphicon glyphicon-comment"></i>
+                    </button>
                   </td>
                 </tr>
               </ng-template>

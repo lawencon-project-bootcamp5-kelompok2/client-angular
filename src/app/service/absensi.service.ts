@@ -10,7 +10,7 @@ import { Subcourse } from '../model/subcourse';
   providedIn: 'root'
 })
 export class AbsensiService {
-  url = "http://da7223e8.ngrok.io/absensi";
+  url = "http://9e4065a7.ngrok.io/absensi";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -51,6 +51,14 @@ export class AbsensiService {
 
   getDetailAbsen(idSubcourse, idKelas): Observable<any[]> {
     return this.http.get<any[]>(`${this.url}/detail/${idSubcourse}/${idKelas}`, this.httpOptions);
+  }
+
+  getAbsenByPertemuan(idPertemuan): Observable<any[]> {
+    return this.http.get<any>(`${this.url}/search/pertemuan/${idPertemuan}`, this.httpOptions)
+  }
+
+  getAbsenById(idAbsen): Observable<any> {
+    return this.http.get<any>(`${this.url}/search/${idAbsen}`, this.httpOptions);
   }
 
 }

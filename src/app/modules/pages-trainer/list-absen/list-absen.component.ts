@@ -6,6 +6,11 @@ import { SubcourseService } from 'src/app/service/subcourse.service';
 import { KelasService } from 'src/app/service/kelas.service';
 import { Subcourse } from 'src/app/model/subcourse';
 import { Kelas } from 'src/app/model/kelas';
+import { PertemuanService } from 'src/app/service/pertemuan.service';
+import { Pertemuan } from 'src/app/model/pertemuan';
+import { Absensi } from 'src/app/model/absensi';
+import { MessageService } from 'primeng/api';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-list-absen',
@@ -15,6 +20,8 @@ import { Kelas } from 'src/app/model/kelas';
 export class ListAbsenComponent implements OnInit {
 
   tableIsEmpty = true;
+  absensi: Absensi[] = [new Absensi()];
+  absensi2: Absensi = new Absensi();
   absen : Absen[];
   absen1: Absen;
   cols : any[];
@@ -22,25 +29,34 @@ export class ListAbsenComponent implements OnInit {
   idSubcourse
   idKelas
   detail
-  subcourse: Subcourse
-  kelas: Kelas
+  pertemuan: Pertemuan = new Pertemuan();
+  kelas: Kelas = new Kelas();
+  idPertemuan
+  absenInput : Absen = new Absen();
+  updateSubscription : Subscription;
 
   constructor(private route: ActivatedRoute, private absensiService: AbsensiService, private subcourseService: SubcourseService,
-    private kelasService: KelasService) { }
+    private kelasService: KelasService, private pertemuanService: PertemuanService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     document.getElementById("sideKelas").className="active";
 
     this.route.queryParams.subscribe(params => {
-      this.idSubcourse = params.idSubcourse;
       this.idKelas = params.idKelas;
+      this.idPertemuan = params.idPertemuan;
     });
 
-    this.subcourseService.getSubcourseById(this.idSubcourse).subscribe(
-      result => {
-        this.subcourse = result;
-      }
-    )
+    // this.subcourseService.getSubcourseById(this.idSubcourse).subscribe(
+    //   result => {
+    //     this.subcourse = result;
+    //   }, err => {
+    //     console.log(err);
+    //   }
+    // )
+
+    this.pertemuanService.getPertemuanById(this.idPertemuan).subscribe( res => {
+      this.pertemuan = res
+    })
 
     this.kelasService.getKelasById(this.idKelas).subscribe(
       result => {
@@ -48,27 +64,52 @@ export class ListAbsenComponent implements OnInit {
       }
     )
 
-    this.absensiService.getDetailAbsen(this.idSubcourse, this.idKelas).subscribe(
-      result => {
-        this.detail = result;
-      }
-    )
+    // this.absensiService.getDetailAbsen(this.idSubcourse, this.idKelas).subscribe(
+    //   result => {
+    //     this.detail = result;
+    //   }
+    // )
 
+    this.updateSubscription = interval(1000).subscribe( val => {
+      this.getAbsen();
+    })
+  }
 
-    this.absen = [
-      {
-        noUrut: 1,
-        namaStudent: "Harry Potter"
-      },
-      {
-        noUrut: 2,
-        namaStudent: "Luke Skywalker"
-      }
-    ]
-    this.cols = [
-      {field:"noUrut", header:"No"},
-      {field:"namaStudent", header:"Nama Student"}
-    ]
+  getAbsen() {
+    this.absensiService.getAbsenByPertemuan(this.idPertemuan).subscribe( result => {
+      this.absen = result;
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  onAccept() {
+    // this.absenInput.status = "hadir";
+    // this.absenInput
+
+    this.absensiService.updateAbsen(this.absen1).subscribe( res => {
+      console.log("update success");
+    }, err => {
+      console.log(this.absen1);
+    })
+  }
+
+  confirmDialog(idAbsen) {
+    this.absensiService.getAbsenById(idAbsen).subscribe( res => {
+      this.absen1 = res;
+    }, err => {
+      console.log(err);      
+    });
+
+    // this.absensi2.idAbsensi = idAbsen;
+    
+  }
+
+  onSuccess(){
+    this.messageService.add({severity:'success', summary:'Success!', detail:'Upload Materi Berhasil!'})
+  }
+  onFailed(){
+    this.messageService.add({severity:'error', summary:'Error!', detail:'Upload Materi Gagal!'})
   }
 
   onRowSelect(event) {

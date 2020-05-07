@@ -8,8 +8,8 @@ import { tap, catchError, map} from 'rxjs/operators';
 })
 export class FileJawabanService {
 
-  url = "http://da7223e8.ngrok.io/course";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
+  url = "http://9e4065a7.ngrok.io/fileJawaban";
+  headers = new HttpHeaders().set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
@@ -22,11 +22,13 @@ export class FileJawabanService {
     return throwError(error);    
   }
 
-  uploadFile(formData){
+  uploadFile(uploadJawaban: File){
+    const formData: FormData = new FormData();
+    formData.append('file', uploadJawaban, uploadJawaban.name);
     return this.http.post<any>(`${this.url}/uploadFile`, formData, this.httpOptions);
   }
 
   downloadFile(id): Observable<Blob>{
-    return this.http.get(`${this.url}/downloadFile/${id}`, {responseType: 'blob'});
+    return this.http.get(`${this.url}/downloadFile/${id}`, {headers : this.headers, responseType: 'blob'});
   };
 }

@@ -11,25 +11,27 @@
   <!-- Default box -->
   <div class="box">
     <div class="box-header with-border">
-      <h1 class="box-title">Test 1</h1>
+      <h1 class="box-title">Test Materi {{subcourse.namaSubcourse}}</h1>
     </div>
     <div class="box-body">
       <h5>Deskripsi</h5>
-      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+      <p>Silahkan kerjakan soal yang terlampir dengan mendownload soal dibawah ini. Upload jawaban anda sebelum waktu habis.
       </p> <br>
       <p><b>Download Soal Dibawah Ini :</b></p>
-      <button style="width: 150px;" type="button" class="btn btn-block btn-primary">Download Soal</button>
+      <button style="width: 150px;" type="button" class="btn btn-block btn-primary" (click)="downloadSoal(test.fileSoal.idSoal)">
+        Download Soal
+      </button>
       <br>
       <p id="infoTest"></p>
       <label for="exampleInputFile"></label>
-        <div class="input-group">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="exampleInputFile">
-            <label class="custom-file-label" for="exampleInputFile"></label>
+        <div class="form-group" enctype="multipart/form-data">
+          <label for="inputMateri" class="col-sm-4 control-label">Upload jawaban dibawah ini </label>
+          <div class="col-sm-4">
+           <input enctype="multipart/form-data" name="fileMateri" type="file" id="fileMateri" (change)="handleInputJawaban($event.target.files)">
           </div>
         </div>
       <div *ngIf="buttonOn; else off">
-        <button style="width: 80px;" type="submit" class="btn btn-block btn-primary">Submit</button>  
+        <button style="width: 80px;" type="submit" class="btn btn-block btn-primary" (click)="uploadJawaban()">Submit</button>  
       </div>
       <ng-template #off>
         <button style="width: 80px;" type="submit" class="btn btn-block btn-primary disabled">Submit</button>
@@ -42,3 +44,5 @@
 
 </section>
 <!-- /.content -->
+
+<p-toast position="bottom-center"></p-toast>

@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
+import { Soal } from '../model/soal';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SoalService {
 
-  url = "http://da7223e8.ngrok.io/soal";
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
+  url = "http://9e4065a7.ngrok.io/soal";
+  headers = new HttpHeaders().set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
@@ -21,14 +22,13 @@ export class SoalService {
     return throwError(error);    
   }
 
-  uploadFile(formData){
-    return this.http.post<any>(`${this.url}/uploadFile`, formData, {
-      reportProgress: true,
-      observe: 'events'
-    });
+  uploadFile(uploadSoal: File) : Observable<Soal>{
+    const formData: FormData = new FormData();
+    formData.append('file', uploadSoal, uploadSoal.name);
+    return this.http.post<any>(`${this.url}/uploadFile`, formData, this.httpOptions);
   }
 
   downloadFile(id): Observable<Blob>{
-    return this.http.get(`${this.url}/downloadFile/${id}`, {responseType: 'blob'});
+    return this.http.get(`${this.url}/downloadFile/${id}`, {headers: this.headers, responseType: 'blob'});
   };
 }
