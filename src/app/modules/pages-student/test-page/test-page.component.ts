@@ -102,7 +102,7 @@ export class TestPageComponent implements OnInit {
 
   timer() {
     let now = new Date();
-    let done = 0;
+    let deadline = new Date().getTime();
     
     let userTime = (now.getHours() * 3600) + (now.getMinutes() * 60) + now.getSeconds();
     // done = (this.selesai[0] * 3600) + (this.selesai[1] * 60) + this.selesai[2];
