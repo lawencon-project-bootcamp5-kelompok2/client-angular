@@ -1,4 +1,4 @@
-export interface FileJawaban{
+export class FileJawaban{
     idFileJawaban;
     fileName;
     fileType;

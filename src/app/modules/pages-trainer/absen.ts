@@ -1,4 +1,4 @@
-export interface Absen {
+export class Absen {
     noUrut;
     namaStudent;
 }

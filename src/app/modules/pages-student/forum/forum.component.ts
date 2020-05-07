@@ -27,6 +27,8 @@ export class ForumComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getForum();
+
     const user = this.sessionStorage.getUser();
     this.emailSender = user.email;
     this.route.queryParams.subscribe(params => {
@@ -37,9 +39,10 @@ export class ForumComponent implements OnInit {
       this.pertemuan = res;
     })
 
-    this.updateSubscription = interval(5000).subscribe( val => {
+    this.updateSubscription = interval(2000).subscribe( val => {
       this.getForum();
     })
+    
 
     document.getElementById("sideEnroll").className="active";
   }
@@ -58,6 +61,10 @@ export class ForumComponent implements OnInit {
     }, err => {
       console.log(err);
     })
+
+    this.updateSubscription = interval(500).subscribe( val => {
+      this.getForum();
+    });
   }
 
 }

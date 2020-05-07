@@ -82,7 +82,7 @@
                 <th>Selesai</th>
                 <th colspan="1">Pertemuan</th>
                 <th>Edit</th>
-                <th>Konfirmasi Absen</th>
+                <!-- <th>Konfirmasi Absen</th> -->
                 <th>Lihat Nilai</th>
               </tr>
             </ng-template>
@@ -92,7 +92,7 @@
                 <td>{{subcourse.tanggalMulai}}</td>
                 <td>{{subcourse.tanggalSelesai}}</td>
                 <td>
-                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['../pertemuan-detail']" [queryParams]="{idSubcourse:subcourse.idSubcourse}">
+                  <button type="button" class="btn btn-block btn-primary" [routerLink]="['../pertemuan-detail']" [queryParams]="{idSubcourse:subcourse.idSubcourse, idKelas:idKelas}">
                     <i class="glyphicon glyphicon-briefcase" style="width: fit-content;"></i>
                   </button>
                 </td>
@@ -101,11 +101,11 @@
                     <i class="glyphicon glyphicon-pencil" style="width: fit-content;"></i>
                   </button>
                 </td>
-                <td>
+                <!-- <td>
                   <button type="button" class="btn btn-block btn-primary" [routerLink]="['../listabsen']" [queryParams]="{idSubcourse:subcourse.idSubcourse, idKelas:kelas.idKelas}">
                     <i class="glyphicon glyphicon-th-list" style="width: fit-content;"></i>
                   </button>
-                </td>
+                </td> -->
                 <td>
                   <button type="button" class="btn btn-block btn-primary" [routerLink]="['../nilaimateri']" [queryParams]="{idSubcourse:subcourse.idSubcourse, idKelas:kelas.idKelas}">
                     <i class="glyphicon glyphicon-list-alt" style="width: fit-content;"></i>

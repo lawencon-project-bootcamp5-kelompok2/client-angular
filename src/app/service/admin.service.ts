@@ -7,7 +7,7 @@ import { throwError } from 'rxjs';
 })
 export class AdminService {
 
-  url = "http://localhost:8080/course";
+  url = "http://9e4065a7.ngrok.io/course";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {

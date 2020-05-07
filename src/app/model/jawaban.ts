@@ -1,11 +1,12 @@
 import { Student } from './student';
 import { FileJawaban } from './fileJawaban';
 import { Test } from './test';
+import { FileJawabanService } from '../service/file-jawaban.service';
 
-export interface Jawaban {
+export class Jawaban {
     idJawaban;
-    idTest: Test;
-    idStudent: Student;
-    fileJawaban: FileJawaban;
+    idTest: Test = new Test();
+    idStudent: Student = new Student();
+    fileJawaban: FileJawaban = new FileJawaban();
     nilai;
 }
