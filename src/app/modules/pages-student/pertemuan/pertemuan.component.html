@@ -29,10 +29,10 @@
               <ng-template pTemplate="body" let-rowData let-pertemuan>
                 <tr [pSelectableRow]="rowData">
                   <td>{{pertemuan.pertemuan}}</td>
-                  <td>{{pertemuan.tanggalPertemuan}}</td>
+                  <td>{{pipeDate(pertemuan.tanggalPertemuan)}}</td>
                   <td style="width: 5%;">
                     <div *ngIf="hiddenGo(pertemuan.tanggalPertemuan)">
-                      <button class="btn btn-primary" [routerLink]="['../detail-materi']" [queryParams]="{pertemuan:pertemuan.idPertemuan, subCourse:subcourse.idSubcourse}"><i class="glyphicon glyphicon-search"></i></button>
+                      <button class="btn btn-primary" [routerLink]="['../detail-materi']" [queryParams]="{pertemuan:pertemuan.idPertemuan, subCourse:subcourse.idSubcourse}"><i class="glyphicon glyphicon-chevron-right"></i></button>
                     </div>
                     <div *ngIf="!hiddenGo(pertemuan.tanggalPertemuan)">
                       <p>N/A</p>

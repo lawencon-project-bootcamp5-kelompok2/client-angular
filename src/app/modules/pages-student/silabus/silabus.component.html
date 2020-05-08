@@ -25,17 +25,26 @@
               <tr [pSelectableRow]="rowData">
                 <td>{{i+1}}</td>
                 <td>{{subcourse.namaSubcourse}}</td>
-                <td>{{subcourse.tanggalMulai}}</td>
-                <td>{{subcourse.tanggalSelesai}}</td>
+                <td>{{pipeDate(subcourse.tanggalMulai)}}</td>
+                <td>{{pipeDate(subcourse.tanggalSelesai)}}</td>
                 <td style="width: 5%;">
-                  <div *ngIf="!hiddenGo(subcourse.tanggalMulai)">
-                    <button class="btn btn-primary" [routerLink]="['../pertemuan']" [queryParams]="{idKelas:kelas.idKelas, subCourse:subcourse.idSubcourse}"><i class="glyphicon glyphicon-search"></i></button>
-                  </div>
                   <div *ngIf="hiddenGo(subcourse.tanggalMulai)">
+                    <button class="btn btn-primary" [routerLink]="['../pertemuan']" [queryParams]="{idKelas:kelas.idKelas, subCourse:subcourse.idSubcourse}"><i class="glyphicon glyphicon-chevron-right"></i></button>
+
+                  </div>
+                  <div *ngIf="!hiddenGo(subcourse.tanggalMulai)">
                     <p>N/A</p>
                   </div>
                 </td>
-                <td style="width: 13%;"><button class="btn" [routerLink]="['../test-page']" [queryParams]="{idSubcourse: subcourse.idSubcourse}">Kuis</button></td>
+                <td style="width: 13%;">
+                  <div *ngIf="hiddenGo(subcourse.tanggalSelesai)">
+                    <button class="btn btn-success" [routerLink]="['../test-page']" [queryParams]="{idKelas:kelas.idKelas, subCourse:subcourse.idSubcourse}" >Test</button>
+                  </div>
+                  <div *ngIf="!hiddenGo(subcourse.tanggalSelesai)">
+                    <p>N/A</p>
+                  </div>
+                </td>
+
               </tr>
             </ng-template>
           </p-table>

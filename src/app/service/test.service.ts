@@ -44,4 +44,8 @@ export class TestService {
   deleteTest(idTest): Observable<any>{
     return this.http.delete<any>(`${this.url}/delete/${idTest}`, this.httpOptions);
   }
+
+  getTestByIdKelasAndIdSubcourse(idSubcourse, idKelas): Observable<any>{
+    return this.http.get<any>(`${this.url}/search/${idSubcourse}/${idKelas}`, this.httpOptions)
+  }
 }

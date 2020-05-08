@@ -78,4 +78,11 @@ export class SilabusComponent implements OnInit {
     
   }
 
+
+  pipeDate(tgl : Date) : string{
+    let pipe = new DatePipe('en-US')
+    let getToday = pipe.transform(tgl, "dd-MM-yyyy")
+    return getToday
+  }
+
 }
