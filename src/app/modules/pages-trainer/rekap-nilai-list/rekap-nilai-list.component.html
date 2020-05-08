@@ -19,7 +19,7 @@
                             <button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>&nbsp; Print</button>
                           </div>
                           <br>
-                            <p-table [value]="rekapNilai" selectionMode="single" [(selection)]="selectedRow1" (onRowSelect)="onRowSelect1($event)">
+                            <p-table [value]="rekapNilai" autoLayout = "true" selectionMode="single" [(selection)]="selectedRow1" (onRowSelect)="onRowSelect1($event)">
                                 <!-- <thead>                   -->
                                 <ng-template pTemplate="header">
                                   <tr>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="box-body">
                             
-                            <p-table [value]="listMateri" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                            <p-table [value]="listMateri" autoLayout= "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                                 <!-- <thead>                   -->
                                 <ng-template pTemplate="header">
                                   <tr>

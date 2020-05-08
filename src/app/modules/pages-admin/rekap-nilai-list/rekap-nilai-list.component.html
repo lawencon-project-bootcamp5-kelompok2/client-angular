@@ -16,7 +16,7 @@
                       </div>
                 </div>
                 <div class="box-body">
-                    <p-table [value]="rekapNilaiClass" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="rekapNilaiClass" autoLayout= "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
@@ -50,4 +50,9 @@
             </div>
         </div>
     </div>
+      <div>
+        <footer>
+          <a class="previous" (click) ="prevPage();">&laquo; Previous</a>
+         </footer> 
+      </div>
 </section>

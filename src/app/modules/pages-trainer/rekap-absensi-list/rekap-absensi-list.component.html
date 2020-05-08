@@ -9,7 +9,7 @@
                 </div>
                 <div class="box-body">
                     
-                    <p-table [value]="subcourse" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="subcourse" autoLayout = "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>

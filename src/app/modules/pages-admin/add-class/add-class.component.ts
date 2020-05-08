@@ -6,6 +6,7 @@ import { Course } from 'src/app/model/course';
 import { TrainerService } from 'src/app/service/trainer.service';
 import { Trainer } from 'src/app/model/trainer';
 import {MessageService} from 'primeng/api';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-class',
@@ -21,7 +22,7 @@ export class AddClassComponent implements OnInit {
   checkbox: boolean = false;
 
   constructor(private kelasService: KelasService, private courseService: CourseService,
-    private trainerService: TrainerService, private messageService: MessageService) { }
+    private trainerService: TrainerService, private messageService: MessageService, private location : Location) { }
 
   ngOnInit(): void {
     this.kelasService.getKelas().subscribe(result =>
@@ -57,6 +58,10 @@ export class AddClassComponent implements OnInit {
   }
   onFailed(){
     this.messageService.add({severity:'error', summary:'Error!', detail:'Tambah Kelas Gagal!'})
+  }
+
+  prevPage(){
+    this.location.back();
   }
 
 }

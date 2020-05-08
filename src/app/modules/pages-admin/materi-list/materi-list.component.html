@@ -20,7 +20,7 @@
                         <button class="btn btn-primary" [routerLink]="['../add-materi']" [queryParams]="{idCourse:idCourse}"><i class="glyphicon glyphicon-plus"></i>&nbsp; Materi</button>
                     </div>
                     <br>
-                    <p-table [value]="subcourse" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="subcourse" autoLayout="true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>

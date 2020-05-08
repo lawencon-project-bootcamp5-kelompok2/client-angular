@@ -22,7 +22,7 @@ export class ClassListComponent implements OnInit {
       this.kelas = result
     });
 
-    document.getElementById("sideClass").className="active";
+    // document.getElementById("sideClass").className="active";
   }
 
   onRowSelect(event){

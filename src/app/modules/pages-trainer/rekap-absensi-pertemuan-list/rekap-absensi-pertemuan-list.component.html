@@ -8,7 +8,7 @@
                   <h4 class="box-title">Rekap Absen {{subcourse.namaSubcourse}} Kelas {{kelas.kodeKelas}}</h4>
                 </div>
                 <div class="box-body">
-                    <p-table [value]="pertemuan" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="pertemuan" autoLayout = "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>

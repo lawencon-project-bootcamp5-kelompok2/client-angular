@@ -1,12 +1,12 @@
 <aside class="main-sidebar">
   <section class="sidebar">
     <ul class="sidebar-menu" data-widget="tree">
-      <li id="sideDashboard">
+      <li id="sideDashboard" routerLinkActive = "active" [routerLinkActiveOptions] = "{exact:true}">
         <a routerLink ="./">
           <i class="glyphicon glyphicon-home"></i> <span>Dashboard</span>
         </a>
       </li>
-      <li id="sideNilai">
+      <li id="sideNilai" routerLinkActive = "active">
         <a routerLink = "./list-rekap-nilai">
           <i class="fa fa-check-square-o"></i> <span>Nilai E-Learning</span>
         </a>

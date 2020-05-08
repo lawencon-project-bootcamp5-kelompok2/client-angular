@@ -4,6 +4,7 @@ import { Trainer } from 'src/app/model/trainer';
 import { TrainerService } from 'src/app/service/trainer.service';
 import { Router } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-trainer-list',
@@ -20,7 +21,7 @@ export class TrainerListComponent implements OnInit {
   count : number = 0
   private updateSubscription : Subscription
 
-  constructor(private trainerService : TrainerService, private router : Router) { }
+  constructor(private trainerService : TrainerService, private router : Router, private location : Location) { }
 
   ngOnInit(): void {
     this.updateSubscription = interval(500).subscribe(
@@ -85,6 +86,10 @@ export class TrainerListComponent implements OnInit {
 
   rowCount() : number{
     return this.count = this.count + 1
+  }
+
+  prevPage() {
+    this.location.back();
   }
 
 }

@@ -16,7 +16,7 @@
                       </div>
                 </div>
                 <div class="box-body">
-                    <p-table [value]="student" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="student" autoLayout= "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
@@ -50,4 +50,9 @@
             </div>
         </div>
     </div>
+    <div>
+      <footer>
+        <a class="previous" routerLink = "..">&laquo; Previous</a>
+      </footer>
+    </div> 
 </section>

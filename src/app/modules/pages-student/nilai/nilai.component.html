@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="box-body">
-      <p-table [value]="aaa" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+      <p-table [value]="aaa" autoLayout= "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
         <ng-template pTemplate="header">                  
           <tr>
             <th style="width: 100px">Enroll</th>

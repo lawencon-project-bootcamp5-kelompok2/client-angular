@@ -57,7 +57,7 @@ export class AddPertemuanComponent implements OnInit {
 
   onSubmit() {
     for(let {index, value} of this.datePertemuan.map((value,index) => ({index, value}))) {
-      // this.pertemuan.idMateri = null;
+      this.pertemuan.idMateri = null;
       this.pertemuan.idSubcourse.idSubcourse = this.idSubcourse;
       this.pertemuan.pertemuan = index+1;
       this.pertemuan.tanggalPertemuan = value;

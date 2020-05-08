@@ -1,18 +1,4 @@
-<style>
-  .example-modal .modal {
-    position: relative;
-    top: auto;
-    bottom: auto;
-    right: auto;
-    left: auto;
-    display: block;
-    z-index: 1;
-  }
 
-  .example-modal .modal {
-    background: transparent !important;
-  }
-</style>
 <section class="content-header">
     <h1>
       Current Course Detail
@@ -74,7 +60,7 @@
         
         <!-- /.box-body -->
         <div class="box-body">
-          <p-table [value]="subcourse">
+          <p-table [value]="subcourse" autoLayout = "true">
             <ng-template pTemplate="header">
               <tr>
                 <th>Materi</th>

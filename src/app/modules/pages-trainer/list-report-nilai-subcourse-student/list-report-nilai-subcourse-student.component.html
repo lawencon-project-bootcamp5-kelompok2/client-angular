@@ -7,7 +7,7 @@
                     <h4 class="box-title">Laporan Nilai Materi {{subcourse.namaSubcourse}} Kelas {{kelas.kodeKelas}}</h4>
                 </div>
                 <div class="box-body">
-                    <p-table [value]="detail" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="detail" autoLayout = "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>

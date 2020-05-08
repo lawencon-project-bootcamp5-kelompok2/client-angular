@@ -10,7 +10,7 @@
                         </button>
                     </div>
                     <br>
-                    <p-table [value]="pertemuan" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="pertemuan" autoLayout= "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <ng-template pTemplate="header">
                           <tr>
                             <th style="width: 15%">Pertemuan</th>

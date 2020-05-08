@@ -5,6 +5,7 @@ import { CourseService } from 'src/app/service/course.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
 
+
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
@@ -30,7 +31,7 @@ export class CourseListComponent implements OnInit {
       this.idCourse = result.idCourse
     });
 
-    document.getElementById("side").className="active";
+    // document.getElementById("side").className="active";
 
     // this.updateSubscription = interval(1000).subscribe( val => {
     //   this.getCourse()

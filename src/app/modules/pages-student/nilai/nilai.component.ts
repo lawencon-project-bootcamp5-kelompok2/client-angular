@@ -19,7 +19,7 @@ export class NilaiComponent implements OnInit {
   }
 
   ngOnInit() {
-    document.getElementById("sideNilai").className="active";
+    // document.getElementById("sideNilai").className="active";
 
     
   }

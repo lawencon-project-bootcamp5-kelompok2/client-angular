@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
       this.totalStudent = res.length;
     });
 
-    document.getElementById("sideDashboard").className="active";
+    // document.getElementById("sideDashboard").className="active";
 
   }
 

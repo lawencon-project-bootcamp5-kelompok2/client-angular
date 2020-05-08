@@ -38,7 +38,7 @@ export class DashBoardComponent implements OnInit {
     private kelasService: KelasService, private userService: LoginService, private tokenStorage: TokenStorageService, public router: Router) { }
 
   ngOnInit() {
-    document.getElementById("sideDashboard").className = "active";
+    // document.getElementById("sideDashboard").className = "active";
 
     const user = this.tokenStorage.getUser();
     this.nama = user.nama;

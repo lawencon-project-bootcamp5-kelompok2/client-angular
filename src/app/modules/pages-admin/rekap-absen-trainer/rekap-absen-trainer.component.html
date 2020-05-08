@@ -11,7 +11,7 @@
                         <button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i></button>
                     </div>
                     <br>
-                    <p-table [value]="absenTrainer" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="absenTrainer" autoLayout= "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>

@@ -30,7 +30,7 @@ export class SilabusComponent implements OnInit {
 
   ngOnInit() {
 
-    document.getElementById("sideEnroll").className="active"
+    // document.getElementById("sideEnroll").className="active"
     
     console.log(this.today);
     
