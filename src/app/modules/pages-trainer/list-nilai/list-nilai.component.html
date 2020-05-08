@@ -17,13 +17,17 @@
                             <th style="width: 10%">Nilai</th>
                           </tr>
                         </ng-template>
-                        <ng-template pTemplate="body" let-rowData let-formInput>
+                        <ng-template pTemplate="body" let-rowData let-formInput let-jawaban>
                           <tr [pSelectableRow]="rowData">
                             <td></td>
                             <td>{{formInput.npm}}</td>
                             <td>{{formInput.namaStudent}}</td>
                             <!-- <td><a href="{{formNilai.fileLink}}">Link...</a></td> -->
-                            <td><a href="#">Link...</a></td>
+                            <td>
+                              <button type="button" class="btn btn-primary">
+                                <i class="glyphicon glyphicon-cloud-download" (click)="downloadJawaban(jawaban.fileJawaban.idFileJawaban)"></i>
+                              </button>
+                            </td>
                             <td>
                               <!-- <input class="form-control" placeholder="Nilai" type="number" [(ngModel)]="formNilai.nilaiForm" value="{{formNilai.nilaiForm}}"> -->
                               <input class="form-control" placeholder="Nilai" type="number">

@@ -5,6 +5,11 @@ import { SubcourseService } from 'src/app/service/subcourse.service';
 import { KelasService } from 'src/app/service/kelas.service';
 import { Kelas } from 'src/app/model/kelas';
 import { Subcourse } from 'src/app/model/subcourse';
+import { JawabanService } from 'src/app/service/jawaban.service';
+import { Jawaban } from 'src/app/model/jawaban';
+import { FileJawabanService } from 'src/app/service/file-jawaban.service';
+import { TestService } from 'src/app/service/test.service';
+import { Test } from 'src/app/model/test';
 
 @Component({
   selector: 'app-list-nilai',
@@ -24,8 +29,12 @@ export class ListNilaiComponent implements OnInit {
   kelas : Kelas
   subcourse : Subcourse
   formInput : any
+  jawaban : Jawaban[] = [new Jawaban()];
+  test: Test = new Test();
+  idTest: any;
 
-  constructor(private route: ActivatedRoute, private subcourseService: SubcourseService, private kelasService: KelasService) { }
+  constructor(private route: ActivatedRoute, private subcourseService: SubcourseService, private kelasService: KelasService,
+    private jawabanService: JawabanService, private fileJawabanService: FileJawabanService, private testService: TestService) { }
 
   ngOnInit(): void {
 
@@ -40,6 +49,18 @@ export class ListNilaiComponent implements OnInit {
       }
     )
 
+    this.testService.getTestBySubcourse(this.idSubcourse).subscribe( res => {
+      this.idTest = res[0].idTest;
+      console.log(this.idTest);
+      this.jawabanService.getJawabanByTest(this.idTest).subscribe(res => {
+        this.jawaban = res;
+      })
+    })
+
+    // console.log(this.idTest)
+
+    
+
     this.subcourseService.getSubcourseById(this.idSubcourse).subscribe(
       result => {
         this.subcourse = result;
@@ -51,6 +72,14 @@ export class ListNilaiComponent implements OnInit {
       }
     )
 
+  }
+
+  downloadJawaban(idJawaban){
+    this.fileJawabanService.downloadFile(idJawaban).subscribe(result => {
+      saveAs(result);
+    }, error => {
+      console.log(error);
+    })
   }
 
   onRowSelect(event){

@@ -26,8 +26,12 @@ export class JawabanService {
     return this.http.get<any>(`${this.url}/list`, this.httpOptions);
   }
 
-  getJawabanById(jawaban): Observable<Jawaban>{
-    return this.http.post<any>(`${this.url}/search`, jawaban, this.httpOptions);
+  getJawabanById(idJawaban): Observable<Jawaban>{
+    return this.http.get<any>(`${this.url}/search/${idJawaban}`, this.httpOptions);
+  }
+
+  getJawabanByTest(idTest): Observable<Jawaban[]>{
+    return this.http.get<any>(`${this.url}/search/result/${idTest}`, this.httpOptions);
   }
 
   insertJawaban(jawaban): Observable<string>{
@@ -35,10 +39,10 @@ export class JawabanService {
   }
 
   updateJawaban(jawaban): Observable<string>{
-    return this.http.post<any>(`${this.url}/update`, jawaban, this.httpOptions);
+    return this.http.put<any>(`${this.url}/update`, jawaban, this.httpOptions);
   }
 
-  deleteJawaban(jawaban): Observable<string>{
-    return this.http.post<any>(`${this.url}/delete`, jawaban, this.httpOptions);
+  deleteJawaban(idJawaban): Observable<string>{
+    return this.http.delete<any>(`${this.url}/delete/${idJawaban}`, this.httpOptions);
   }
 }
