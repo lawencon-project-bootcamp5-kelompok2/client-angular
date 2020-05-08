@@ -19,7 +19,7 @@ export class SilabusComponent implements OnInit {
   namaCourse
   subcourse: Subcourse[];
   subcourse1 : Subcourse
-  kelas : Kelas
+  kelas : Kelas = new Kelas();
   course: Course = new Course();
   selectedRow : Subcourse
   today : Date = new Date()
@@ -30,7 +30,7 @@ export class SilabusComponent implements OnInit {
 
   ngOnInit() {
 
-    // document.getElementById("sideEnroll").className="active"
+    // document.getElementById("sideEnroll").className="active";
     
     console.log(this.today);
     
@@ -76,6 +76,13 @@ export class SilabusComponent implements OnInit {
       return false
     }
     
+  }
+
+
+  pipeDate(tgl : Date) : string{
+    let pipe = new DatePipe('en-US')
+    let getToday = pipe.transform(tgl, "dd-MM-yyyy")
+    return getToday
   }
 
 }

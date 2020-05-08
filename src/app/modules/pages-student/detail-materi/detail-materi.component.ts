@@ -50,7 +50,7 @@ export class DetailMateriComponent implements OnInit {
   }
 
   ngOnInit() {
-    // document.getElementById("sideEnroll").className="active";
+    //document.getElementById("sideEnroll").className="active";
     this.title.setTitle("Detail Materi - Student")
     const user = this.token.getUser()
     this.email = user.email
