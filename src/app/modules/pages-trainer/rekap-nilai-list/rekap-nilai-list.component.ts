@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ListMateriData } from '../listMateri-data';
 import { RekapNilaiData } from '../rekapNilai-data';
+import { ActivatedRoute } from '@angular/router';
+import { SubcourseService } from 'src/app/service/subcourse.service';
+import { Kelas } from 'src/app/model/kelas';
+import { Subcourse } from 'src/app/model/subcourse';
+import { KelasService } from 'src/app/service/kelas.service';
 
 @Component({
   selector: 'app-rekap-nilai-list',
@@ -17,31 +22,32 @@ export class RekapNilaiListComponent implements OnInit {
   rekapNilai1 : RekapNilaiData
   selectedRow1 : RekapNilaiData
 
-  constructor() { }
+  idKelas : string
+  namaCourse : string
+  kelas : Kelas
+  subcourse : Subcourse[]
+
+  constructor(private route: ActivatedRoute, private kelasService: KelasService, private subcourseService: SubcourseService) { }
 
   ngOnInit(): void {
-    document.getElementById("sideRekapNilai").className="active";
-    
-    this.listMateri = [
-      {
-        noUrut:1,
-        namaMateri : "Java Basic",
-        tglMulai : "21-4-2020",
-        tglSelesai : "24-4-2020"
-      },
-      {
-        noUrut:2,
-        namaMateri : "OOP",
-        tglSelesai : "26-4-2020",
-        tglMulai : "25-4-2020"
-      },
-      {
-        noUrut:3,
-        namaMateri : "Java Features",
-        tglSelesai : "28-4-2020",
-        tglMulai : "27-4-2020"
+    // document.getElementById("sideRekapNilai").className="active";
+
+    this.route.queryParams.subscribe(params => {
+      this.idKelas = params.idKelas;
+      this.namaCourse = params.namaCourse
+    });
+
+    this.kelasService.getKelasById(this.idKelas).subscribe(
+      result => {
+        this.kelas = result;
       }
-    ]
+    )
+
+    this.subcourseService.getSubcourseByCourse(this.namaCourse).subscribe(
+      result => {
+        this.subcourse = result;
+    });
+    
     this.rekapNilai = [
       {
         npm: 234234324,

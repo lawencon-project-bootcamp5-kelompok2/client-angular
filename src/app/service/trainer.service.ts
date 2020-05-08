@@ -47,8 +47,8 @@ export class TrainerService {
     return this.http.delete(this.url+'/delete/'+id,this.httpOptions)
   }
 
-  reportTrainer(idTrainer, idSubcourse): Observable<any>{
-    return this.http.get<any>(`${this.url}/report/${idTrainer}/${idSubcourse}`, 
+  reportTrainer(idKelas, idSubcourse): Observable<any>{
+    return this.http.get<any>(`${this.url}/report/${idKelas}/${idSubcourse}`, 
     { headers: this.httpOptions.headers, responseType: 'arraybuffer' as 'json'});
   }
 
