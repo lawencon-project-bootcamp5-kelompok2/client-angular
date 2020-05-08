@@ -30,12 +30,12 @@
            <input enctype="multipart/form-data" name="fileMateri" type="file" id="fileMateri" (change)="handleInputJawaban($event.target.files)">
           </div>
         </div>
-      <div *ngIf="fungsi()">
+      <div *ngIf="buttonOn; else off">
         <button style="width: 80px;" type="submit" class="btn btn-block btn-primary" (click)="uploadJawaban()">Submit</button>  
       </div>
-      <div *ngIf="!fungsi()">
-        <button style="width: 80px;" type="submit" class="btn btn-primary disabled">Submit</button>
-      </div>
+      <ng-template #off>
+        <button style="width: 80px;" type="submit" class="btn btn-block btn-primary disabled">Submit</button>
+      </ng-template>
     </div>
     <!-- /.box-body -->
     <!-- /.box-footer-->

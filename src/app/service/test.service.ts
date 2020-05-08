@@ -8,7 +8,7 @@ import { Test } from '../model/test';
 })
 export class TestService {
 
-  url = "http://9e4065a7.ngrok.io/test";
+  url = "http://localhost:8080/test";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
     headers : this.headers
@@ -43,5 +43,9 @@ export class TestService {
 
   deleteTest(idTest): Observable<any>{
     return this.http.delete<any>(`${this.url}/delete/${idTest}`, this.httpOptions);
+  }
+
+  getTestByIdKelasAndIdSubcourse(idSubcourse, idKelas): Observable<any>{
+    return this.http.get<any>(`${this.url}/search/${idSubcourse}/${idKelas}`, this.httpOptions)
   }
 }

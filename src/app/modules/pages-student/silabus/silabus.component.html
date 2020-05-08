@@ -32,13 +32,13 @@
                     <button class="btn btn-primary" [routerLink]="['../pertemuan']" [queryParams]="{idKelas:kelas.idKelas, subCourse:subcourse.idSubcourse}"><i class="glyphicon glyphicon-chevron-right"></i></button>
 
                   </div>
-                  <div *ngIf="hiddenGo(subcourse.tanggalMulai)">
+                  <div *ngIf="!hiddenGo(subcourse.tanggalMulai)">
                     <p>N/A</p>
                   </div>
                 </td>
                 <td style="width: 13%;">
                   <div *ngIf="hiddenGo(subcourse.tanggalSelesai)">
-                    <button class="btn btn-success">Kuis</button>
+                    <button class="btn btn-success" [routerLink]="['../test-page']" [queryParams]="{idKelas:kelas.idKelas, subCourse:subcourse.idSubcourse}" >Test</button>
                   </div>
                   <div *ngIf="!hiddenGo(subcourse.tanggalSelesai)">
                     <p>N/A</p>

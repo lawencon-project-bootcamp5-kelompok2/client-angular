@@ -12,6 +12,8 @@ import { Jawaban } from 'src/app/model/jawaban';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { StudentService } from 'src/app/service/student.service';
 import { MessageService } from 'primeng/api';
+import { DatePipe } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-test-page',
@@ -43,7 +45,7 @@ export class TestPageComponent implements OnInit {
     private sessionStorage: TokenStorageService, private studentService: StudentService, private messageService: MessageService) {}
 
   ngOnInit() {
-    document.getElementById("sideEnroll").className="active";
+    //document.getElementById("sideEnroll").className="active";
 
     const user = this.sessionStorage.getUser();
 
@@ -62,8 +64,8 @@ export class TestPageComponent implements OnInit {
     }, err => console.log(err))
 
     this.testService.getTestBySubcourse(this.idSubcourse).subscribe( res => {
-      this.mulai = res[0].waktuMulai.split(":");
-      this.selesai = res[0].waktuSelesai.split(":");
+      //this.mulai = res[0].waktuMulai.split(":");
+      //this.selesai = res[0].waktuSelesai.split(":");
       this.idTest = res[0].idTest;
       this.testService.getTestById(this.idTest).subscribe( res => {
         setInterval(this.timer, 1000);
