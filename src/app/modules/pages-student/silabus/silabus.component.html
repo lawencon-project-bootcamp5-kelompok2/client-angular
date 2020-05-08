@@ -11,7 +11,7 @@
         <div class="box-body">
           <h5>Instruktur : {{kelas.course.trainer.namaTrainer}}</h5>
           <br>
-          <p-table #dt [value]="subcourse" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+          <p-table [value]="subcourse" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
             <ng-template pTemplate="header">
               <tr>  
                 <th style="width: 5%;">No</th>

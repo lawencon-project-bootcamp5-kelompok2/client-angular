@@ -43,7 +43,7 @@ export class TestPageComponent implements OnInit {
     private sessionStorage: TokenStorageService, private studentService: StudentService, private messageService: MessageService) {}
 
   ngOnInit() {
-    document.getElementById("sideEnroll").className="active";
+    // document.getElementById("sideEnroll").className="active";
 
     const user = this.sessionStorage.getUser();
 
@@ -62,8 +62,8 @@ export class TestPageComponent implements OnInit {
     }, err => console.log(err))
 
     this.testService.getTestBySubcourse(this.idSubcourse).subscribe( res => {
-      this.mulai = res[0].waktuMulai.split(":");
-      this.selesai = res[0].waktuSelesai.split(":");
+      // this.mulai = res[0].waktuMulai.split(":");
+      // this.selesai = res[0].waktuSelesai.split(":");
       this.idTest = res[0].idTest;
       this.testService.getTestById(this.idTest).subscribe( res => {
         setInterval(this.timer, 1000);
@@ -92,7 +92,7 @@ export class TestPageComponent implements OnInit {
       this.jawaban.idTest.idTest = this.idTest;
       this.jawabanService.insertJawaban(this.jawaban).subscribe(res => {
         this.onSuccess();
-        console.log("done!");
+        console.log("upload done!");
       }, err => {
         console.log(err);
         this.onFailed();

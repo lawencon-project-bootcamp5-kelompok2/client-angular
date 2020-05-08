@@ -8,7 +8,7 @@ import { tap, catchError, map} from 'rxjs/operators';
 })
 export class FileJawabanService {
 
-  url = "http://9e4065a7.ngrok.io/fileJawaban";
+  url = "http://9ece3500.ngrok.io/fileJawaban";
   headers = new HttpHeaders().set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {

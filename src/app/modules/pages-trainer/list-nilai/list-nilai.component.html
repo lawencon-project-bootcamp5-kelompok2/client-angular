@@ -8,7 +8,6 @@
                 </div>
                 <div class="box-body">
                     <p-table [value]="formInput" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
-                        <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
                             <th style="width: 5%">No</th>
@@ -18,8 +17,6 @@
                             <th style="width: 10%">Nilai</th>
                           </tr>
                         </ng-template>
-                        <!-- </thead> -->
-                        <!-- <tbody> -->
                         <ng-template pTemplate="body" let-rowData let-formInput>
                           <tr [pSelectableRow]="rowData">
                             <td></td>

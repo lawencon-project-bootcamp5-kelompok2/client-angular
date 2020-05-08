@@ -10,7 +10,7 @@ import { Subcourse } from '../model/subcourse';
   providedIn: 'root'
 })
 export class AbsensiService {
-  url = "http://9e4065a7.ngrok.io/absensi";
+  url = "http://9ece3500.ngrok.io/absensi";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
