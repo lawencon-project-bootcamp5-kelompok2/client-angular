@@ -7,39 +7,44 @@
 
 <!-- Main content -->
 <section class="content">
-
-  <!-- Default box -->
-  <div class="box">
-    <div class="box-header with-border">
-      <h1 class="box-title">Test Materi {{subcourse.namaSubcourse}}</h1>
-    </div>
-    <div class="box-body">
-      <h5>Deskripsi</h5>
-      <p>Silahkan kerjakan soal yang terlampir dengan mendownload soal dibawah ini. Upload jawaban anda sebelum waktu habis.
-      </p> <br>
-      <p><b>Download Soal Dibawah Ini :</b></p>
-      <button style="width: 150px;" type="button" class="btn btn-block btn-primary" (click)="downloadSoal(test.fileSoal.idSoal)">
-        Download Soal
-      </button>
-      <br>
-      <p id="infoTest"></p>
-      <label for="exampleInputFile"></label>
-        <div class="form-group" enctype="multipart/form-data">
-          <label for="inputMateri" class="col-sm-4 control-label">Upload jawaban dibawah ini </label>
-          <div class="col-sm-4">
-           <input enctype="multipart/form-data" name="fileMateri" type="file" id="fileMateri" (change)="handleInputJawaban($event.target.files)">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="box">
+        <div class="box-header bg-light-blue-active color-palette">
+          <h1 class="box-title">Test Materi {{subcourse.namaSubcourse}}</h1>
+        </div>
+        <div class="box-body">
+          <h5>Deskripsi</h5>
+          <p>Silahkan kerjakan soal yang terlampir dengan mendownload soal dibawah ini. Upload jawaban anda sebelum waktu habis.
+          </p> <br>
+          <p><b>Download Soal Dibawah Ini :</b></p>
+          <button style="width: 150px;" type="button" class="btn btn-block btn-primary" (click)="downloadSoal(test.fileSoal.idSoal)">
+            Download Soal
+          </button>
+          <br>
+          <p id="infoTest"></p>
+          <label for="exampleInputFile"></label>
+            <div class="form-group" enctype="multipart/form-data">
+              <label for="inputMateri" class="col-sm-4 control-label">Upload jawaban dibawah ini </label>
+              <div class="col-sm-4">
+               <input enctype="multipart/form-data" name="fileMateri" type="file" id="fileMateri" (change)="handleInputJawaban($event.target.files)">
+              </div>
+            </div>
+          <div *ngIf="fungsi()">
+            <button style="width: 80px;" type="submit" class="btn btn-block btn-primary" (click)="uploadJawaban()">Submit</button>  
+          </div>
+          <div *ngIf="!fungsi()">
+            <button style="width: 80px;" type="submit" class="btn btn-block btn-primary disabled">Submit</button>
           </div>
         </div>
-      <div *ngIf="buttonOn; else off">
-        <button style="width: 80px;" type="submit" class="btn btn-block btn-primary" (click)="uploadJawaban()">Submit</button>  
+        <!-- /.box-body -->
+        <!-- /.box-footer-->
       </div>
-      <ng-template #off>
-        <button style="width: 80px;" type="submit" class="btn btn-block btn-primary disabled">Submit</button>
-      </ng-template>
     </div>
-    <!-- /.box-body -->
-    <!-- /.box-footer-->
   </div>
+  <!-- Default box -->
+  
   <!-- /.box -->
 
 </section>

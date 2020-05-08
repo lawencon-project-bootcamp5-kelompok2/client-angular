@@ -29,31 +29,6 @@ export class ListNilaiComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.formNilai = [
-    //   {
-    //     noUrut:1,
-    //     npm: "342342342",
-    //     namaStudent : "Cloud Strife",
-    //     fileLink : "#",
-    //     nilaiForm : null
-    //   },
-    //   {
-    //     noUrut:2,
-    //     npm: "43534534",
-    //     namaStudent : "Dr Neo Cortex",
-    //     fileLink : "#",
-    //     nilaiForm : 80
-    //   }
-    // ]
-
-    // this.cols = [
-    //   {field: "noUrut", header:"No"},
-    //   {field: "npm", header:"NPM"},
-    //   {field: "namaStudent", header:"Nama Student"},
-    //   {field: "fileLink", header:"Link File Test"},
-    //   {field: "nilaiForm", header:"Nilai"}
-    // ]
-
     this.route.queryParams.subscribe(params => {
       this.idKelas = params.idKelas;
       this.idSubcourse = params.idSubcourse
