@@ -6,6 +6,7 @@ import { CourseService } from 'src/app/service/course.service';
 import { Course } from 'src/app/model/course';
 import { TrainerService } from 'src/app/service/trainer.service';
 import { Trainer } from 'src/app/model/trainer';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-class',
@@ -21,7 +22,7 @@ export class EditClassComponent implements OnInit {
   courses: Course[];
 
   constructor(private route: ActivatedRoute, private kelasService: KelasService, 
-    private courseService: CourseService, private trainerService: TrainerService) { }
+    private courseService: CourseService, private trainerService: TrainerService, private location : Location) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -51,6 +52,10 @@ export class EditClassComponent implements OnInit {
       }, err => console.log(err),
       () => console.log("Update Success")    
     )
+  }
+
+  prevPage(){
+    this.location.back();
   }
 
 }

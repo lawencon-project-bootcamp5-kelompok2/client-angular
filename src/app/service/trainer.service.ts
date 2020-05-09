@@ -9,7 +9,11 @@ import { Trainer } from '../model/trainer';
 })
 export class TrainerService {
 
+<<<<<<< HEAD
   url = "http://9ece3500.ngrok.io/trainer";
+=======
+  url = "http://localhost:8080/trainer";
+>>>>>>> 8c79728fc2ab92df4f110e24af72291066b8fd33
   headers = new HttpHeaders().set('Content-type', 'application/json').
     set('Accept', 'application/json').set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -47,8 +51,8 @@ export class TrainerService {
     return this.http.delete(this.url+'/delete/'+id,this.httpOptions)
   }
 
-  reportTrainer(idTrainer, idSubcourse): Observable<any>{
-    return this.http.get<any>(`${this.url}/report/${idTrainer}/${idSubcourse}`, 
+  reportTrainer(idKelas, idSubcourse): Observable<any>{
+    return this.http.get<any>(`${this.url}/report/${idKelas}/${idSubcourse}`, 
     { headers: this.httpOptions.headers, responseType: 'arraybuffer' as 'json'});
   }
 

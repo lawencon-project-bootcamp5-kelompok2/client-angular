@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Kelas } from 'src/app/model/kelas';
+import { TrainerService } from 'src/app/service/trainer.service';
+import { KelasService } from 'src/app/service/kelas.service';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
+import { CourseService } from 'src/app/service/course.service';
+import { SubcourseService } from 'src/app/service/subcourse.service';
+import { Trainer } from 'src/app/model/trainer';
 
 @Component({
   selector: 'app-rekap-nilai-kelas-list',
@@ -8,22 +14,26 @@ import { Kelas } from 'src/app/model/kelas';
 })
 export class RekapNilaiKelasListComponent implements OnInit {
 
-  kelas : Kelas[]
   kelas1 : Kelas
   selectedRow : Kelas
 
-  constructor() { }
+  nama : string
+  trainer : Trainer
+  kelas : Kelas[]
+
+  constructor(private trainerService: TrainerService, private kelasService: KelasService, private tokenStorage: TokenStorageService,
+    private courseService: CourseService, private subcourseService: SubcourseService) { }
 
   ngOnInit(): void {
-    this.kelas = [
-      {
-        idKelas : "dummy",
-        kodeKelas : "dummy",
-        course : null,
-        deskripsi : "ini dummy",
-        openKelas : "10:00" 
-      }
-    ]
+    const user = this.tokenStorage.getUser();
+    this.nama = user.nama;
+
+    this.trainerService.getTrainerByEmail(user.email).subscribe(res => {
+      this.trainer = res,
+      this.kelasService.getKelasByTrainer(this.trainer.idTrainer).subscribe(res => {
+        this.kelas = res
+      })
+    })
   }
 
   onRowSelect(event){

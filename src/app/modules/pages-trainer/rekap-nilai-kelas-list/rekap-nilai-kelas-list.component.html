@@ -7,7 +7,7 @@
                     <h4 class="box-title">Daftar Kelas</h4>
                 </div>
                 <div class="box-body">
-                    <p-table [value]="kelas" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="kelas" autoLayout = "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
@@ -23,9 +23,10 @@
                           <tr [pSelectableRow]="rowData">
                             <td>{{i+1}}</td>
                             <td>{{kelas.kodeKelas}}</td>
-                            <td>{{kelas.course.namaCourse}}</td>
+                            <td>{{kelas.namaCourse}}</td>
                             <td>
-                              <button type="button" class="btn btn-block btn-primary" routerLink="../list-rekap-nilai">
+                              <button type="button" class="btn btn-block btn-primary" 
+                              [routerLink]="['../list-rekap-nilai']" [queryParams]="{idKelas:kelas.idKelas, namaCourse:kelas.namaCourse}">
                                 <i class="glyphicon glyphicon-chevron-right"></i>
                               </button>
                             </td>

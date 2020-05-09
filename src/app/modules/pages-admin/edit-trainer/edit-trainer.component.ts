@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Trainer } from 'src/app/model/trainer';
 import { TrainerService } from 'src/app/service/trainer.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-trainer',
@@ -16,7 +17,7 @@ export class EditTrainerComponent implements OnInit {
   newPass : string
   errPass
 
-  constructor(private activatedRoute: ActivatedRoute, private trainerService: TrainerService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private trainerService: TrainerService, private router: Router, private location:Location) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(
@@ -49,6 +50,10 @@ export class EditTrainerComponent implements OnInit {
       )
       this.router.navigate(['/admin/list-trainer'])
     }
+  }
+
+  prevPage(){
+    this.location.back();
   }
 
 }

@@ -20,7 +20,7 @@
                         <button class="btn btn-primary" routerLink="../add-trainer"><i class="glyphicon glyphicon-plus"></i>&nbsp; Trainer</button>
                     </div>
                     <br>
-                    <p-table [value]="trainer" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="trainer" autoLayout= "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
@@ -78,4 +78,9 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+      <div>
+        <footer>
+          <a class="previous" (click) ="prevPage();">&laquo; Previous</a>
+        </footer>
+      </div> 
 </section>

@@ -16,7 +16,7 @@
                       </div>
                 </div>
                 <div class="box-body">
-                    <p-table [value]="course" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="course" autoLayout= "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>

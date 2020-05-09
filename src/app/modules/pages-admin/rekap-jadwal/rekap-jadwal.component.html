@@ -20,7 +20,7 @@
                         <button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>&nbsp; Print</button>
                     </div>
                     <br>
-                    <p-table [value]="course" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="course" autoLayout= "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>

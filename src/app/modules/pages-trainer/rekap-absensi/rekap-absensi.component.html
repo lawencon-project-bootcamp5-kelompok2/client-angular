@@ -11,7 +11,7 @@
                   <div class="box-tools">
                     <button (click)="onSubmit()" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>&nbsp; Print</button>
                   </div>
-                    <p-table [value]="rekapAbsen" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="rekapAbsen" autoLayout = "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>

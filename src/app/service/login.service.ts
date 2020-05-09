@@ -9,7 +9,7 @@ import { TokenStorageService } from '../service/token-storage.service'
 })
 export class LoginService {
 
-  url = "http://9ece3500.ngrok.io/login";
+  url = "http://localhost:8080/login";
   headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {
@@ -46,19 +46,12 @@ export class LoginService {
   }
 
   register(user): Observable<any> {
-    return this.http.post("http://9ece3500.ngrok.io/login/signup", {
-      nama: user.nama,
-      email: user.email,
-      password: user.password
-    }, this.httpOptions);
+    return this.http.post("http://localhost:8080/login/signup", user, this.httpOptions);
   }
 
   login(credentials): Observable<any> {
     this.isLoggedIn = true;
-    return this.http.post("http://9ece3500.ngrok.io/login/signin", {
-      email: credentials.email,
-      password: credentials.password
-    }, this.httpOptions);
+    return this.http.post("http://localhost:8080/login/signin",credentials, this.httpOptions);
   }
 
   isLogin(): boolean {

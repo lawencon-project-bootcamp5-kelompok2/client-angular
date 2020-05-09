@@ -22,7 +22,7 @@
                         </button>
                     </div>
                     <br>
-                    <p-table [value]="kelas" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="kelas" autoLayout= "true" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
                         <!-- <thead>                   -->
                         <ng-template pTemplate="header">
                           <tr>
@@ -80,4 +80,11 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+      
+<div>
+  <footer>
+    <a class="previous" routerLink = "../">&laquo; Previous</a>
+  </footer>
+</div>  
+
 </section>

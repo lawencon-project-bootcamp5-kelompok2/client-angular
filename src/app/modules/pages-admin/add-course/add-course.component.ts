@@ -4,6 +4,7 @@ import { Course } from 'src/app/model/course';
 import { TrainerService } from 'src/app/service/trainer.service';
 import { CourseService } from 'src/app/service/course.service';
 import { MessageService } from 'primeng/api';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-course',
@@ -16,7 +17,7 @@ export class AddCourseComponent implements OnInit {
   course = new Course();
 
   constructor(private courseService : CourseService, private trainerService: TrainerService,
-    private messageService: MessageService) { }
+    private messageService: MessageService, private location: Location) { }
 
   ngOnInit(): void {
     this.trainerService.getTrainer().subscribe(result => {
@@ -43,6 +44,10 @@ export class AddCourseComponent implements OnInit {
   }
   onFailed(){
     this.messageService.add({severity:'error', summary:'Error!', detail:'Tambah Course Gagal!'})
+  }
+
+  prevPage(){
+    this.location.back();
   }
 
 }

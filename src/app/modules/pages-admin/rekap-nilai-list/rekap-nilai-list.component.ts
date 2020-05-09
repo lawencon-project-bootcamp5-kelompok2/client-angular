@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RekapNilaiClassData } from '../rekapNilaiClass-data';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-rekap-nilai-list',
@@ -12,10 +13,10 @@ export class RekapNilaiListComponent implements OnInit {
   rekapNilaiClass1 : RekapNilaiClassData
   selectedRow : RekapNilaiClassData
 
-  constructor() { }
+  constructor(private location : Location) { }
 
   ngOnInit(): void {
-    document.getElementById("side").className="active";
+    // document.getElementById("side").className="active";
     
     this.rekapNilaiClass = [
       {
@@ -50,5 +51,11 @@ export class RekapNilaiListComponent implements OnInit {
     }
     return d;
   }
+
+  
+  prevPage(){
+    this.location.back();
+  }
+
 
 }

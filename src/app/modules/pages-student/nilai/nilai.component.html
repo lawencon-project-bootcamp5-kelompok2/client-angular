@@ -22,56 +22,30 @@
       </div>
     </div>
     <div class="box-body">
-      <p-table [value]="aaa" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+      <p-table [value]="takenCourse" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
         <ng-template pTemplate="header">                  
           <tr>
-            <th style="width: 100px">Enroll</th>
+            <th style="width: 100px">Kelas</th>
+            <th>Course</th>
             <th>Instruktur</th>
             <th>Nilai</th>
-            <th>Grade</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-rowData let-aaa>
+        <ng-template pTemplate="body" let-rowData let-takenCourse>
           <tr [pSelectableRow]="rowData">
-            <td>{{aaa.enroll}}</td>
-            <td>{{aaa.instruktur}}</td>
-            <td>{{aaa.nilai}}</td>
-            <td>{{aaa.grade}}</td>
+            <td>{{takenCourse.kodeKelas}}</td>
+            <td>{{takenCourse.course.namaCourse}}</td>
+            <td>{{takenCourse.course.trainer.namaTrainer}}</td>
+            <td><button class="btn btn-primary" (click)="onSubmit(student.idStudent,takenCourse.idKelas,takenCourse.course.idCourse)">
+              Cetak Nilai
+            </button></td>
           </tr>
         </ng-template>
       </p-table>
       <br>
       <br>
 <!-- Detail nilai -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">Java</h3>
-        </div>
-        <div class="box-body">
-          <table class="table table-bordered">
-            <thead>                  
-              <tr>
-                <th>Materi</th>
-                <th>Nilai</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Java Basic</td>
-                <td>96</td>
-              </tr>
-              <tr>
-                <td>OOP</td>
-                <td>87</td>
-              </tr>
-              <tr>
-                <td>Java Features</td>
-                <td>80</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      
     </div>
     <!-- /.box-body -->
     <div class="box-footer">
