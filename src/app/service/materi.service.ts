@@ -10,7 +10,7 @@ import { Materi } from '../model/materi';
 })
 export class MateriService {
 
-  url = "http://9ece3500.ngrok.io/materi";
+  url = "http://726659f0.ngrok.io/materi";
   headers = new HttpHeaders().set('Accept', 'application/json')
   .set('Authorization', 'Bearer '+sessionStorage.getItem('auth-token'));
   httpOptions = {

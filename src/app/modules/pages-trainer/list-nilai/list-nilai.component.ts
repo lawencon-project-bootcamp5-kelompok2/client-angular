@@ -34,7 +34,7 @@ export class ListNilaiComponent implements OnInit {
   kelas : Kelas = new Kelas();
   subcourse : Subcourse = new Subcourse();
   formInput : any;
-  jawaban : Jawaban[] = [new Jawaban()];
+  jawaban : Jawaban[] = [];
   inputNilai: Jawaban;
   test: Test = new Test();
   idTest: any;
