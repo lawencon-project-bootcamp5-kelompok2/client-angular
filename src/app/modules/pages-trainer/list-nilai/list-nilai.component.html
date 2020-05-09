@@ -7,41 +7,35 @@
                     <h4 class="box-title">Input Nilai Materi {{subcourse.namaSubcourse}} Kelas {{kelas.kodeKelas}}</h4>
                 </div>
                 <div class="box-body">
-                    <p-table [value]="formInput" selectionMode="single" [(selection)]="selectedRow" (onRowSelect)="onRowSelect($event)">
+                    <p-table [value]="jawaban">
                         <ng-template pTemplate="header">
                           <tr>
-                            <th style="width: 5%">No</th>
                             <th>NPM</th>
                             <th>Nama Peserta</th>
                             <th>Download File Test</th>
                             <th style="width: 10%">Nilai</th>
                           </tr>
                         </ng-template>
-                        <ng-template pTemplate="body" let-rowData let-formInput let-jawaban>
-                          <tr [pSelectableRow]="rowData">
-                            <td></td>
-                            <td>{{formInput.npm}}</td>
-                            <td>{{formInput.namaStudent}}</td>
-                            <!-- <td><a href="{{formNilai.fileLink}}">Link...</a></td> -->
+                        <ng-template pTemplate="body" let-jawaban>
+                          <tr>
+                            <td>{{jawaban.idStudent.npm}}</td>
+                            <td>{{jawaban.idStudent.namaStudent}}</td>
                             <td>
-                              <button type="button" class="btn btn-primary">
+                              <button type="button" class="btn btn-primary" style="text-align: center;">
                                 <i class="glyphicon glyphicon-cloud-download" (click)="downloadJawaban(jawaban.fileJawaban.idFileJawaban)"></i>
                               </button>
                             </td>
                             <td>
-                              <!-- <input class="form-control" placeholder="Nilai" type="number" [(ngModel)]="formNilai.nilaiForm" value="{{formNilai.nilaiForm}}"> -->
-                              <input class="form-control" placeholder="Nilai" type="number">
+                              <input class="form-control" [(ngModel)]="jawaban.nilai" placeholder="Nilai" type="number">
                             </td>
                           </tr>
-                         
                         </ng-template>
-                        <!-- </tbody> -->        
                       </p-table>
                 </div>
                 <div class="box-footer">
                     {{notifNilai}}
                     <div class="box-tools pull-right">
-                        <button class="btn btn-sm btn-block btn-primary" type="button">Simpan</button>
+                        <button class="btn btn-sm btn-block btn-primary" (click)="onSubmit()" type="button">Simpan</button>
                     </div>
                 </div>
             </div>

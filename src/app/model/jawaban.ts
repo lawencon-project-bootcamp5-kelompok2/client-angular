@@ -1,7 +1,6 @@
 import { Student } from './student';
 import { FileJawaban } from './fileJawaban';
 import { Test } from './test';
-import { FileJawabanService } from '../service/file-jawaban.service';
 
 export class Jawaban {
     idJawaban;

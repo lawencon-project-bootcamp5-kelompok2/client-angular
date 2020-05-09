@@ -69,9 +69,10 @@ export class TestPageComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.idSubcourse = params.subCourse;
       this.idKelas = params.idKelas;
-      this.testService.getTestByIdKelasAndIdSubcourse(this.idSubcourse, this.idKelas).subscribe(
+      this.testService.getTestBySubcourse(this.idSubcourse).subscribe(
         data => {
-          this.testData = data
+          this.testData = data   
+          this.idTest = data[0].idTest       
           this.subcourseService.getSubcourseById(this.idSubcourse).subscribe( res => {
             {
               this.subcourse = res
@@ -82,7 +83,7 @@ export class TestPageComponent implements OnInit {
             };
           }, err => console.log(err))
         },
-        err => console.log("Ada error : " + JSON.stringify(err)),
+        err => console.log(err),
         () => console.log("Complete")
       )
     }, err => {
@@ -97,18 +98,15 @@ export class TestPageComponent implements OnInit {
       this.subcourse = res;
     }, err => console.log(err))
 
-    this.testService.getTestBySubcourse(this.idSubcourse).subscribe( res => {
-      this.mulai = res[0].waktuMulai.split(":");
-      this.selesai = res[0].waktuSelesai.split(":");
-      this.idTest = res[0].idTest;
-      this.testService.getTestById(this.idTest).subscribe( res => {
-        //setInterval(this.fungsi, 1000);
-        this.test = res;
-        console.log(this.test);
-      })      
-    })
-
-    // setInterval(this.timer, 1000);
+    // this.testService.getTestBySubcourse(this.idSubcourse).subscribe( res => {
+    //   this.mulai = res[0].waktuMulai.split(":");
+    //   this.selesai = res[0].waktuSelesai.split(":");
+    //   this.idTest = res[0].idTest;
+    //   this.testService.getTestById(this.idTest).subscribe( res => {
+    //     this.test = res;
+    //     console.log("0");
+    //   })      
+    // })
   }
 
   downloadSoal(idSoal){

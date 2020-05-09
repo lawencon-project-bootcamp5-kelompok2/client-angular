@@ -10,6 +10,11 @@ import { Jawaban } from 'src/app/model/jawaban';
 import { FileJawabanService } from 'src/app/service/file-jawaban.service';
 import { TestService } from 'src/app/service/test.service';
 import { Test } from 'src/app/model/test';
+import { saveAs } from 'file-saver';
+import { FormGroup, FormArray } from '@angular/forms';
+import { StudentService } from 'src/app/service/student.service';
+import { Student } from 'src/app/model/student';
+import { toTypeScript } from '@angular/compiler';
 
 @Component({
   selector: 'app-list-nilai',
@@ -19,17 +24,18 @@ import { Test } from 'src/app/model/test';
 export class ListNilaiComponent implements OnInit {
 
   formNilai : FormNilai[];
-  formNilai1 : FormNilai
-  cols : any[]
-  selectedRow: FormNilai 
-  notifNilai : string
+  formNilai1 : FormNilai;
+  cols : any[];
+  selectedRow: FormNilai;
+  notifNilai : string;
 
-  idKelas : string
-  idSubcourse : string
-  kelas : Kelas
-  subcourse : Subcourse
-  formInput : any
+  idKelas : string;
+  idSubcourse : string;
+  kelas : Kelas = new Kelas();
+  subcourse : Subcourse = new Subcourse();
+  formInput : any;
   jawaban : Jawaban[] = [new Jawaban()];
+  inputNilai: Jawaban;
   test: Test = new Test();
   idTest: any;
 
@@ -37,29 +43,33 @@ export class ListNilaiComponent implements OnInit {
     private jawabanService: JawabanService, private fileJawabanService: FileJawabanService, private testService: TestService) { }
 
   ngOnInit(): void {
-
     this.route.queryParams.subscribe(params => {
+      
       this.idKelas = params.idKelas;
-      this.idSubcourse = params.idSubcourse
+      this.idSubcourse = params.idSubcourse;
+
+      this.testService.getTestBySubcourse(this.idSubcourse).subscribe( res => {      
+        this.idTest = {
+          "idTest" : {
+            "idTest" : res[0].idTest
+          }
+        }
+        
+        this.jawabanService.getJawabanByTest(this.idTest).subscribe(res => {
+          this.jawaban = res;
+        }, err => {
+          console.log(err);
+        })
+      }, err => {
+        console.log(err);
+      });
+
+      this.kelasService.getKelasById(this.idKelas).subscribe(
+        result => {
+          this.kelas = result;
+        }
+      );
     });
-
-    this.kelasService.getKelasById(this.idKelas).subscribe(
-      result => {
-        this.kelas = result;
-      }
-    )
-
-    this.testService.getTestBySubcourse(this.idSubcourse).subscribe( res => {
-      this.idTest = res[0].idTest;
-      console.log(this.idTest);
-      this.jawabanService.getJawabanByTest(this.idTest).subscribe(res => {
-        this.jawaban = res;
-      })
-    })
-
-    // console.log(this.idTest)
-
-    
 
     this.subcourseService.getSubcourseById(this.idSubcourse).subscribe(
       result => {
@@ -71,7 +81,6 @@ export class ListNilaiComponent implements OnInit {
         this.formInput = result;
       }
     )
-
   }
 
   downloadJawaban(idJawaban){
@@ -82,24 +91,18 @@ export class ListNilaiComponent implements OnInit {
     })
   }
 
-  onRowSelect(event){
-    this.formNilai1 = this.cloneSelection(event.data);
-  }
-
-  // cloneSelection(d : FormNilai){
-  //   let formNilai = {};
-  //   for(let prop in d){
-  //     formNilai[prop] = d[prop];
-  //   }
-  //   return d;
-  // }
-
-  cloneSelection(d : any){
-    let formInput = {};
-    for(let prop in d){
-      formInput[prop] = d[prop];
+  onSubmit(){
+    for(let nilai in this.jawaban){
+      this.jawabanService.getJawabanById(this.jawaban[nilai].idJawaban).subscribe(res => {
+        this.inputNilai = res
+        this.inputNilai.nilai = this.jawaban[nilai].nilai;
+        this.jawabanService.updateJawaban(this.inputNilai).subscribe(res => {
+          console.log("update sukses!");
+        }, err => {
+          console.log("update gagal!");
+          console.log(err);
+        })
+      })
     }
-    return d;
   }
-
 }
