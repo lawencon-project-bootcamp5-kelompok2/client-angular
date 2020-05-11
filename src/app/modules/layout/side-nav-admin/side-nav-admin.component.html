@@ -12,18 +12,18 @@
           <span>List Kelas</span>
         </a>
       </li>
-      <li id="side" routerLinkActive="active" >
+      <li id="sideCourse" routerLinkActive="active" >
         <a routerLink = "./list-course">
           <i class="fa fa-tasks"></i>
           <span>List course</span>
         </a>
       </li>
-      <li id="side" routerLinkActive="active" >
+<!--       <li id="side" routerLinkActive="active" >
         <a routerLink ="./rekap-nilai-list">
           <i class="fa fa-check-square-o"></i> <span>Nilai E-Learning</span>
         </a>
-      </li>
-      <li class="treeview">
+      </li> -->
+      <li class="treeview" routerLinkActive="active">
         <a href="#">
           <i class="fa fa-tasks"></i> <span>Rekap</span>
           <span class="pull-right-container">
@@ -31,10 +31,10 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li id="side"><a routerLink ="./list-class"><i class="fa fa-circle-o"></i> Jadwal</a></li>
-          <li id="side"><a routerLink ="./rekap-nilai-list"><i class="fa fa-circle-o"></i> Nilai</a></li>
-          <li id="side"><a routerLink ="./list-class"><i class="fa fa-circle-o"></i> Kelas</a></li>
-          <li class="treeview">
+<!--           <li id="side"><a routerLink ="./list-class"><i class="fa fa-circle-o"></i> Jadwal</a></li>
+          <li id="side"><a routerLink ="./rekap-nilai-list"><i class="fa fa-circle-o"></i> Nilai</a></li> -->
+          <li id="side" routerLinkActive="active"><a routerLink ="./list-class"><i class="fa fa-circle-o"></i> Kelas</a></li>
+<!--           <li class="treeview">
             <a href="#"><i class="fa fa-circle-o"></i> Absen
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -44,7 +44,7 @@
               <li id="side"><a routerLink ="./rekap-absen-trainer-list"><i class="fa fa-circle-o"></i> Trainer</a></li>
               <li id="side"><a routerLink ="./rekap-absen-student-list"><i class="fa fa-circle-o"></i> Murid</a></li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </li>
     </ul>
